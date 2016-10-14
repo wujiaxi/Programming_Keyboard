@@ -6,13 +6,13 @@
 //  Copyright © 2016 fingerWizards. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "Container.h"
 
-@interface ViewController ()
+@interface Container ()
 
 @end
 
-@implementation ViewController
+@implementation Container
 
 - (void)viewDidLoad {
     [super viewDidLoad];
