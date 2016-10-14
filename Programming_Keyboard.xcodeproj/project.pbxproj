@@ -10,9 +10,12 @@
 		410CB2211DB1229400F586B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 410CB2201DB1229400F586B5 /* main.m */; };
 		410CB2241DB1229400F586B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 410CB2231DB1229400F586B5 /* AppDelegate.m */; };
 		410CB2271DB1229400F586B5 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 410CB2261DB1229400F586B5 /* Container.m */; };
-		410CB22A1DB1229400F586B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410CB2281DB1229400F586B5 /* Main.storyboard */; };
+		410CB22A1DB1229400F586B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410CB2281DB1229400F586B5 /* Main.storyboard */; settings = {ASSET_TAGS = ("Keyboard Area", ); }; };
 		410CB22C1DB1229400F586B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 410CB22B1DB1229400F586B5 /* Assets.xcassets */; };
 		410CB22F1DB1229400F586B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410CB22D1DB1229400F586B5 /* LaunchScreen.storyboard */; };
+		4119FEF21DB125BB0061F27F /* KeyboardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FEF11DB125BB0061F27F /* KeyboardController.m */; };
+		4119FEF61DB127810061F27F /* CodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FEF51DB127810061F27F /* CodeController.m */; };
+		4119FEFA1DB127AE0061F27F /* ButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FEF91DB127AE0061F27F /* ButtonController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,12 @@
 		410CB22B1DB1229400F586B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		410CB22E1DB1229400F586B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		410CB2301DB1229400F586B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4119FEF01DB125BB0061F27F /* KeyboardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardController.h; sourceTree = "<group>"; };
+		4119FEF11DB125BB0061F27F /* KeyboardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardController.m; sourceTree = "<group>"; };
+		4119FEF41DB127810061F27F /* CodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeController.h; sourceTree = "<group>"; };
+		4119FEF51DB127810061F27F /* CodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeController.m; sourceTree = "<group>"; };
+		4119FEF81DB127AE0061F27F /* ButtonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonController.h; sourceTree = "<group>"; };
+		4119FEF91DB127AE0061F27F /* ButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +67,9 @@
 		410CB21E1DB1229400F586B5 /* Programming_Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				4119FEF71DB1279D0061F27F /* button */,
+				4119FEF31DB1276D0061F27F /* code area */,
+				4119FEEF1DB125A90061F27F /* keyboard */,
 				410CB2381DB122D000F586B5 /* delegations */,
 				410CB2371DB122C500F586B5 /* ui */,
 				410CB2361DB122B900F586B5 /* container_view */,
@@ -103,6 +115,33 @@
 			name = delegations;
 			sourceTree = "<group>";
 		};
+		4119FEEF1DB125A90061F27F /* keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				4119FEF01DB125BB0061F27F /* KeyboardController.h */,
+				4119FEF11DB125BB0061F27F /* KeyboardController.m */,
+			);
+			name = keyboard;
+			sourceTree = "<group>";
+		};
+		4119FEF31DB1276D0061F27F /* code area */ = {
+			isa = PBXGroup;
+			children = (
+				4119FEF41DB127810061F27F /* CodeController.h */,
+				4119FEF51DB127810061F27F /* CodeController.m */,
+			);
+			name = "code area";
+			sourceTree = "<group>";
+		};
+		4119FEF71DB1279D0061F27F /* button */ = {
+			isa = PBXGroup;
+			children = (
+				4119FEF81DB127AE0061F27F /* ButtonController.h */,
+				4119FEF91DB127AE0061F27F /* ButtonController.m */,
+			);
+			name = button;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,6 +168,9 @@
 		410CB2141DB1229400F586B5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					"Keyboard Area",
+				);
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = fingerWizards;
 				TargetAttributes = {
@@ -174,9 +216,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4119FEF61DB127810061F27F /* CodeController.m in Sources */,
+				4119FEF21DB125BB0061F27F /* KeyboardController.m in Sources */,
 				410CB2271DB1229400F586B5 /* Container.m in Sources */,
 				410CB2241DB1229400F586B5 /* AppDelegate.m in Sources */,
 				410CB2211DB1229400F586B5 /* main.m in Sources */,
+				4119FEFA1DB127AE0061F27F /* ButtonController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +370,7 @@
 				410CB2351DB1229400F586B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
