@@ -13,9 +13,9 @@
 		410CB22A1DB1229400F586B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410CB2281DB1229400F586B5 /* Main.storyboard */; settings = {ASSET_TAGS = ("Keyboard Area", ); }; };
 		410CB22C1DB1229400F586B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 410CB22B1DB1229400F586B5 /* Assets.xcassets */; };
 		410CB22F1DB1229400F586B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410CB22D1DB1229400F586B5 /* LaunchScreen.storyboard */; };
-		4119FEF21DB125BB0061F27F /* KeyboardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FEF11DB125BB0061F27F /* KeyboardController.m */; };
-		4119FEF61DB127810061F27F /* CodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FEF51DB127810061F27F /* CodeController.m */; };
-		4119FEFA1DB127AE0061F27F /* ButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FEF91DB127AE0061F27F /* ButtonController.m */; };
+		4119FF051DB15ECE0061F27F /* AutoCompletionPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF041DB15ECE0061F27F /* AutoCompletionPanelController.m */; };
+		4119FF091DB173540061F27F /* CompletionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF081DB173540061F27F /* CompletionEngine.m */; };
+		4119FF0D1DB173AE0061F27F /* KeyboardState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF0C1DB173AE0061F27F /* KeyboardState.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,12 +29,12 @@
 		410CB22B1DB1229400F586B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		410CB22E1DB1229400F586B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		410CB2301DB1229400F586B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4119FEF01DB125BB0061F27F /* KeyboardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardController.h; sourceTree = "<group>"; };
-		4119FEF11DB125BB0061F27F /* KeyboardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardController.m; sourceTree = "<group>"; };
-		4119FEF41DB127810061F27F /* CodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeController.h; sourceTree = "<group>"; };
-		4119FEF51DB127810061F27F /* CodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeController.m; sourceTree = "<group>"; };
-		4119FEF81DB127AE0061F27F /* ButtonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonController.h; sourceTree = "<group>"; };
-		4119FEF91DB127AE0061F27F /* ButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonController.m; sourceTree = "<group>"; };
+		4119FF031DB15ECE0061F27F /* AutoCompletionPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoCompletionPanelController.h; sourceTree = "<group>"; };
+		4119FF041DB15ECE0061F27F /* AutoCompletionPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoCompletionPanelController.m; sourceTree = "<group>"; };
+		4119FF081DB173540061F27F /* CompletionEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletionEngine.m; sourceTree = "<group>"; };
+		4119FF0A1DB173640061F27F /* CompletionEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompletionEngine.h; sourceTree = "<group>"; };
+		4119FF0B1DB173A50061F27F /* KeyboardState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardState.h; sourceTree = "<group>"; };
+		4119FF0C1DB173AE0061F27F /* KeyboardState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardState.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,12 +67,11 @@
 		410CB21E1DB1229400F586B5 /* Programming_Keyboard */ = {
 			isa = PBXGroup;
 			children = (
-				4119FEF71DB1279D0061F27F /* button */,
-				4119FEF31DB1276D0061F27F /* code area */,
-				4119FEEF1DB125A90061F27F /* keyboard */,
+				4119FF071DB173350061F27F /* model */,
+				4119FF021DB15EBC0061F27F /* autoCompletionPanel */,
 				410CB2381DB122D000F586B5 /* delegations */,
 				410CB2371DB122C500F586B5 /* ui */,
-				410CB2361DB122B900F586B5 /* container_view */,
+				410CB2361DB122B900F586B5 /* containerView */,
 				410CB2301DB1229400F586B5 /* Info.plist */,
 				410CB21F1DB1229400F586B5 /* Supporting Files */,
 			);
@@ -87,13 +86,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		410CB2361DB122B900F586B5 /* container_view */ = {
+		410CB2361DB122B900F586B5 /* containerView */ = {
 			isa = PBXGroup;
 			children = (
 				410CB2251DB1229400F586B5 /* Container.h */,
 				410CB2261DB1229400F586B5 /* Container.m */,
 			);
-			name = container_view;
+			name = containerView;
 			sourceTree = "<group>";
 		};
 		410CB2371DB122C500F586B5 /* ui */ = {
@@ -115,31 +114,24 @@
 			name = delegations;
 			sourceTree = "<group>";
 		};
-		4119FEEF1DB125A90061F27F /* keyboard */ = {
+		4119FF021DB15EBC0061F27F /* autoCompletionPanel */ = {
 			isa = PBXGroup;
 			children = (
-				4119FEF01DB125BB0061F27F /* KeyboardController.h */,
-				4119FEF11DB125BB0061F27F /* KeyboardController.m */,
+				4119FF031DB15ECE0061F27F /* AutoCompletionPanelController.h */,
+				4119FF041DB15ECE0061F27F /* AutoCompletionPanelController.m */,
 			);
-			name = keyboard;
+			name = autoCompletionPanel;
 			sourceTree = "<group>";
 		};
-		4119FEF31DB1276D0061F27F /* code area */ = {
+		4119FF071DB173350061F27F /* model */ = {
 			isa = PBXGroup;
 			children = (
-				4119FEF41DB127810061F27F /* CodeController.h */,
-				4119FEF51DB127810061F27F /* CodeController.m */,
+				4119FF081DB173540061F27F /* CompletionEngine.m */,
+				4119FF0A1DB173640061F27F /* CompletionEngine.h */,
+				4119FF0B1DB173A50061F27F /* KeyboardState.h */,
+				4119FF0C1DB173AE0061F27F /* KeyboardState.m */,
 			);
-			name = "code area";
-			sourceTree = "<group>";
-		};
-		4119FEF71DB1279D0061F27F /* button */ = {
-			isa = PBXGroup;
-			children = (
-				4119FEF81DB127AE0061F27F /* ButtonController.h */,
-				4119FEF91DB127AE0061F27F /* ButtonController.m */,
-			);
-			name = button;
+			name = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,12 +208,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4119FEF61DB127810061F27F /* CodeController.m in Sources */,
-				4119FEF21DB125BB0061F27F /* KeyboardController.m in Sources */,
+				4119FF091DB173540061F27F /* CompletionEngine.m in Sources */,
 				410CB2271DB1229400F586B5 /* Container.m in Sources */,
+				4119FF0D1DB173AE0061F27F /* KeyboardState.m in Sources */,
+				4119FF051DB15ECE0061F27F /* AutoCompletionPanelController.m in Sources */,
 				410CB2241DB1229400F586B5 /* AppDelegate.m in Sources */,
 				410CB2211DB1229400F586B5 /* main.m in Sources */,
-				4119FEFA1DB127AE0061F27F /* ButtonController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

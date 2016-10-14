@@ -1,21 +1,31 @@
 //
-//  ButtonController.m
+//  AutoCompletionPanelController.m
 //  Programming_Keyboard
 //
 //  Created by Junlong Gao on 10/14/16.
 //  Copyright © 2016 fingerWizards. All rights reserved.
 //
 
-#import "ButtonController.h"
+#import "AutoCompletionPanelController.h"
 
-@interface ButtonController ()
+@interface AutoCompletionPanelController ()
 
 @end
 
-@implementation ButtonController
+@implementation AutoCompletionPanelController
+-(void) populateCompletion:(NSArray*) list{
+    NSLog(@"incommint autocompletion list:");
+    for (int i = 0; i < [list count]; ++i) {
+        NSLog(@"%@", list[i]);
+    }
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"auto completion did load");
+    self.preferredContentSize = CGSizeMake(320, 480);
+    
     // Do any additional setup after loading the view.
 }
 
@@ -33,5 +43,10 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(CGSize)contentSizeForViewInPopover
+{
+    return self.view.bounds.size;
+}
 
 @end

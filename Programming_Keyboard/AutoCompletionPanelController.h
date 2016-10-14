@@ -1,5 +1,5 @@
 //
-//  ButtonController.h
+//  AutoCompletionPanelController.h
 //  Programming_Keyboard
 //
 //  Created by Junlong Gao on 10/14/16.
@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ButtonController : UIViewController
+@interface AutoCompletionPanelController : UITableViewController
 
+-(void) populateCompletion:(NSArray*) list;
 @end
