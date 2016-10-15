@@ -1,8 +1,10 @@
 #!/bin/bash
 set -e
-echo "running unit tests"
-xctool -project Programming_Keyboard.xcodeproj -scheme unittests run-tests
 
 echo "building the project"
-xctool -project Programming_Keyboard.xcodeproj -scheme Programming_Keyboard -sdk iphonesimulator10.0 
+xcodebuild -project Programming_Keyboard.xcodeproj -target unittests build
+xcodebuild -project Programming_Keyboard.xcodeproj -target Programming_Keyboard build
+
+echo "running unit tests"
+xcodebuild test -project Programming_Keyboard.xcodeproj -scheme unittests
 
