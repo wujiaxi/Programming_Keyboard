@@ -223,6 +223,8 @@
 					};
 					4119FF111DB17E2D0061F27F = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = YQ3WE59VN6;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -411,8 +413,10 @@
 		4119FF171DB17E2D0061F27F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = YQ3WE59VN6;
+				INFOPLIST_FILE = "$(SRCROOT)/Programming_Keyboard/Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -421,8 +425,10 @@
 		4119FF181DB17E2D0061F27F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = YQ3WE59VN6;
+				INFOPLIST_FILE = "$(SRCROOT)/Programming_Keyboard/Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};

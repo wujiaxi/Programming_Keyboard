@@ -27,10 +27,8 @@
 - (id) initWithArray:(NSArray *) schema{
     if(self = [super init]){
         NSLog(@"init with array");
-        self.limit = 0;
-        self.nullCount = 0;
-        self.prefix = [NSMutableString new];
-         self.dict = [[Trie alloc] initWithKey:'\0'];
+        self.limit = 1;
+        self.dict = [[Trie alloc] initWithKey:'\0'];
         for(int i = 0; i < [schema count]; ++i){
             [self.dict addWord:schema[i]
                          sofar:schema[i]];
@@ -40,7 +38,16 @@
     return self;
 }
 
+- (id) initWithDemo{
+    NSArray *sample = @[@"vector<int>",
+                        @"vector<string>",
+                        @"unordered_set<string>",
+                        @"unordered_set<int>"];
+    return [self initWithArray:sample];
+}
 -(void) rewind{
+    self.prefix = [NSMutableString new];
+    self.nullCount = 0;
     self.currentState = self.dict;
 }
 
@@ -70,6 +77,17 @@
         self.nullCount--;
     }else{
         self.currentState = self.currentState.p;
+    }
+}
+
+- (void) printDebug{
+    NSArray* rst = [self dumpList];
+    if(rst){
+        for(NSString* s in rst){
+            NSLog(@"%@", s);
+        }
+    }else{
+        NSLog(@"no completion available");
     }
 }
 @end

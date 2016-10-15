@@ -12,6 +12,8 @@
 @interface CompletionEngine : NSObject
 - (id) initWithArray:(NSArray *) schema;
 
+- (id) initWithDemo;
+
 //add a char to the current search state
 - (void) addChar:(NSString *) c;
 
@@ -24,6 +26,7 @@
 //reset the state into empty
 - (void) rewind;
 
+- (void) printDebug;
 
 @end
 /*
