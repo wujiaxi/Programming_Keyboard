@@ -3,3 +3,5 @@ osx_image: xcode8
 script: 
 - ls -a
 - ./script.sh
+notifications:
+  slack: eecs481team:W22pFAfnGJAhps8RZ4QvXYCB
