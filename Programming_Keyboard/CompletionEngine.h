@@ -8,9 +8,22 @@
 
 #ifndef CompletionEngine_h
 #define CompletionEngine_h
-#import <UIKit/UIKit.h>
 
 @interface CompletionEngine : NSObject
+- (id) initWithArray:(NSArray *) schema;
+
+//add a char to the current search state
+- (void) addChar:(NSString *) c;
+
+//remove the last char from the current search state
+- (void) popChar;
+
+//dump the list of words that fits the current search state;
+- (NSArray<NSString*> *) dumpList;
+
+//reset the state into empty
+- (void) rewind;
+
 
 @end
 /*

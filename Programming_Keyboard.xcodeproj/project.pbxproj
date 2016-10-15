@@ -16,7 +16,23 @@
 		4119FF051DB15ECE0061F27F /* AutoCompletionPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF041DB15ECE0061F27F /* AutoCompletionPanelController.m */; };
 		4119FF091DB173540061F27F /* CompletionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF081DB173540061F27F /* CompletionEngine.m */; };
 		4119FF0D1DB173AE0061F27F /* KeyboardState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF0C1DB173AE0061F27F /* KeyboardState.m */; };
+		4119FF151DB17E2D0061F27F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF141DB17E2D0061F27F /* main.m */; };
+		4119FF191DB180490061F27F /* CompletionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF081DB173540061F27F /* CompletionEngine.m */; };
+		4119FF1B1DB180940061F27F /* Trie.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF1A1DB180940061F27F /* Trie.m */; };
+		4119FF1D1DB180C70061F27F /* Trie.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF1A1DB180940061F27F /* Trie.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4119FF101DB17E2D0061F27F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		410CB21C1DB1229400F586B5 /* Programming_Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Programming_Keyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,10 +51,21 @@
 		4119FF0A1DB173640061F27F /* CompletionEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompletionEngine.h; sourceTree = "<group>"; };
 		4119FF0B1DB173A50061F27F /* KeyboardState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardState.h; sourceTree = "<group>"; };
 		4119FF0C1DB173AE0061F27F /* KeyboardState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardState.m; sourceTree = "<group>"; };
+		4119FF121DB17E2D0061F27F /* trieTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = trieTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4119FF141DB17E2D0061F27F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4119FF1A1DB180940061F27F /* Trie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trie.m; sourceTree = "<group>"; };
+		4119FF1C1DB180B70061F27F /* Trie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Trie.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		410CB2191DB1229400F586B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4119FF0F1DB17E2D0061F27F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -52,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				410CB21E1DB1229400F586B5 /* Programming_Keyboard */,
+				4119FF131DB17E2D0061F27F /* trieTest */,
 				410CB21D1DB1229400F586B5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				410CB21C1DB1229400F586B5 /* Programming_Keyboard.app */,
+				4119FF121DB17E2D0061F27F /* trieTest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,8 +159,18 @@
 				4119FF0A1DB173640061F27F /* CompletionEngine.h */,
 				4119FF0B1DB173A50061F27F /* KeyboardState.h */,
 				4119FF0C1DB173AE0061F27F /* KeyboardState.m */,
+				4119FF1A1DB180940061F27F /* Trie.m */,
+				4119FF1C1DB180B70061F27F /* Trie.h */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		4119FF131DB17E2D0061F27F /* trieTest */ = {
+			isa = PBXGroup;
+			children = (
+				4119FF141DB17E2D0061F27F /* main.m */,
+			);
+			path = trieTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +193,23 @@
 			productReference = 410CB21C1DB1229400F586B5 /* Programming_Keyboard.app */;
 			productType = "com.apple.product-type.application";
 		};
+		4119FF111DB17E2D0061F27F /* trieTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4119FF161DB17E2D0061F27F /* Build configuration list for PBXNativeTarget "trieTest" */;
+			buildPhases = (
+				4119FF0E1DB17E2D0061F27F /* Sources */,
+				4119FF0F1DB17E2D0061F27F /* Frameworks */,
+				4119FF101DB17E2D0061F27F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = trieTest;
+			productName = trieTest;
+			productReference = 4119FF121DB17E2D0061F27F /* trieTest */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -169,6 +225,9 @@
 					410CB21B1DB1229400F586B5 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = YQ3WE59VN6;
+					};
+					4119FF111DB17E2D0061F27F = {
+						CreatedOnToolsVersion = 7.2.1;
 					};
 				};
 			};
@@ -186,6 +245,7 @@
 			projectRoot = "";
 			targets = (
 				410CB21B1DB1229400F586B5 /* Programming_Keyboard */,
+				4119FF111DB17E2D0061F27F /* trieTest */,
 			);
 		};
 /* End PBXProject section */
@@ -213,7 +273,18 @@
 				4119FF0D1DB173AE0061F27F /* KeyboardState.m in Sources */,
 				4119FF051DB15ECE0061F27F /* AutoCompletionPanelController.m in Sources */,
 				410CB2241DB1229400F586B5 /* AppDelegate.m in Sources */,
+				4119FF1B1DB180940061F27F /* Trie.m in Sources */,
 				410CB2211DB1229400F586B5 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4119FF0E1DB17E2D0061F27F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4119FF151DB17E2D0061F27F /* main.m in Sources */,
+				4119FF1D1DB180C70061F27F /* Trie.m in Sources */,
+				4119FF191DB180490061F27F /* CompletionEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +414,26 @@
 			};
 			name = Release;
 		};
+		4119FF171DB17E2D0061F27F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		4119FF181DB17E2D0061F27F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -363,6 +454,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		4119FF161DB17E2D0061F27F /* Build configuration list for PBXNativeTarget "trieTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4119FF171DB17E2D0061F27F /* Debug */,
+				4119FF181DB17E2D0061F27F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
