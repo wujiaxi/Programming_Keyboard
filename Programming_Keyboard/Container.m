@@ -31,12 +31,7 @@
 
 @implementation Container
 
-#pragma mark - Completion Selection Delegate
--(void) selectedCompletion:(NSString *)entry
-{
-    NSLog(@"selected completion %@", entry);
-    [self.codes insertText:[entry substringFromIndex:[self.completionEngine from]]];
-}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -54,6 +49,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark - Completion Selection Delegate
+-(void) selectedCompletion:(NSString *)entry
+{
+    NSLog(@"selected completion %@", entry);
+    [self.codes insertText:[entry substringFromIndex:[self.completionEngine from]]];
+    [self.completionEngine rewind];
+}
 
 
 // button touch down

@@ -1,6 +1,6 @@
-# Programming_Keyboard
-An EECS481 Project
-By Finger Wizards
+# Programming Keyboard for iPad
+[![Build Status](https://travis-ci.org/junlong-gao/Programming_Keyboard.svg?branch=master)](https://travis-ci.org/junlong-gao/Programming_Keyboard)
+## An EECS481 Project by Finger Wizards
 
 #BUILD
 1. Use Xcode Version 8.1 beta (8T47)
