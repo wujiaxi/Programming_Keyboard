@@ -15,7 +15,7 @@
 #import "CompletionEngine.h"
 
 
-@interface Container ()  <UIPopoverPresentationControllerDelegate>
+@interface Container ()  <UIPopoverPresentationControllerDelegate, CompletionSelectionDelegate>
 @property (nonatomic, weak) AutoCompletionPanelController *completionPanel;
 
 @property (nonatomic) CompletionEngine *completionEngine;
@@ -30,6 +30,13 @@
 @end
 
 @implementation Container
+
+#pragma mark - Completion Selection Delegate
+-(void) selectedCompletion:(NSString *)entry
+{
+    NSLog(@"selected completion %@", entry);
+    [self.codes insertText:[entry substringFromIndex:[self.completionEngine from]]];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -58,7 +65,6 @@
 
 
 //manipulate cursor
-
 -(NSString*) prevChar{
     UITextRange* selected = [self.codes selectedTextRange];
     if(selected){
@@ -145,14 +151,15 @@
             //init the view
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             self.completionPanel = [storyboard instantiateViewControllerWithIdentifier:@"autoCompletionPanel"];
+            self.completionPanel.delegate = self;
             self.completionPanel.modalPresentationStyle = UIModalPresentationPopover;
-            UIPopoverPresentationController *popController = [self.completionPanel popoverPresentationController];
             
             //populate the completion options
-            NSArray *list = @[@"vector<string>", @"vector<int>"];
-            [self.completionPanel populateCompletion:list];
+            [self.completionEngine printDebug];
+            [self.completionPanel populateCompletion:[self.completionEngine dumpList]];
             
             //start the view
+            UIPopoverPresentationController *popController = [self.completionPanel popoverPresentationController];
             [self presentViewController:self.completionPanel
                                animated:YES
                              completion:nil];

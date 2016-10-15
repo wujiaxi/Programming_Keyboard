@@ -90,4 +90,11 @@
         NSLog(@"no completion available");
     }
 }
+
+- (NSUInteger) from{
+    if(self.prefix){
+        return [self.prefix length];
+    }
+    return 0;
+}
 @end

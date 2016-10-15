@@ -14,17 +14,14 @@
 
 @implementation AutoCompletionPanelController
 -(void) populateCompletion:(NSArray*) list{
-    NSLog(@"incommint autocompletion list:");
-    for (int i = 0; i < [list count]; ++i) {
-        NSLog(@"%@", list[i]);
-    }
+    self.completionList = list;
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"auto completion did load");
-    self.preferredContentSize = CGSizeMake(320, 480);
+    self.preferredContentSize = CGSizeMake(480, 380);
     
     // Do any additional setup after loading the view.
 }
@@ -44,9 +41,34 @@
 }
 */
 
--(CGSize)contentSizeForViewInPopover
+
+//MARK: - Table View Data Source and Delegate
+- (NSInteger)tableView:(UITableView *)tableView
+            numberOfRowsInSection:(NSInteger)section{
+    if(self.completionList){
+        return [self.completionList count];
+    }
+    return 0;
+}
+
+-(UITableViewCell *) tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"AutoCompletionEntry"
+                            forIndexPath:indexPath];
+    
+    cell.textLabel.text = self.completionList[indexPath.row];
+    cell.detailTextLabel.text = @"";
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.view.bounds.size;
+    [self.delegate selectedCompletion:self.completionList[indexPath.row]];
+    if(self.presentingViewController)
+        [self dismissViewControllerAnimated:NO completion:NULL];
+    else
+        [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 @end

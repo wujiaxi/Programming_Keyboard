@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol CompletionSelectionDelegate <NSObject>
+-(void) selectedCompletion:(NSString *)entry;
+
+@end
 
 @interface AutoCompletionPanelController : UITableViewController
+@property (nonatomic, strong) NSArray* completionList;
+@property (nonatomic, weak) id<CompletionSelectionDelegate> delegate;
 
 -(void) populateCompletion:(NSArray*) list;
 @end

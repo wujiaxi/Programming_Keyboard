@@ -28,6 +28,8 @@
 
 - (void) printDebug;
 
+- (NSUInteger) from;
+
 @end
 /*
 the completion engine is responsible for 
