@@ -30,8 +30,7 @@
         self.limit = 0;
         self.nullCount = 0;
         self.prefix = [NSMutableString new];
-        self.currentState = [[NSMutableArray alloc] init];
-        self.dict = [[Trie alloc] initWithKey:'\0'];
+         self.dict = [[Trie alloc] initWithKey:'\0'];
         for(int i = 0; i < [schema count]; ++i){
             [self.dict addWord:schema[i]
                          sofar:schema[i]];
@@ -46,7 +45,7 @@
 }
 
 -(NSArray*) dumpList{
-    if([self.prefix length] < self.limit || self.currentState == nil){
+    if([self.prefix length] < self.limit || self.nullCount){
         return nil;
     }
     return [self.currentState collect];
