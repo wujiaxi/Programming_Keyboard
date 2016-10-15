@@ -1029,6 +1029,16 @@
                                             <action selector="keyboardButtonTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="1rl-dF-3n8"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FaS-s7-qIm">
+                                        <rect key="frame" x="916" y="114" width="60" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="50"/>
+                                        <state key="normal" title="0"/>
+                                        <connections>
+                                            <action selector="keyboardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hYU-Ni-HzV"/>
+                                            <action selector="keyboardButtonTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="RHb-qc-Xyx"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
