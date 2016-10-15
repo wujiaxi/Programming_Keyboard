@@ -24,6 +24,11 @@
 
 //current key
 @property (nonatomic, weak) IBOutlet UIButton *currentKey;
+// text display:
+@property (nonatomic, weak) IBOutlet UITextView *codes;
+// keyboard view:
+@property (nonatomic, weak) IBOutlet UIView *keyboard;
+
 @end
 
 @implementation Container
@@ -32,7 +37,12 @@
     [super viewDidLoad];
     NSLog(@"main container init");
     
-    
+    self.keyboardState = [[KeyboardState alloc] initWithBlank];
+    NSArray *sample = @[@"vector<int>",
+                          @"vector<string>",
+                          @"unordered_set<string>",
+                          @"unordered_set<int>"];
+    self.completionEngine = [[CompletionEngine alloc] initWithArray:sample];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +50,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+// button touch down
+-(IBAction)keyboardButtonTouched:(UIButton *)sender{
+    NSLog(@"button %@ touched to update current key", sender.titleLabel.text);
+    self.currentKey = sender;
+}
+
+-(IBAction)keyboardButton:(UIButton *)sender{
+    NSString* input = sender.titleLabel.text;
+    NSLog(@"button %@ touched up", input);
+    if([input isEqualToString:@"BackSpace"]){
+        [self.keyboardState keyPop];
+    }else{
+        [self.keyboardState keyPush:input];
+    }
+    self.codes.text = self.keyboardState.buffer;
+}
+
+//pop up gesture
 -(IBAction) longPressed:(UILongPressGestureRecognizer *) sender{
     switch(sender.state){
         case UIGestureRecognizerStateBegan:{
@@ -59,7 +87,10 @@
                                animated:YES
                              completion:nil];
             popController.permittedArrowDirections = UIPopoverArrowDirectionAny;
-            popController.sourceView = self.currentKey;
+            popController.sourceView = self.keyboard;
+            NSLog(@"%f %f", self.currentKey.frame.origin.x, self.currentKey.frame.origin.y);
+            NSLog(@"%@", self.currentKey);
+            popController.sourceRect = self.currentKey.frame;
             popController.delegate = self;
             break;
         }

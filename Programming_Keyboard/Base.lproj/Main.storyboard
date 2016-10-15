@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--ContainerView-->
@@ -15,12 +17,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B3h-lm-UA2">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="464" id="Jce-Xx-7bW">
                                         <variation key="widthClass=regular" constant="700"/>
@@ -46,46 +47,68 @@
                                 </variation>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pxp-m4-qwp">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mf1-3c-ugW">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61Q-aY-45S">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <state key="normal" title="Q"/>
+                                        <connections>
+                                            <action selector="keyboardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OR6-uu-c4Q"/>
+                                            <action selector="keyboardButtonTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="ara-6X-WgF"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Kc-ky-IpS">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <state key="normal" title="W"/>
+                                        <connections>
+                                            <action selector="keyboardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w5V-nJ-wcI"/>
+                                            <action selector="keyboardButtonTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="O2K-zS-pKO"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aX-Rq-qhI">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <state key="normal" title="E"/>
+                                        <connections>
+                                            <action selector="keyboardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hTx-EH-vQg"/>
+                                            <action selector="keyboardButtonTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="V3z-A3-eyB"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GGO-F6-dKg">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <state key="normal" title="R"/>
+                                        <connections>
+                                            <action selector="keyboardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fhZ-dl-4xm"/>
+                                            <action selector="keyboardButtonTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="jwF-Rf-lTT"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5td-zQ-M8c">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <state key="normal" title="T"/>
+                                        <connections>
+                                            <action selector="keyboardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="81J-Co-6sx"/>
+                                            <action selector="keyboardButtonTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="DaG-2p-lDR"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rfh-WH-YWz">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <state key="normal" title="Y"/>
+                                        <connections>
+                                            <action selector="keyboardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="arh-IK-Xuw"/>
+                                            <action selector="keyboardButtonTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="11b-M5-6sH"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ris-GK-GRC">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <state key="normal" title="BackSpace"/>
+                                        <connections>
+                                            <action selector="keyboardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RQo-ds-2Wv"/>
+                                            <action selector="keyboardButtonTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="KnV-gp-F0H"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3F-4y-iBd">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <state key="normal" title="Enter"/>
+                                        <connections>
+                                            <action selector="keyboardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b7P-EQ-p2B"/>
+                                            <action selector="keyboardButtonTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="H1h-HT-pRC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="Rfh-WH-YWz" firstAttribute="leading" secondItem="5td-zQ-M8c" secondAttribute="trailing" constant="8" symbolic="YES" id="2Y1-LP-vXv"/>
@@ -117,16 +140,16 @@
                                         <exclude reference="X3F-4y-iBd"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="9kD-d0-H7d"/>
-                                        <exclude reference="M0c-Ux-0JC"/>
                                         <exclude reference="9lT-Io-OV5"/>
                                         <exclude reference="BNo-zf-lI9"/>
                                         <exclude reference="Vr1-6q-hYE"/>
                                         <exclude reference="t5A-kg-YaT"/>
-                                        <exclude reference="aFo-7i-Zsg"/>
-                                        <exclude reference="tuw-Vn-VC0"/>
                                         <exclude reference="CDP-mD-gCa"/>
                                         <exclude reference="tkv-YR-3ei"/>
+                                        <exclude reference="9kD-d0-H7d"/>
+                                        <exclude reference="M0c-Ux-0JC"/>
+                                        <exclude reference="aFo-7i-Zsg"/>
+                                        <exclude reference="tuw-Vn-VC0"/>
                                         <exclude reference="2Y1-LP-vXv"/>
                                         <exclude reference="6NC-nN-VmS"/>
                                         <exclude reference="CmM-s5-hp1"/>
@@ -147,16 +170,16 @@
                                         <include reference="X3F-4y-iBd"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="9kD-d0-H7d"/>
-                                        <include reference="M0c-Ux-0JC"/>
                                         <include reference="9lT-Io-OV5"/>
                                         <include reference="BNo-zf-lI9"/>
                                         <include reference="Vr1-6q-hYE"/>
                                         <include reference="t5A-kg-YaT"/>
-                                        <include reference="aFo-7i-Zsg"/>
-                                        <include reference="tuw-Vn-VC0"/>
                                         <include reference="CDP-mD-gCa"/>
                                         <include reference="tkv-YR-3ei"/>
+                                        <include reference="9kD-d0-H7d"/>
+                                        <include reference="M0c-Ux-0JC"/>
+                                        <include reference="aFo-7i-Zsg"/>
+                                        <include reference="tuw-Vn-VC0"/>
                                         <include reference="2Y1-LP-vXv"/>
                                         <include reference="6NC-nN-VmS"/>
                                         <include reference="CmM-s5-hp1"/>
@@ -170,7 +193,7 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Mf1-3c-ugW" firstAttribute="top" secondItem="Pxp-m4-qwp" secondAttribute="bottom" constant="8" symbolic="YES" id="5DV-qN-36u"/>
                             <constraint firstItem="B3h-lm-UA2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="FT3-UF-bwx"/>
@@ -223,7 +246,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="codes" destination="B3h-lm-UA2" id="Mxn-ry-Gtx"/>
                         <outlet property="currentKey" destination="61Q-aY-45S" id="5fc-Tg-Ejs"/>
+                        <outlet property="keyboard" destination="Mf1-3c-ugW" id="cZB-dR-0zQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -240,12 +265,15 @@
             <objects>
                 <tableViewController storyboardIdentifier="autoCompletionPanel" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KIE-z8-aTv" customClass="AutoCompletionPanelController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1Cq-3P-RAO">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ib7-d3-jwE">
+                                <rect key="frame" x="0.0" y="28" width="1024" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ib7-d3-jwE" id="QIf-BI-8II">
+                                    <frame key="frameInset" width="1024" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
