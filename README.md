@@ -2,8 +2,12 @@
 [![Build Status](https://travis-ci.org/junlong-gao/Programming_Keyboard.svg?branch=master)](https://travis-ci.org/junlong-gao/Programming_Keyboard)
 ## An EECS481 Project by Finger Wizards
 
+#TEAM:
+* (Slack) https://eecs481team.slack.com/messages/general/
+* (Agile Jira Board) https://fingerwizards.atlassian.net/secure/RapidBoard.jspa?projectKey=PKII&rapidView=1&view=planning.nodetail
+
 #BUILD
-1. Use Xcode Version 8.1 beta (8T47)
+1. Use Xcode Version 8.1 beta (8T47) on Mac OS 10.12
 2. Build and tested on iPad Air 2
 
 #NOTES
