@@ -13,14 +13,12 @@
 
 // data helpers
 #import "CompletionEngine.h"
-#import "KeyboardState.h"
 
 
 @interface Container ()  <UIPopoverPresentationControllerDelegate>
 @property (nonatomic, weak) AutoCompletionPanelController *completionPanel;
 
 @property (nonatomic) CompletionEngine *completionEngine;
-@property (nonatomic) KeyboardState *keyboardState;
 
 //current key
 @property (nonatomic, weak) IBOutlet UIButton *currentKey;
@@ -37,7 +35,10 @@
     [super viewDidLoad];
     NSLog(@"main container init");
     
-    self.keyboardState = [[KeyboardState alloc] initWithBlank];
+    self.codes.inputView = [UIView new];
+    [self.codes becomeFirstResponder];
+
+    //init data structure
     NSArray *sample = @[@"vector<int>",
                           @"vector<string>",
                           @"unordered_set<string>",
@@ -56,16 +57,49 @@
     self.currentKey = sender;
 }
 
+-(IBAction)moveCursorLeft:(UIButton *)sender{
+    UITextRange* selected = self.codes.selectedTextRange;
+    if(selected){
+        UITextPosition* next = [self.codes
+                                positionFromPosition:selected.start
+                                offset:-1];
+        if(next){
+            self.codes.selectedTextRange = [self.codes textRangeFromPosition:next
+                                                                  toPosition:next];
+        }
+    }
+}
+
+-(IBAction)moveCursorRight:(UIButton *)sender{
+    UITextRange* selected = [self.codes selectedTextRange];
+    if(selected){
+        UITextPosition* next = [self.codes
+                                positionFromPosition:selected.start
+                                offset:+1];
+        if(next){
+            self.codes.selectedTextRange = [self.codes textRangeFromPosition:next
+                                                                  toPosition:next];
+        }
+    }
+}
+
+//keyboard helpers
 -(IBAction)keyboardButton:(UIButton *)sender{
     NSString* input = sender.titleLabel.text;
     NSLog(@"button %@ touched up", input);
     if([input isEqualToString:@"BackSpace"]){
-        [self.keyboardState keyPop];
+        [self.codes  deleteBackward];
+    }else if([input isEqualToString:@"Enter"]){
+        [self.codes insertText:@"\n"];
+    }else if([input isEqualToString:@"Space"]){
+        [self.codes insertText:@" "];
     }else{
-        [self.keyboardState keyPush:input];
+        [self.codes insertText:input];
     }
-    self.codes.text = self.keyboardState.buffer;
+    [self.codes becomeFirstResponder];
 }
+
+
 
 //pop up gesture
 -(IBAction) longPressed:(UILongPressGestureRecognizer *) sender{

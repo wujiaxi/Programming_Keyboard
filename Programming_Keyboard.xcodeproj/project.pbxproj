@@ -15,7 +15,6 @@
 		410CB22F1DB1229400F586B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410CB22D1DB1229400F586B5 /* LaunchScreen.storyboard */; };
 		4119FF051DB15ECE0061F27F /* AutoCompletionPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF041DB15ECE0061F27F /* AutoCompletionPanelController.m */; };
 		4119FF091DB173540061F27F /* CompletionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF081DB173540061F27F /* CompletionEngine.m */; };
-		4119FF0D1DB173AE0061F27F /* KeyboardState.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF0C1DB173AE0061F27F /* KeyboardState.m */; };
 		4119FF151DB17E2D0061F27F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF141DB17E2D0061F27F /* main.m */; };
 		4119FF191DB180490061F27F /* CompletionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF081DB173540061F27F /* CompletionEngine.m */; };
 		4119FF1B1DB180940061F27F /* Trie.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF1A1DB180940061F27F /* Trie.m */; };
@@ -49,8 +48,6 @@
 		4119FF041DB15ECE0061F27F /* AutoCompletionPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoCompletionPanelController.m; sourceTree = "<group>"; };
 		4119FF081DB173540061F27F /* CompletionEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletionEngine.m; sourceTree = "<group>"; };
 		4119FF0A1DB173640061F27F /* CompletionEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompletionEngine.h; sourceTree = "<group>"; };
-		4119FF0B1DB173A50061F27F /* KeyboardState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardState.h; sourceTree = "<group>"; };
-		4119FF0C1DB173AE0061F27F /* KeyboardState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardState.m; sourceTree = "<group>"; };
 		4119FF121DB17E2D0061F27F /* trieTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = trieTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4119FF141DB17E2D0061F27F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4119FF1A1DB180940061F27F /* Trie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trie.m; sourceTree = "<group>"; };
@@ -157,8 +154,6 @@
 			children = (
 				4119FF081DB173540061F27F /* CompletionEngine.m */,
 				4119FF0A1DB173640061F27F /* CompletionEngine.h */,
-				4119FF0B1DB173A50061F27F /* KeyboardState.h */,
-				4119FF0C1DB173AE0061F27F /* KeyboardState.m */,
 				4119FF1A1DB180940061F27F /* Trie.m */,
 				4119FF1C1DB180B70061F27F /* Trie.h */,
 			);
@@ -270,7 +265,6 @@
 			files = (
 				4119FF091DB173540061F27F /* CompletionEngine.m in Sources */,
 				410CB2271DB1229400F586B5 /* Container.m in Sources */,
-				4119FF0D1DB173AE0061F27F /* KeyboardState.m in Sources */,
 				4119FF051DB15ECE0061F27F /* AutoCompletionPanelController.m in Sources */,
 				410CB2241DB1229400F586B5 /* AppDelegate.m in Sources */,
 				4119FF1B1DB180940061F27F /* Trie.m in Sources */,
@@ -462,6 +456,7 @@
 				4119FF181DB17E2D0061F27F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
