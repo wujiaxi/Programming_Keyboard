@@ -86,8 +86,12 @@
 
 
 -(IBAction)moveCursorLeft:(UIButton *)sender{
-    if([self prevChar]){
-        NSLog(@"moving to \"%@\"", [self prevChar]);
+    NSString* prevChar =[self prevChar];
+    if(prevChar){
+        NSLog(@"moving left to \"%@\"", [self prevChar]);
+        if([prevChar isEqualToString:@"{"]) [self.completionEngine LeaveScope];
+        if([prevChar isEqualToString:@"}"]) [self.completionEngine EnterScope];
+        NSLog(@"the current scope level is %d", self.completionEngine.scopeLevel);
     }else{
         NSLog(@"no prev");
     }
@@ -101,6 +105,15 @@
     [self moveCursorByOffset:1];
     [self.completionEngine rewind];
     [self.completionEngine printDebug];
+    NSString* prevChar =[self prevChar];
+    if(prevChar){
+        NSLog(@"moving right past \"%@\"", [self prevChar]);
+        if([prevChar isEqualToString:@"{"]) [self.completionEngine EnterScope];
+        if([prevChar isEqualToString:@"}"]) [self.completionEngine LeaveScope];
+        NSLog(@"the current scope level is %d", self.completionEngine.scopeLevel);
+    }else{
+        NSLog(@"no prev");
+    }
 
 }
 
@@ -121,22 +134,44 @@
 -(IBAction)keyboardButton:(UIButton *)sender{
     NSString* input = sender.titleLabel.text;
     NSLog(@"button %@ touched up", input);
-    NSString* toInsert = nil;
     if([input isEqualToString:@"BackSpace"]){
+        NSString* prevChar = [self prevChar];
+        if([prevChar isEqualToString:@"{"]){
+            NSLog(@"before backspace, the current scope level is %d", self.completionEngine.scopeLevel);
+            [self.completionEngine LeaveScope]; //instead of just leave scope,
+            //should reformat the code indentation till next }
+            NSLog(@"after backspace, the current scope level is %d", self.completionEngine.scopeLevel);
+        }
         [self.codes  deleteBackward];
         [self.completionEngine popChar];
     }else{
         if([input isEqualToString:@"Enter"]){
-            toInsert = @"\n";
             [self.completionEngine rewind];
+            [self.codes insertText:[self.completionEngine scopedNewline]];
+            return;
         }else if([input isEqualToString:@"Space"]){
-            toInsert = @" ";
             [self.completionEngine rewind];
-        }else{
-            toInsert = input;
-            [self.completionEngine addChar:toInsert];
+            [self.codes insertText:@" "];
+            return;
         }
-        [self.codes insertText:toInsert];
+        NSMutableArray* completionPair = [self.completionEngine completionPair:input];
+        NSLog(@"reseted pair: %@", completionPair);
+        if(completionPair){
+            [self.completionEngine rewind];
+            [self.codes insertText:completionPair[0]];
+            
+            NSInteger offset = [completionPair[1] integerValue];
+            NSLog(@"offset by: %d", -offset);
+            [self moveCursorByOffset:-offset];
+            
+            return;
+        }
+        
+        //reaches here, it is not a special char or a completion pair
+        //add that to completion engine
+        [self.completionEngine addChar:input];
+        [self.codes insertText:input];
+        
     }
     //debug:
     [self.completionEngine printDebug];

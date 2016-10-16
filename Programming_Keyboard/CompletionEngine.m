@@ -16,7 +16,6 @@
 @property (nonatomic) int limit;
 @property (nonatomic) int nullCount;
 
-
 //current state is a list of trie node representing the
 //set of autocompletions
 @property (nonatomic, strong) Trie* currentState;
@@ -28,6 +27,7 @@
     if(self = [super init]){
         NSLog(@"init with array");
         self.limit = 1;
+        self.scopeLevel = 0;
         self.dict = [[Trie alloc] initWithKey:'\0'];
         for(int i = 0; i < [schema count]; ++i){
             [self.dict addWord:schema[i]
@@ -39,7 +39,14 @@
 }
 
 - (id) initWithDemo{
-    NSArray *sample = @[@"vector<int>",
+    NSArray *sample = @[@"#include ",
+                        @"iostream",
+                        @"using",
+                        @"namespace",
+                        @"std",
+                        @"cout<< ",
+                        @"<<endl;",
+                        @"vector<int>",
                         @"vector<string>",
                         @"unordered_set<string>",
                         @"unordered_set<int>"];
@@ -96,5 +103,42 @@
         return [self.prefix length];
     }
     return 0;
+}
+
+- (NSString*) scopedNewline{
+    NSMutableString* toInsert = [NSMutableString stringWithString:@"\n"];
+    for(int i = 0; i < self.scopeLevel; ++i){
+        for(int j = 0; j < 4; ++j){
+            [toInsert appendString:@" "];
+        }
+    }
+    return toInsert;
+}
+
+- (NSArray*) completionPair:(NSString*) lhs{
+    if([lhs isEqualToString:@"("]) { return @[@"()", @"1"];};
+    if([lhs isEqualToString:@"["]) { return @[@"[]", @"1"];};
+    if([lhs isEqualToString:@"<"]) { return @[@"<>", @"1"];};
+    if([lhs isEqualToString:@"\""]) { return @[@"\"\"", @"1"];};
+    if([lhs isEqualToString:@"'"]) { return @[@"''", @"1"];};
+    if([lhs isEqualToString:@"{"]) {
+        NSMutableString* toInsert = [NSMutableString stringWithString:@"{"];
+        NSString* outerLevelNextline = [self scopedNewline];
+        self.scopeLevel++;
+        [toInsert appendString:[self scopedNewline]];
+        [toInsert appendString:outerLevelNextline];
+        [toInsert appendString:@"}"];
+        return @[toInsert, [NSString stringWithFormat:@"%d",((self.scopeLevel - 1)*4 + 2)]];;
+    };
+
+    return nil;
+}
+
+- (void) LeaveScope{
+    if(self.scopeLevel>0) self.scopeLevel--;
+}
+
+- (void) EnterScope{
+    self.scopeLevel++;
 }
 @end

@@ -10,6 +10,8 @@
 #define CompletionEngine_h
 
 @interface CompletionEngine : NSObject
+@property (nonatomic) int scopeLevel;
+
 - (id) initWithArray:(NSArray *) schema;
 
 - (id) initWithDemo;
@@ -29,6 +31,14 @@
 - (void) printDebug;
 
 - (NSUInteger) from;
+
+- (NSArray* ) completionPair:(NSString*) lhs;
+
+- (NSString*) scopedNewline;
+
+//scope control
+- (void) LeaveScope;
+- (void) EnterScope;
 
 @end
 /*
