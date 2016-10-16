@@ -141,4 +141,23 @@
 - (void) EnterScope{
     self.scopeLevel++;
 }
+- (NSString*) fixScope:(NSString*) code
+                  from:(NSUInteger) leftBrace{
+    [self LeaveScope];
+    NSRange searchRange = NSMakeRange(leftBrace, code.length - leftBrace);
+    NSRange foundRange = [code rangeOfString:@"}"
+                                    options:nil
+                                       range:searchRange];
+    NSMutableString* target = [NSMutableString stringWithString:code];
+    [target replaceOccurrencesOfString:@"}"
+                            withString:@""
+                               options:nil
+                                 range:foundRange];
+    [target replaceOccurrencesOfString:@"\n    "
+                            withString:@"\n"
+                               options:nil
+                                 range:NSMakeRange(leftBrace, foundRange.location - leftBrace)];
+    return target;
+}
+
 @end

@@ -39,6 +39,8 @@
 //scope control
 - (void) LeaveScope;
 - (void) EnterScope;
+- (NSString*) fixScope:(NSString*) code
+                  from:(NSUInteger) leftBrace;
 
 @end
 /*

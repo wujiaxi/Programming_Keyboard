@@ -67,7 +67,8 @@
 
 
 
-//manipulate cursor
+
+
 -(NSString*) prevChar{
     UITextRange* selected = [self.codes selectedTextRange];
     if(selected){
@@ -135,14 +136,34 @@
     NSString* input = sender.titleLabel.text;
     NSLog(@"button %@ touched up", input);
     if([input isEqualToString:@"BackSpace"]){
-        NSString* prevChar = [self prevChar];
-        if([prevChar isEqualToString:@"{"]){
+        /*
+                if([prevChar isEqualToString:@"{"]){
             NSLog(@"before backspace, the current scope level is %d", self.completionEngine.scopeLevel);
             [self.completionEngine LeaveScope]; //instead of just leave scope,
             //should reformat the code indentation till next }
             NSLog(@"after backspace, the current scope level is %d", self.completionEngine.scopeLevel);
         }
+         */
+        NSString* prevChar = [self prevChar];
+
         [self.codes  deleteBackward];
+        if([prevChar isEqualToString:@"{"]){
+            UITextPosition* cursor = [self.codes selectedTextRange].start;
+            NSInteger leftBracelocation =
+            [self.codes offsetFromPosition:self.codes.beginningOfDocument
+                                toPosition:cursor];
+            NSString* newCode = [self.completionEngine fixScope:self.codes.text
+                                                           from:leftBracelocation];
+            NSLog(@"replaced scope: %@", newCode);
+            self.codes.text = newCode;
+             
+            NSInteger rewindOffset =
+            [self.codes offsetFromPosition:self.codes.endOfDocument
+                                                        toPosition:cursor];
+            [self moveCursorByOffset:rewindOffset];
+            return;
+        }
+        
         [self.completionEngine popChar];
     }else{
         if([input isEqualToString:@"Enter"]){
