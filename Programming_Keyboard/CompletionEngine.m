@@ -26,7 +26,7 @@
 - (id) initWithArray:(NSArray *) schema{
     if(self = [super init]){
         self.completionPair = [NSMutableSet setWithArray:
-                               @[@"(",@")", @"[", @"]", @"\"", @"'", @"<",@">"]];
+                               @[@"(",@")", @"[", @"]", @"\"", @"'"]];
         NSLog(@"init with array");
         self.limit = 1;
         self.scopeLevel = 0;
@@ -118,9 +118,9 @@
 }
 
 - (NSArray*) completionPair:(NSString*) lhs{
+    if(![self completionPair]) return nil;
     if([lhs isEqualToString:@"("]) { return @[@"()", @"1"];};
     if([lhs isEqualToString:@"["]) { return @[@"[]", @"1"];};
-    if([lhs isEqualToString:@"<"]) { return @[@"<>", @"1"];};
     if([lhs isEqualToString:@"\""]) { return @[@"\"\"", @"1"];};
     if([lhs isEqualToString:@"'"]) { return @[@"''", @"1"];};
     if([lhs isEqualToString:@"{"]) {

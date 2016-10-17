@@ -136,7 +136,6 @@
     NSString* input = sender.titleLabel.text;
     NSLog(@"button %@ touched up", input);
     if([input isEqualToString:@"BackSpace"]){
-        NSLog(@"%@", [self.codes selectedTextRange]);
         NSLog(@"test length: %d", [self.codes.text length]);
         NSString* prevChar = [self prevChar];
         NSLog(@"%@", [self.codes selectedTextRange]);
@@ -147,8 +146,10 @@
         if([prevChar isEqualToString:@"{"] ||
             [prevChar isEqualToString:@"}"]){
             NSLog(@"%@", [self.codes selectedTextRange]);
+            
             UITextPosition* cursor = [self.codes selectedTextRange].start;
-
+            NSInteger rewindOffset = [self.codes.text length] - [self.codes selectedRange].location;
+            NSLog(@"rewind offset = %ld", (long)rewindOffset);
             NSInteger Bracelocation =
             [self.codes offsetFromPosition:self.codes.beginningOfDocument
                                 toPosition:cursor];
@@ -166,15 +167,7 @@
             if(newCode == nil) return;
             NSLog(@"replaced scope: %@", newCode);
             self.codes.text = newCode;
-            NSInteger rewindOffset =
-            [self.codes offsetFromPosition:self.codes.endOfDocument
-                                toPosition:cursor];
-            if([prevChar isEqualToString:@"{"]){
-                [self moveCursorByOffset:rewindOffset];
-            }else{
-                //?
-                [self moveCursorByOffset:-rewindOffset];
-            }
+            [self moveCursorByOffset:-rewindOffset];
             [self.completionEngine rewind];
             return;
         }
@@ -194,7 +187,7 @@
         NSMutableArray* completionPair = [self.completionEngine completionPair:input];
         NSLog(@"reseted pair: %@", completionPair);
         if(completionPair){
-            [self.completionEngine addChar:input];
+            [self.completionEngine rewind];
             [self.codes insertText:completionPair[0]];
             
             NSInteger offset = [completionPair[1] integerValue];
