@@ -136,31 +136,46 @@
     NSString* input = sender.titleLabel.text;
     NSLog(@"button %@ touched up", input);
     if([input isEqualToString:@"BackSpace"]){
-        /*
-                if([prevChar isEqualToString:@"{"]){
-            NSLog(@"before backspace, the current scope level is %d", self.completionEngine.scopeLevel);
-            [self.completionEngine LeaveScope]; //instead of just leave scope,
-            //should reformat the code indentation till next }
-            NSLog(@"after backspace, the current scope level is %d", self.completionEngine.scopeLevel);
-        }
-         */
+        NSLog(@"%@", [self.codes selectedTextRange]);
+        NSLog(@"test length: %d", [self.codes.text length]);
         NSString* prevChar = [self prevChar];
-
+        NSLog(@"%@", [self.codes selectedTextRange]);
+        
         [self.codes  deleteBackward];
-        if([prevChar isEqualToString:@"{"]){
+        
+        
+        if([prevChar isEqualToString:@"{"] ||
+            [prevChar isEqualToString:@"}"]){
+            NSLog(@"%@", [self.codes selectedTextRange]);
             UITextPosition* cursor = [self.codes selectedTextRange].start;
-            NSInteger leftBracelocation =
+
+            NSInteger Bracelocation =
             [self.codes offsetFromPosition:self.codes.beginningOfDocument
                                 toPosition:cursor];
-            NSString* newCode = [self.completionEngine fixScope:self.codes.text
-                                                           from:leftBracelocation];
+            NSString* newCode = nil;
+            if([prevChar isEqualToString:@"{"]){
+                newCode = [self.completionEngine
+                              fixScopeLeft:self.codes.text
+                              from:Bracelocation];
+            }else{
+                newCode = [self.completionEngine
+                              fixScopeRight:self.codes.text
+                              from:Bracelocation];
+            }
+            
+            if(newCode == nil) return;
             NSLog(@"replaced scope: %@", newCode);
             self.codes.text = newCode;
-             
             NSInteger rewindOffset =
             [self.codes offsetFromPosition:self.codes.endOfDocument
-                                                        toPosition:cursor];
-            [self moveCursorByOffset:rewindOffset];
+                                toPosition:cursor];
+            if([prevChar isEqualToString:@"{"]){
+                [self moveCursorByOffset:rewindOffset];
+            }else{
+                //?
+                [self moveCursorByOffset:-rewindOffset];
+            }
+            [self.completionEngine rewind];
             return;
         }
         
@@ -175,10 +190,11 @@
             [self.codes insertText:@" "];
             return;
         }
+        
         NSMutableArray* completionPair = [self.completionEngine completionPair:input];
         NSLog(@"reseted pair: %@", completionPair);
         if(completionPair){
-            [self.completionEngine rewind];
+            [self.completionEngine addChar:input];
             [self.codes insertText:completionPair[0]];
             
             NSInteger offset = [completionPair[1] integerValue];

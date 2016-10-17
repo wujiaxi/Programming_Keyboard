@@ -32,6 +32,7 @@
 
 - (NSUInteger) from;
 
+- (Boolean) isCompletionPair:(NSString*) lhs;
 - (NSArray* ) completionPair:(NSString*) lhs;
 
 - (NSString*) scopedNewline;
@@ -39,8 +40,10 @@
 //scope control
 - (void) LeaveScope;
 - (void) EnterScope;
-- (NSString*) fixScope:(NSString*) code
-                  from:(NSUInteger) leftBrace;
+- (NSString*) fixScopeLeft:(NSString*) code
+                  from:(NSInteger) leftBrace;
+- (NSString*) fixScopeRight:(NSString*) code
+                      from:(NSInteger) rightBrace;
 
 @end
 /*

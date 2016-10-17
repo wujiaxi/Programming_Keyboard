@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSMutableString* prefix;
 @property (nonatomic) int limit;
 @property (nonatomic) int nullCount;
-
+@property (nonatomic) NSMutableSet* completionPair;
 //current state is a list of trie node representing the
 //set of autocompletions
 @property (nonatomic, strong) Trie* currentState;
@@ -25,6 +25,8 @@
 
 - (id) initWithArray:(NSArray *) schema{
     if(self = [super init]){
+        self.completionPair = [NSMutableSet setWithArray:
+                               @[@"(",@")", @"[", @"]", @"\"", @"'", @"<",@">"]];
         NSLog(@"init with array");
         self.limit = 1;
         self.scopeLevel = 0;
@@ -134,6 +136,10 @@
     return nil;
 }
 
+- (Boolean) isCompletionPair:(NSString*) lhs{
+    return [self.completionPair containsObject:lhs];
+}
+
 - (void) LeaveScope{
     if(self.scopeLevel>0) self.scopeLevel--;
 }
@@ -141,22 +147,64 @@
 - (void) EnterScope{
     self.scopeLevel++;
 }
-- (NSString*) fixScope:(NSString*) code
-                  from:(NSUInteger) leftBrace{
+
+- (NSString*) fixScopeLeft:(NSString*) code
+                  from:(NSInteger) leftBrace{
     [self LeaveScope];
     NSRange searchRange = NSMakeRange(leftBrace, code.length - leftBrace);
-    NSRange foundRange = [code rangeOfString:@"}"
-                                    options:nil
-                                       range:searchRange];
+    int tomatch = 0;
+    NSInteger rightBrace = leftBrace + 1;
+    for(NSInteger i = rightBrace; i < [code length]; ++i){
+        if([code characterAtIndex:i] == '}'){
+            if(tomatch) tomatch--;
+            else {rightBrace = i; break;}
+        }
+        if([code characterAtIndex:i] == '{'){
+            tomatch++;
+        }
+    }
+    if(rightBrace < 0
+       || rightBrace >= [code length]
+       || [code characterAtIndex:rightBrace] != '}') return nil;
+
     NSMutableString* target = [NSMutableString stringWithString:code];
     [target replaceOccurrencesOfString:@"}"
                             withString:@""
                                options:nil
-                                 range:foundRange];
+                                 range:NSMakeRange(rightBrace, 1)];
     [target replaceOccurrencesOfString:@"\n    "
                             withString:@"\n"
                                options:nil
-                                 range:NSMakeRange(leftBrace, foundRange.location - leftBrace)];
+                                 range:NSMakeRange(leftBrace, rightBrace - leftBrace - 1)];
+    return target;
+}
+
+- (NSString*) fixScopeRight:(NSString*) code
+                      from:(NSInteger) rightBrace{
+    NSInteger leftBrace = rightBrace - 1;
+    int tomatch = 0;
+    for(NSInteger i = leftBrace; i >= 0; --i){
+        if([code characterAtIndex:i] == '{'){
+            if(tomatch) tomatch--;
+            else {leftBrace = i; break;}
+        }
+        if([code characterAtIndex:i] == '}'){
+            tomatch++;
+        }
+    }
+    if(leftBrace < 0
+       || leftBrace >= [code length]
+       || [code characterAtIndex:leftBrace] != '{') return nil;
+    
+    NSMutableString* target = [NSMutableString stringWithString:code];
+    [target replaceOccurrencesOfString:@"{"
+                            withString:@""
+                               options:nil
+                                 range:NSMakeRange(leftBrace, 1)];
+    [target replaceOccurrencesOfString:@"\n    "
+                            withString:@"\n"
+                               options:nil
+                                 range:NSMakeRange(leftBrace, rightBrace - leftBrace - 1)];
     return target;
 }
 
