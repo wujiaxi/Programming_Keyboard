@@ -1,5 +1,5 @@
 # Programming Keyboard for iPad
-Deceptively Simple, Vastly powerful.
+Deceptively Simple, Vastly Powerful.
 
 [![Build Status](https://travis-ci.org/junlong-gao/Programming_Keyboard.svg?branch=master)](https://travis-ci.org/junlong-gao/Programming_Keyboard)
 ## An EECS481 Project by Finger Wizards
