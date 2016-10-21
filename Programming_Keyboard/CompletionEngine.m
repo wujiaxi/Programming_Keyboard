@@ -42,10 +42,12 @@
 
 - (id) initWithDemo{
     NSArray *sample = @[@"#include ",
-                        @"iostream",
+                        @"<iostream>",
                         @"using",
                         @"namespace",
                         @"std",
+                        @"int",
+                        @"main",
                         @"cout<< ",
                         @"<<endl;",
                         @"vector<int>",
