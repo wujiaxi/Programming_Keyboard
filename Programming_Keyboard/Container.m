@@ -65,10 +65,6 @@
     self.currentKey = sender;
 }
 
-
-
-
-
 -(NSString*) prevChar{
     UITextRange* selected = [self.codes selectedTextRange];
     if(selected){
@@ -118,7 +114,7 @@
 
 }
 
--(void)moveCursorByOffset:(int)offset{
+-(void)moveCursorByOffset:(NSInteger)offset{
     UITextRange* selected = [self.codes selectedTextRange];
     if(selected){
         UITextPosition* next = [self.codes
@@ -135,78 +131,15 @@
 -(IBAction)keyboardButton:(UIButton *)sender{
     NSString* input = sender.titleLabel.text;
     NSLog(@"button %@ touched up", input);
-    if([input isEqualToString:@"BackSpace"]){
-        NSLog(@"test length: %d", [self.codes.text length]);
-        NSString* prevChar = [self prevChar];
-        NSLog(@"%@", [self.codes selectedTextRange]);
-        
-        [self.codes  deleteBackward];
-        
-        
-        if([prevChar isEqualToString:@"{"] ||
-            [prevChar isEqualToString:@"}"]){
-            NSLog(@"%@", [self.codes selectedTextRange]);
-            
-            UITextPosition* cursor = [self.codes selectedTextRange].start;
-            NSInteger rewindOffset = [self.codes.text length] - [self.codes selectedRange].location;
-            NSLog(@"rewind offset = %ld", (long)rewindOffset);
-            NSInteger Bracelocation =
-            [self.codes offsetFromPosition:self.codes.beginningOfDocument
-                                toPosition:cursor];
-            NSString* newCode = nil;
-            if([prevChar isEqualToString:@"{"]){
-                newCode = [self.completionEngine
-                              fixScopeLeft:self.codes.text
-                              from:Bracelocation];
-            }else{
-                newCode = [self.completionEngine
-                              fixScopeRight:self.codes.text
-                              from:Bracelocation];
-            }
-            
-            if(newCode == nil) return;
-            NSLog(@"replaced scope: %@", newCode);
-            self.codes.text = newCode;
-            [self moveCursorByOffset:-rewindOffset];
-            [self.completionEngine rewind];
-            return;
-        }
-        
-        [self.completionEngine popChar];
-    }else{
-        if([input isEqualToString:@"Enter"]){
-            [self.completionEngine rewind];
-            [self.codes insertText:[self.completionEngine scopedNewline]];
-            return;
-        }else if([input isEqualToString:@"Space"]){
-            [self.completionEngine rewind];
-            [self.codes insertText:@" "];
-            return;
-        }
-        
-        NSMutableArray* completionPair = [self.completionEngine completionPair:input];
-        NSLog(@"reseted pair: %@", completionPair);
-        if(completionPair){
-            [self.completionEngine rewind];
-            [self.codes insertText:completionPair[0]];
-            
-            NSInteger offset = [completionPair[1] integerValue];
-            NSLog(@"offset by: %d", -offset);
-            [self moveCursorByOffset:-offset];
-            
-            return;
-        }
-        
-        //reaches here, it is not a special char or a completion pair
-        //add that to completion engine
-        [self.completionEngine addChar:input];
-        [self.codes insertText:input];
-        
-    }
-    //debug:
+    NSInteger rewindOffset = [self.completionEngine inputPressed:input
+                                                       textField:self.codes
+                                                    withPrevChar:[self prevChar]];
     [self.completionEngine printDebug];
+    UITextPosition* cursor = [self.codes selectedTextRange].start;
+
+    [self moveCursorByOffset:rewindOffset];
     
-    [self.codes becomeFirstResponder];
+    //[self.codes becomeFirstResponder];
 }
 
 

@@ -8,6 +8,7 @@
 
 #ifndef CompletionEngine_h
 #define CompletionEngine_h
+#import <UIKit/UIKit.h>
 
 @interface CompletionEngine : NSObject
 @property (nonatomic) int scopeLevel;
@@ -15,6 +16,10 @@
 - (id) initWithArray:(NSArray *) schema;
 
 - (id) initWithDemo;
+
+- (NSInteger) inputPressed:(NSString*) input
+                 textField:(UITextView*) code
+              withPrevChar:(NSString*) prevChar;
 
 //add a char to the current search state
 - (void) addChar:(NSString *) c;

@@ -26,7 +26,7 @@
 - (id) initWithArray:(NSArray *) schema{
     if(self = [super init]){
         self.completionPair = [NSMutableSet setWithArray:
-                               @[@"(",@")", @"[", @"]", @"\"", @"'"]];
+                               @[@"(",@")", @"[", @"]", @"\"", @"'", @"{"]];
         NSLog(@"init with array");
         self.limit = 1;
         self.scopeLevel = 0;
@@ -56,6 +56,84 @@
                         @"unordered_set<int>"];
     return [self initWithArray:sample];
 }
+
+- (NSInteger) inputPressed:(NSString*) input
+            textField:(UITextView*) code
+         withPrevChar:(NSString *)prevChar{
+    
+    if([input isEqualToString:@"BackSpace"]){
+        NSLog(@"test length: %lu", (unsigned long)[code.text length]);
+        NSLog(@"%@", [code selectedTextRange]);
+        
+        
+        //fix scope
+        if([prevChar isEqualToString:@"{"] ||
+           [prevChar isEqualToString:@"}"]){
+            NSLog(@"%@", [code selectedTextRange]);
+            
+            UITextPosition* cursor = [code selectedTextRange].start;
+            NSInteger Bracelocation =
+                    [code offsetFromPosition:code.beginningOfDocument
+                                  toPosition:cursor] - 1;
+            NSInteger offset = [code offsetFromPosition:code.endOfDocument
+                                              toPosition:cursor];
+            
+            //cursor postion is always the index of the char after the cursor(the index
+            //where new char will be inserted
+            
+            NSString* newCode = nil;
+            if([prevChar isEqualToString:@"{"]){
+                newCode = [self fixScopeLeft:code.text from:Bracelocation];
+                offset -= ([newCode length] - [code.text length]) + 1;
+            }else{
+                newCode = [self fixScopeRight:code.text from:Bracelocation];
+            }
+            
+            if(newCode){
+                NSLog(@"replaced scope: %@", newCode);
+                code.text = newCode;
+                [self rewind];
+                return offset;
+            }
+        }
+        //plain deletion
+        [code deleteBackward];
+        [self popChar];
+        return 0;
+        
+    }else{
+        //white chars
+        if([input isEqualToString:@"Enter"]){
+            [self rewind];
+            [code insertText:[self scopedNewline]];
+            return 0;
+        }else if([input isEqualToString:@"Space"]){
+            [self rewind];
+            [code insertText:@" "];
+            return 0;
+        }
+        
+        //trivial chars - check pairs first
+        NSArray* completionPair = [self completionPair:input];
+        NSLog(@"reseted pair: %@", completionPair);
+        if(completionPair){
+            [self rewind];
+            [code insertText:completionPair[0]];
+            NSInteger offset = [completionPair[1] integerValue];
+            NSLog(@"offset by: %ld", (long)-offset);
+            return -offset;
+        }
+        
+        //reaches here, it is not a special char or a completion pair
+        //add that to completion engine
+        [self addChar:input];
+        [code insertText:input];
+        return 0;
+    }
+    return 0;
+}
+
+
 -(void) rewind{
     self.prefix = [NSMutableString new];
     self.nullCount = 0;
@@ -120,7 +198,7 @@
 }
 
 - (NSArray*) completionPair:(NSString*) lhs{
-    if(![self completionPair]) return nil;
+    if(![self isCompletionPair:lhs]) return nil;
     if([lhs isEqualToString:@"("]) { return @[@"()", @"1"];};
     if([lhs isEqualToString:@"["]) { return @[@"[]", @"1"];};
     if([lhs isEqualToString:@"\""]) { return @[@"\"\"", @"1"];};
@@ -153,7 +231,6 @@
 - (NSString*) fixScopeLeft:(NSString*) code
                   from:(NSInteger) leftBrace{
     [self LeaveScope];
-    NSRange searchRange = NSMakeRange(leftBrace, code.length - leftBrace);
     int tomatch = 0;
     NSInteger rightBrace = leftBrace + 1;
     for(NSInteger i = rightBrace; i < [code length]; ++i){
@@ -168,17 +245,8 @@
     if(rightBrace < 0
        || rightBrace >= [code length]
        || [code characterAtIndex:rightBrace] != '}') return nil;
-
-    NSMutableString* target = [NSMutableString stringWithString:code];
-    [target replaceOccurrencesOfString:@"}"
-                            withString:@""
-                               options:nil
-                                 range:NSMakeRange(rightBrace, 1)];
-    [target replaceOccurrencesOfString:@"\n    "
-                            withString:@"\n"
-                               options:nil
-                                 range:NSMakeRange(leftBrace, rightBrace - leftBrace - 1)];
-    return target;
+    
+    return [self fixScopeFrom:leftBrace to:rightBrace of:code];
 }
 
 - (NSString*) fixScopeRight:(NSString*) code
@@ -198,7 +266,28 @@
        || leftBrace >= [code length]
        || [code characterAtIndex:leftBrace] != '{') return nil;
     
+    return [self fixScopeFrom:leftBrace to:rightBrace of:code];
+}
+
+- (NSString* ) fixScopeFrom:(NSInteger) leftBrace
+                         to:(NSInteger) rightBrace
+                         of:(NSString*) code{
     NSMutableString* target = [NSMutableString stringWithString:code];
+    NSInteger i = leftBrace;
+    //handle the case when before leftbrace is indentation
+    if(leftBrace - 1 >= 0 && [code characterAtIndex:leftBrace-1] == ' '){
+        for(;i>=0;--i){
+            if([code characterAtIndex:i] == '\n') break;
+        }
+        if(i>=0){
+            [target replaceOccurrencesOfString:@"\n    "
+                                    withString:@"\n"
+                                       options:nil
+                                         range:NSMakeRange(i, 5)];
+            leftBrace = i + 1;
+        }
+    }
+    
     [target replaceOccurrencesOfString:@"{"
                             withString:@""
                                options:nil
@@ -206,8 +295,11 @@
     [target replaceOccurrencesOfString:@"\n    "
                             withString:@"\n"
                                options:nil
-                                 range:NSMakeRange(leftBrace, rightBrace - leftBrace - 1)];
+                                 range:NSMakeRange(leftBrace, rightBrace - leftBrace-([code length] - [target length]))];
+    [target replaceOccurrencesOfString:@"}"
+                            withString:@""
+                               options:nil
+                                 range:NSMakeRange(rightBrace-([code length] - [target length]), 1)];
     return target;
 }
-
 @end
