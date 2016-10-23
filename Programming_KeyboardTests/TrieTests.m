@@ -1,21 +1,22 @@
 //
-//  unittests.m
-//  unittests
+//  Programming_KeyboardTests.m
+//  Programming_KeyboardTests
 //
-//  Created by Junlong Gao on 10/15/16.
+//  Created by Junlong Gao on 10/22/16.
 //  Copyright © 2016 fingerWizards. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 #import "../Programming_Keyboard/CompletionEngine.h"
-
-@interface unittests : XCTestCase
+@interface TrieTests : XCTestCase
 @property (nonatomic, strong) NSString* testcases;
 @property (nonatomic, strong) CompletionEngine* testObj;
+@property (nonatomic, strong) UITextView* codes;
 
 @end
 
-@implementation unittests
+
+@implementation TrieTests
 
 - (void) list1:(NSArray*) list1
        equalTo:(NSArray*) list2{
@@ -42,10 +43,11 @@
 
 - (void)setUp {
     [super setUp];
+    self.codes = [UITextView new];
     self.testcases = @[@"vector<int>",
-                          @"vector<string>",
-                          @"unordered_set<string>",
-                          @"unordered_set<int>"];
+                       @"vector<string>",
+                       @"unordered_set<string>",
+                       @"unordered_set<int>"];
     self.testObj = [[CompletionEngine alloc] initWithArray:_testcases];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
@@ -55,14 +57,14 @@
     [super tearDown];
 }
 
-- (void)test1 {
+- (void)testTrieSmoke1 {
     [self.testObj addChar:@"v"];
     [self list1:[self.testObj dumpList]
         equalTo:@[@"vector<int>",
-                @"vector<string>"]];
+                  @"vector<string>"]];
 }
 
-- (void)test2 {
+- (void)testTrieSmoke2 {
     [self.testObj addChar:@"v"];
     [self.testObj addChar:@"e"];
     [self.testObj addChar:@"c"];
@@ -76,7 +78,7 @@
         equalTo:@[@"vector<int>"]];
 }
 
-- (void)test3 {
+- (void)testTrieSmoke3 {
     [self.testObj addChar:@"v"];
     [self.testObj addChar:@"e"];
     [self.testObj addChar:@"c"];
@@ -92,15 +94,9 @@
     [self.testObj popChar];
     [self list1:[self.testObj dumpList]
         equalTo:@[@"vector<int>",
-                @"vector<string>"]];
+                  @"vector<string>"]];
 }
 
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
-}
 
 @end

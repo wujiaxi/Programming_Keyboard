@@ -1,10 +1,17 @@
 #!/bin/bash
 set -e
 
-echo "building the project"
-xcodebuild -project Programming_Keyboard.xcodeproj -target unittests build
-xcodebuild -project Programming_Keyboard.xcodeproj -target Programming_Keyboard -sdk iphonesimulator10.0 'CODE_SIGN_IDENTITY=-' build
+sudo gem install xcpretty
 
-echo "running unit tests"
-xcodebuild test -project Programming_Keyboard.xcodeproj -scheme unittests
+OS=${1:-'10.1'}
+
+echo $OS
+
+echo "building the project"
+xcodebuild \
+	-project Programming_Keyboard.xcodeproj \
+	-scheme Programming_Keyboard \
+	-sdk iphonesimulator$OS 'CODE_SIGN_IDENTITY=-' \
+	-destination "platform=iOS Simulator,name=iPad Air 2,OS=$OS" \
+	test|xcpretty
 
