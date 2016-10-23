@@ -2,6 +2,7 @@
 Deceptively Simple, Vastly Powerful.
 
 [![Build Status](https://travis-ci.org/junlong-gao/Programming_Keyboard.svg?branch=master)](https://travis-ci.org/junlong-gao/Programming_Keyboard)
+[![Issue Count](https://codeclimate.com/github/junlong-gao/Programming_Keyboard/badges/issue_count.svg)](https://codeclimate.com/github/junlong-gao/Programming_Keyboard)
 ## An EECS481 Project by Finger Wizards
 
 #TEAM:
