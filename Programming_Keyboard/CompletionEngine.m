@@ -273,21 +273,6 @@
                          to:(NSInteger) rightBrace
                          of:(NSString*) code{
     NSMutableString* target = [NSMutableString stringWithString:code];
-    NSInteger i = leftBrace;
-    //handle the case when before leftbrace is indentation
-    if(leftBrace - 1 >= 0 && [code characterAtIndex:leftBrace-1] == ' '){
-        for(;i>=0;--i){
-            if([code characterAtIndex:i] == '\n') break;
-        }
-        if(i>=0){
-            [target replaceOccurrencesOfString:@"\n    "
-                                    withString:@"\n"
-                                       options:nil
-                                         range:NSMakeRange(i, 5)];
-            leftBrace = i + 1;
-        }
-    }
-    
     [target replaceOccurrencesOfString:@"{"
                             withString:@""
                                options:nil

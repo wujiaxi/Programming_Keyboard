@@ -2,4 +2,4 @@ language: objective-c
 osx_image: xcode8
 script: 
 - ls -a
-- ./script.sh
+- ./script.sh '10.0'
