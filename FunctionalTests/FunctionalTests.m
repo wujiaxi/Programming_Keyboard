@@ -67,11 +67,11 @@
 - (void) moveCursor:(NSInteger) offset{
     if(offset > 0){
         for(int i = 0; i < offset; ++i){
-            [self.app moveCursorRight:nil];
+            [self.app MoveCursorRight:nil];
         }
     }else{
         for(int i = 0; i < -offset; ++i){
-            [self.app moveCursorLeft:nil];
+            [self.app MoveCursorLeft:nil];
         }
     }
 }

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Programming_Keyboard/CompletionEngine.h"
-            timestampString = "498881071.982747"
+            timestampString = "498947083.107153"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "@interface CompletionEngine"
             landmarkType = "2">
          </BreakpointContent>
@@ -122,12 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Programming_Keyboard/Container.m"
-            timestampString = "498878337.368424"
+            timestampString = "498949763.110582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "-longPressed:"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "-CompletionLongPressed:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,61 +138,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Programming_Keyboard/Container.m"
-            timestampString = "498878337.368424"
+            timestampString = "498949763.110582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "-moveCursorLeft:"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-MoveCursorLeft:"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Programming_Keyboard/CompletionEngine.m"
-            timestampString = "498878337.368424"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
-            landmarkName = "-fixScopeLeft:from:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CompletionEngine fixScopeLeft:from:]"
-                  moduleName = "Programming_Keyboard"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/CompletionEngine.m"
-                  timestampString = "498888110.937633"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "232"
-                  endingLineNumber = "232"
-                  offsetFromSymbolStart = "84">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CompletionEngine fixScopeLeft:from:]"
-                  moduleName = "FunctionalTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/CompletionEngine.m"
-                  timestampString = "498888111.305859"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "232"
-                  endingLineNumber = "232"
-                  offsetFromSymbolStart = "84">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -283,84 +235,6 @@
             timestampString = "498888150.172423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "-testSampleScope"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[FunctionalTests testSampleScope]"
-                  moduleName = "FunctionalTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/FunctionalTests/FunctionalTests.m"
-                  timestampString = "498888111.308856"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "101"
-                  endingLineNumber = "101"
-                  offsetFromSymbolStart = "2724">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[FunctionalTests testSampleScope]"
-                  moduleName = "FunctionalTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/FunctionalTests/FunctionalTests.m"
-                  timestampString = "498888111.310976"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "101"
-                  endingLineNumber = "101"
-                  offsetFromSymbolStart = "3768">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[FunctionalTests testSampleScope]"
-                  moduleName = "FunctionalTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/FunctionalTests/FunctionalTests.m"
-                  timestampString = "498888111.31299"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "101"
-                  endingLineNumber = "101"
-                  offsetFromSymbolStart = "3804">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[FunctionalTests testSampleScope]"
-                  moduleName = "FunctionalTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/FunctionalTests/FunctionalTests.m"
-                  timestampString = "498888111.315073"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "101"
-                  endingLineNumber = "101"
-                  offsetFromSymbolStart = "3884">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FunctionalTests/FunctionalTests.m"
-            timestampString = "498888150.172423"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
             endingLineNumber = "120"
             landmarkName = "-testDeletingInnerScope"
@@ -380,6 +254,86 @@
             startingLineNumber = "103"
             endingLineNumber = "103"
             landmarkName = "-testDeletingInnerScope"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Programming_Keyboard/Container.m"
+            timestampString = "498949763.110582"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "-CompletionLongPressed:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Programming_Keyboard/Container.m"
+            timestampString = "498949763.110582"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
+            landmarkName = "-TouchBegin:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Programming_Keyboard/Container.m"
+            timestampString = "498949763.110582"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-RegisterButton:toSelectorBegin:toSelectorEnd:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Programming_Keyboard/Container.m"
+            timestampString = "498949763.110582"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "-viewDidLayoutSubviews"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Programming_Keyboard/Container.m"
+            timestampString = "498949763.110582"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "-viewDidLayoutSubviews"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

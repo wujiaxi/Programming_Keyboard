@@ -29,14 +29,16 @@
 // button touch down
 -(IBAction)keyboardButtonTouched:(UIButton *)sender;
 
--(IBAction)moveCursorLeft:(UIButton *)sender;
+-(IBAction)MoveCursorLeft:(UIButton *)sender;
 
--(IBAction)moveCursorRight:(UIButton *)sender;
+-(IBAction)MoveCursorRight:(UIButton *)sender;
 
 //keyboard helpers
 -(IBAction)keyboardButton:(UIButton *)sender;
+-(void) BackSpaceButton:(NSTimer*)timer;
 
 //pop up gesture
--(IBAction) longPressed:(UILongPressGestureRecognizer *) sender;
+-(IBAction) CompletionLongPressed:(UILongPressGestureRecognizer *) sender;
+
 @end
 

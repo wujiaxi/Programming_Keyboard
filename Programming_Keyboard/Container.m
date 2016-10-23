@@ -7,10 +7,16 @@
 //
 
 #import "Container.h"
-
+#define KEYBOARD_TAG 1
+#define CONTROL_TAG 2
 
 
 @interface Container ()  <UIPopoverPresentationControllerDelegate, CompletionSelectionDelegate>
+@property(nonatomic, strong) NSMutableDictionary* keyboardLayout;
+@property(nonatomic, strong) NSMutableDictionary* ControlLayout;
+
+@property(nonatomic, strong) NSMutableDictionary* ButtonToSelector;
+@property(nonatomic, strong) NSTimer* Timer;
 
 @end
 
@@ -29,6 +35,56 @@
     self.completionEngine = [[CompletionEngine alloc] initWithDemo];
 }
 
+- (void)viewDidLayoutSubviews{
+    self.keyboardLayout = [NSMutableDictionary new];
+    self.ButtonToSelector = [NSMutableDictionary new];
+    
+    for(UIView * subview in self.view.subviews){
+        if(subview.tag == KEYBOARD_TAG){
+            for(UIButton* button in subview.subviews){
+                if([button.titleLabel.text isEqualToString:@"BackSpace"]){
+                    [self RegisterButton:button
+                         toSelectorBegin:@"TouchBegin:"
+                           toSelectorEnd:@"TouchEnd:"];
+                    [self.ButtonToSelector setObject:@"BackSpaceButton:"
+                                              forKey:button.titleLabel.text];
+                    
+                }else if (![button.titleLabel.text isEqualToString:@"Enter"]){
+                    NSLog(@"registered %@\n", button.titleLabel.text);
+                    UILongPressGestureRecognizer*  rec = [[UILongPressGestureRecognizer alloc]
+                                                          initWithTarget:self
+                                                          action:@selector(CompletionLongPressed:)];
+                    [button addGestureRecognizer:rec];
+                    [self.keyboardLayout setObject:rec forKey:button.titleLabel.text];
+                }
+            }
+        }
+        if(subview.tag == CONTROL_TAG){
+            for(UIButton* button in subview.subviews){
+                if([button.titleLabel.text isEqualToString:@"Left"]||
+                    [button.titleLabel.text isEqualToString:@"Right"]){
+                    [self RegisterButton:button
+                         toSelectorBegin:@"TouchBegin:"
+                           toSelectorEnd:@"TouchEnd:"];
+                    NSString* buttonName = button.titleLabel.text;
+                    [self.ButtonToSelector setObject:[NSString stringWithFormat:@"MoveCursor%@:", button.titleLabel.text]
+                                              forKey:button.titleLabel.text];
+
+                }
+            }
+        }
+    }
+}
+
+- (void) RegisterButton:(UIButton*) button
+             toSelectorBegin:(NSString* ) selectorBeginName
+             toSelectorEnd:(NSString* ) selectorEndName{
+
+    [button addTarget:self action:NSSelectorFromString(selectorBeginName) forControlEvents: UIControlEventTouchDown];
+    [button addTarget:self action:NSSelectorFromString(selectorEndName) forControlEvents:
+     UIControlEventTouchUpInside | UIControlEventTouchUpOutside | UIControlEventTouchCancel];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -39,7 +95,8 @@
 -(void) selectedCompletion:(NSString *)entry
 {
     NSLog(@"selected completion %@", entry);
-    [self.codes insertText:[entry substringFromIndex:[self.completionEngine from]]];
+    [self.codes insertText:[entry substringFromIndex:
+                            [self.completionEngine from]]];
     [self.completionEngine rewind];
 }
 
@@ -50,7 +107,7 @@
     self.currentKey = sender;
 }
 
--(IBAction)moveCursorLeft:(UIButton *)sender{
+-(IBAction)MoveCursorLeft:(UIButton *)sender{
     NSString* prevChar =[self.completionEngine prevChar:self.codes];
     if(prevChar){
         NSLog(@"moving left to \"%@\"", prevChar);
@@ -66,7 +123,7 @@
 
 }
 
--(IBAction)moveCursorRight:(UIButton *)sender{
+-(IBAction)MoveCursorRight:(UIButton *)sender{
     [self moveCursorByOffset:1];
     [self.completionEngine rewind];
     [self.completionEngine printDebug];
@@ -102,19 +159,27 @@
     NSInteger rewindOffset = [self.completionEngine inputPressed:input
                                                        textField:self.codes];
     [self.completionEngine printDebug];
-    
     [self moveCursorByOffset:rewindOffset];
-    
-    //[self.codes becomeFirstResponder];
 }
 
-
+//backspace helpers
+-(void) BackSpaceButton:(NSTimer*)timer {
+    NSInteger rewindOffset = [self.completionEngine inputPressed:@"BackSpace"
+                                                       textField:self.codes];
+    [self.completionEngine printDebug];
+    [self moveCursorByOffset:rewindOffset];
+}
 
 //pop up gesture
--(IBAction) longPressed:(UILongPressGestureRecognizer *) sender{
+-(IBAction) CompletionLongPressed:(UILongPressGestureRecognizer *) sender{
     switch(sender.state){
         case UIGestureRecognizerStateBegan:{
-            NSLog(@"long press triggered");
+            //normal action:
+            UIButton* button = sender.view;
+            NSLog(@"normal key long press triggered %@", button.titleLabel.text);
+            [self keyboardButton:button];
+            
+            
             //init the view
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             self.completionPanel = [storyboard instantiateViewControllerWithIdentifier:@"autoCompletionPanel"];
@@ -148,6 +213,21 @@
             break;
     }
     
+}
+
+- (void) TouchBegin:(UIButton*)sender {
+    NSLog(@"triggered %@", sender.titleLabel.text);
+    NSString* SelectorName = [self.ButtonToSelector objectForKey:sender.titleLabel.text];
+    self.Timer = [NSTimer scheduledTimerWithTimeInterval:0.1
+                                              target:self
+                                            selector:NSSelectorFromString(SelectorName)
+                                            userInfo:nil
+                                             repeats:YES];
+}
+
+- (void) TouchEnd:(UIButton*)sender {
+    [self.Timer invalidate];
+    self.Timer = nil;
 }
 
 // MARK delegations for pop over:

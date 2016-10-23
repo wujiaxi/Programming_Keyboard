@@ -26,6 +26,8 @@
 
 - (NSInteger) inputPressed:(NSString*) input
                  textField:(UITextView*) code;
+
+
 //add a char to the current search state
 - (void) addChar:(NSString *) c;
 
