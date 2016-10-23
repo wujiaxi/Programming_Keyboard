@@ -9,8 +9,15 @@
 #ifndef CompletionEngine_h
 #define CompletionEngine_h
 #import <UIKit/UIKit.h>
-
+/*
+ the completion engine is maintains the state
+ of the current code
+ 1) code
+ 2) cursor position
+ 3) indentation levels
+ */
 @interface CompletionEngine : NSObject
+
 @property (nonatomic) int scopeLevel;
 
 - (id) initWithArray:(NSArray *) schema;
@@ -18,14 +25,17 @@
 - (id) initWithDemo;
 
 - (NSInteger) inputPressed:(NSString*) input
-                 textField:(UITextView*) code
-              withPrevChar:(NSString*) prevChar;
-
+                 textField:(UITextView*) code;
 //add a char to the current search state
 - (void) addChar:(NSString *) c;
 
 //remove the last char from the current search state
 - (void) popChar;
+
+-(UITextPosition*) cursor:(UITextView*) codes
+             with:(NSInteger) offset;
+
+-(NSString*) prevChar:(UITextView*) codes;
 
 //dump the list of words that fits the current search state;
 - (NSArray<NSString*> *) dumpList;
@@ -35,6 +45,7 @@
 
 - (void) printDebug;
 
+// this returns the current completion prefix starting index
 - (NSUInteger) from;
 
 - (Boolean) isCompletionPair:(NSString*) lhs;
@@ -51,11 +62,6 @@
                       from:(NSInteger) rightBrace;
 
 @end
-/*
-the completion engine is responsible for 
- (1) consuming schema and internally store a trie
- (2) a simple interface to travel through the trie
- (3) dump the list of all word with the current prefix
-*/
+
 
 #endif /* CompletionEngine_h */

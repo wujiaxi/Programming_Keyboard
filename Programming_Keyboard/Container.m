@@ -8,24 +8,9 @@
 
 #import "Container.h"
 
-// pop up view
-#import "AutoCompletionPanelController.h"
-
-// data helpers
-#import "CompletionEngine.h"
 
 
 @interface Container ()  <UIPopoverPresentationControllerDelegate, CompletionSelectionDelegate>
-@property (nonatomic, weak) AutoCompletionPanelController *completionPanel;
-
-@property (nonatomic) CompletionEngine *completionEngine;
-
-//current key
-@property (nonatomic, weak) IBOutlet UIButton *currentKey;
-// text display:
-@property (nonatomic, weak) IBOutlet UITextView *codes;
-// keyboard view:
-@property (nonatomic, weak) IBOutlet UIView *keyboard;
 
 @end
 
@@ -65,27 +50,10 @@
     self.currentKey = sender;
 }
 
--(NSString*) prevChar{
-    UITextRange* selected = [self.codes selectedTextRange];
-    if(selected){
-        UITextPosition* cur = [self.codes
-                               positionFromPosition:selected.start
-                               offset:-1];
-        if(cur){
-            UITextRange *range = [self.codes
-                                  textRangeFromPosition:cur
-                                  toPosition:selected.start];
-            return [self.codes textInRange:range];
-        }
-    }
-    return nil;
-}
-
-
 -(IBAction)moveCursorLeft:(UIButton *)sender{
-    NSString* prevChar =[self prevChar];
+    NSString* prevChar =[self.completionEngine prevChar:self.codes];
     if(prevChar){
-        NSLog(@"moving left to \"%@\"", [self prevChar]);
+        NSLog(@"moving left to \"%@\"", prevChar);
         if([prevChar isEqualToString:@"{"]) [self.completionEngine LeaveScope];
         if([prevChar isEqualToString:@"}"]) [self.completionEngine EnterScope];
         NSLog(@"the current scope level is %d", self.completionEngine.scopeLevel);
@@ -102,9 +70,9 @@
     [self moveCursorByOffset:1];
     [self.completionEngine rewind];
     [self.completionEngine printDebug];
-    NSString* prevChar =[self prevChar];
+    NSString* prevChar =[self.completionEngine prevChar:self.codes];
     if(prevChar){
-        NSLog(@"moving right past \"%@\"", [self prevChar]);
+        NSLog(@"moving right past \"%@\"", prevChar);
         if([prevChar isEqualToString:@"{"]) [self.completionEngine EnterScope];
         if([prevChar isEqualToString:@"}"]) [self.completionEngine LeaveScope];
         NSLog(@"the current scope level is %d", self.completionEngine.scopeLevel);
@@ -132,11 +100,9 @@
     NSString* input = sender.titleLabel.text;
     NSLog(@"button %@ touched up", input);
     NSInteger rewindOffset = [self.completionEngine inputPressed:input
-                                                       textField:self.codes
-                                                    withPrevChar:[self prevChar]];
+                                                       textField:self.codes];
     [self.completionEngine printDebug];
-    UITextPosition* cursor = [self.codes selectedTextRange].start;
-
+    
     [self moveCursorByOffset:rewindOffset];
     
     //[self.codes becomeFirstResponder];

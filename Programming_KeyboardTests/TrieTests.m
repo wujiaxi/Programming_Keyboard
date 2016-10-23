@@ -8,15 +8,15 @@
 
 #import <XCTest/XCTest.h>
 #import "../Programming_Keyboard/CompletionEngine.h"
-@interface Programming_KeyboardTests : XCTestCase
+@interface TrieTests : XCTestCase
 @property (nonatomic, strong) NSString* testcases;
 @property (nonatomic, strong) CompletionEngine* testObj;
+@property (nonatomic, strong) UITextView* codes;
 
 @end
 
 
-@implementation Programming_KeyboardTests
-
+@implementation TrieTests
 
 - (void) list1:(NSArray*) list1
        equalTo:(NSArray*) list2{
@@ -43,6 +43,7 @@
 
 - (void)setUp {
     [super setUp];
+    self.codes = [UITextView new];
     self.testcases = @[@"vector<int>",
                        @"vector<string>",
                        @"unordered_set<string>",
@@ -56,14 +57,14 @@
     [super tearDown];
 }
 
-- (void)test1 {
+- (void)testTrieSmoke1 {
     [self.testObj addChar:@"v"];
     [self list1:[self.testObj dumpList]
         equalTo:@[@"vector<int>",
                   @"vector<string>"]];
 }
 
-- (void)test2 {
+- (void)testTrieSmoke2 {
     [self.testObj addChar:@"v"];
     [self.testObj addChar:@"e"];
     [self.testObj addChar:@"c"];
@@ -77,7 +78,7 @@
         equalTo:@[@"vector<int>"]];
 }
 
-- (void)test3 {
+- (void)testTrieSmoke3 {
     [self.testObj addChar:@"v"];
     [self.testObj addChar:@"e"];
     [self.testObj addChar:@"c"];
@@ -96,11 +97,6 @@
                   @"vector<string>"]];
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
-}
+
 
 @end

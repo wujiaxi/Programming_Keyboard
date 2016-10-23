@@ -58,9 +58,8 @@
 }
 
 - (NSInteger) inputPressed:(NSString*) input
-            textField:(UITextView*) code
-         withPrevChar:(NSString *)prevChar{
-    
+            textField:(UITextView*) code{
+    NSString* prevChar =[self prevChar:code];
     if([input isEqualToString:@"BackSpace"]){
         NSLog(@"test length: %lu", (unsigned long)[code.text length]);
         NSLog(@"%@", [code selectedTextRange]);
@@ -287,4 +286,30 @@
                                  range:NSMakeRange(rightBrace-([code length] - [target length]), 1)];
     return target;
 }
+
+-(UITextPosition*) cursor:(UITextView*) codes
+                     with:(NSInteger) offset{
+    UITextRange* selected = [codes selectedTextRange];
+    if(selected){
+        UITextPosition* cur = [codes
+                               positionFromPosition:selected.start
+                               offset:offset];
+        if(cur){
+            return cur; //[codes textInRange:range];
+        }
+    }
+    return nil;
+}
+
+-(NSString*) prevChar:(UITextView*) codes{
+    UITextPosition* prevCursor = [self cursor:codes with:-1];
+    if(prevCursor){
+        UITextRange *range = [codes
+                              textRangeFromPosition:prevCursor
+                              toPosition:[codes selectedTextRange].start];
+        return [codes textInRange:range];
+    }
+    return nil;
+}
+
 @end

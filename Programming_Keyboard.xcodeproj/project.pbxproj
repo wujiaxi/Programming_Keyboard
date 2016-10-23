@@ -20,15 +20,38 @@
 		4119FF1D1DB180C70061F27F /* Trie.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF1A1DB180940061F27F /* Trie.m */; };
 		41BA1EF11DB2D5F80004220B /* CompletionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF081DB173540061F27F /* CompletionEngine.m */; };
 		41BA1EF21DB2D61F0004220B /* Trie.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF1A1DB180940061F27F /* Trie.m */; };
-		41F5FD991DBC0EDE00C753B5 /* Programming_KeyboardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F5FD981DBC0EDE00C753B5 /* Programming_KeyboardTests.m */; };
+		41F5FD991DBC0EDE00C753B5 /* TrieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F5FD981DBC0EDE00C753B5 /* TrieTests.m */; };
 		41F5FDA01DBC11A200C753B5 /* CompletionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF081DB173540061F27F /* CompletionEngine.m */; };
 		41F5FDA11DBC11A200C753B5 /* AutoCompletionPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF041DB15ECE0061F27F /* AutoCompletionPanelController.m */; };
 		41F5FDA21DBC11A200C753B5 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 410CB2261DB1229400F586B5 /* Container.m */; };
 		41F5FDA31DBC11CB00C753B5 /* Trie.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF1A1DB180940061F27F /* Trie.m */; };
+		41F5FDAB1DBC3F2900C753B5 /* CompletionEngineTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F5FDAA1DBC3F2900C753B5 /* CompletionEngineTest.m */; };
+		41F5FDB21DBC3F4500C753B5 /* CompletionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF081DB173540061F27F /* CompletionEngine.m */; };
+		41F5FDB31DBC3F4500C753B5 /* Trie.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF1A1DB180940061F27F /* Trie.m */; };
+		41F5FDB41DBC3F4500C753B5 /* AutoCompletionPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF041DB15ECE0061F27F /* AutoCompletionPanelController.m */; };
+		41F5FDBC1DBC480000C753B5 /* FunctionalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F5FDBB1DBC480000C753B5 /* FunctionalTests.m */; };
+		41F5FDC31DBC481C00C753B5 /* CompletionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF081DB173540061F27F /* CompletionEngine.m */; };
+		41F5FDC41DBC481C00C753B5 /* Trie.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF1A1DB180940061F27F /* Trie.m */; };
+		41F5FDC51DBC481C00C753B5 /* AutoCompletionPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF041DB15ECE0061F27F /* AutoCompletionPanelController.m */; };
+		41F5FDC61DBC481C00C753B5 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 410CB2261DB1229400F586B5 /* Container.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		41F5FD9B1DBC0EDE00C753B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 410CB2141DB1229400F586B5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 410CB21B1DB1229400F586B5;
+			remoteInfo = Programming_Keyboard;
+		};
+		41F5FDAD1DBC3F2900C753B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 410CB2141DB1229400F586B5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 410CB21B1DB1229400F586B5;
+			remoteInfo = Programming_Keyboard;
+		};
+		41F5FDBE1DBC480000C753B5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 410CB2141DB1229400F586B5 /* Project object */;
 			proxyType = 1;
@@ -69,8 +92,14 @@
 		4119FF1C1DB180B70061F27F /* Trie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Trie.h; sourceTree = "<group>"; };
 		41BA1EE91DB2D47B0004220B /* unittests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = unittests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41F5FD961DBC0EDE00C753B5 /* Programming_KeyboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Programming_KeyboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		41F5FD981DBC0EDE00C753B5 /* Programming_KeyboardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Programming_KeyboardTests.m; sourceTree = "<group>"; };
+		41F5FD981DBC0EDE00C753B5 /* TrieTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrieTests.m; sourceTree = "<group>"; };
 		41F5FD9A1DBC0EDE00C753B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41F5FDA81DBC3F2900C753B5 /* CompletionEngineTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CompletionEngineTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		41F5FDAA1DBC3F2900C753B5 /* CompletionEngineTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompletionEngineTest.m; sourceTree = "<group>"; };
+		41F5FDAC1DBC3F2900C753B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41F5FDB91DBC480000C753B5 /* FunctionalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunctionalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		41F5FDBB1DBC480000C753B5 /* FunctionalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FunctionalTests.m; sourceTree = "<group>"; };
+		41F5FDBD1DBC480000C753B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +131,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		41F5FDA51DBC3F2900C753B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41F5FDB61DBC480000C753B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -109,7 +152,9 @@
 			isa = PBXGroup;
 			children = (
 				410CB21E1DB1229400F586B5 /* Programming_Keyboard */,
-				41F5FD971DBC0EDE00C753B5 /* Programming_KeyboardTests */,
+				41F5FD971DBC0EDE00C753B5 /* TrieTests */,
+				41F5FDA91DBC3F2900C753B5 /* CompletionEngineTest */,
+				41F5FDBA1DBC480000C753B5 /* FunctionalTests */,
 				410CB21D1DB1229400F586B5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -121,6 +166,8 @@
 				4119FF121DB17E2D0061F27F /* trieTest */,
 				41BA1EE91DB2D47B0004220B /* unittests.xctest */,
 				41F5FD961DBC0EDE00C753B5 /* Programming_KeyboardTests.xctest */,
+				41F5FDA81DBC3F2900C753B5 /* CompletionEngineTest.xctest */,
+				41F5FDB91DBC480000C753B5 /* FunctionalTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -195,13 +242,32 @@
 			name = model;
 			sourceTree = "<group>";
 		};
-		41F5FD971DBC0EDE00C753B5 /* Programming_KeyboardTests */ = {
+		41F5FD971DBC0EDE00C753B5 /* TrieTests */ = {
 			isa = PBXGroup;
 			children = (
-				41F5FD981DBC0EDE00C753B5 /* Programming_KeyboardTests.m */,
+				41F5FD981DBC0EDE00C753B5 /* TrieTests.m */,
 				41F5FD9A1DBC0EDE00C753B5 /* Info.plist */,
 			);
+			name = TrieTests;
 			path = Programming_KeyboardTests;
+			sourceTree = "<group>";
+		};
+		41F5FDA91DBC3F2900C753B5 /* CompletionEngineTest */ = {
+			isa = PBXGroup;
+			children = (
+				41F5FDAA1DBC3F2900C753B5 /* CompletionEngineTest.m */,
+				41F5FDAC1DBC3F2900C753B5 /* Info.plist */,
+			);
+			path = CompletionEngineTest;
+			sourceTree = "<group>";
+		};
+		41F5FDBA1DBC480000C753B5 /* FunctionalTests */ = {
+			isa = PBXGroup;
+			children = (
+				41F5FDBB1DBC480000C753B5 /* FunctionalTests.m */,
+				41F5FDBD1DBC480000C753B5 /* Info.plist */,
+			);
+			path = FunctionalTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +342,42 @@
 			productReference = 41F5FD961DBC0EDE00C753B5 /* Programming_KeyboardTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		41F5FDA71DBC3F2900C753B5 /* CompletionEngineTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41F5FDAF1DBC3F2900C753B5 /* Build configuration list for PBXNativeTarget "CompletionEngineTest" */;
+			buildPhases = (
+				41F5FDA41DBC3F2900C753B5 /* Sources */,
+				41F5FDA51DBC3F2900C753B5 /* Frameworks */,
+				41F5FDA61DBC3F2900C753B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				41F5FDAE1DBC3F2900C753B5 /* PBXTargetDependency */,
+			);
+			name = CompletionEngineTest;
+			productName = CompletionEngineTest;
+			productReference = 41F5FDA81DBC3F2900C753B5 /* CompletionEngineTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		41F5FDB81DBC480000C753B5 /* FunctionalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41F5FDC01DBC480000C753B5 /* Build configuration list for PBXNativeTarget "FunctionalTests" */;
+			buildPhases = (
+				41F5FDB51DBC480000C753B5 /* Sources */,
+				41F5FDB61DBC480000C753B5 /* Frameworks */,
+				41F5FDB71DBC480000C753B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				41F5FDBF1DBC480000C753B5 /* PBXTargetDependency */,
+			);
+			name = FunctionalTests;
+			productName = FunctionalTests;
+			productReference = 41F5FDB91DBC480000C753B5 /* FunctionalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -306,6 +408,16 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 410CB21B1DB1229400F586B5;
 					};
+					41F5FDA71DBC3F2900C753B5 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 410CB21B1DB1229400F586B5;
+					};
+					41F5FDB81DBC480000C753B5 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 410CB21B1DB1229400F586B5;
+					};
 				};
 			};
 			buildConfigurationList = 410CB2171DB1229400F586B5 /* Build configuration list for PBXProject "Programming_Keyboard" */;
@@ -325,6 +437,8 @@
 				4119FF111DB17E2D0061F27F /* trieTest */,
 				41BA1EE81DB2D47B0004220B /* unittests */,
 				41F5FD951DBC0EDE00C753B5 /* Programming_KeyboardTests */,
+				41F5FDA71DBC3F2900C753B5 /* CompletionEngineTest */,
+				41F5FDB81DBC480000C753B5 /* FunctionalTests */,
 			);
 		};
 /* End PBXProject section */
@@ -348,6 +462,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		41F5FD941DBC0EDE00C753B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41F5FDA61DBC3F2900C753B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41F5FDB71DBC480000C753B5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -396,7 +524,30 @@
 				41F5FDA01DBC11A200C753B5 /* CompletionEngine.m in Sources */,
 				41F5FDA11DBC11A200C753B5 /* AutoCompletionPanelController.m in Sources */,
 				41F5FDA21DBC11A200C753B5 /* Container.m in Sources */,
-				41F5FD991DBC0EDE00C753B5 /* Programming_KeyboardTests.m in Sources */,
+				41F5FD991DBC0EDE00C753B5 /* TrieTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41F5FDA41DBC3F2900C753B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41F5FDB21DBC3F4500C753B5 /* CompletionEngine.m in Sources */,
+				41F5FDB31DBC3F4500C753B5 /* Trie.m in Sources */,
+				41F5FDB41DBC3F4500C753B5 /* AutoCompletionPanelController.m in Sources */,
+				41F5FDAB1DBC3F2900C753B5 /* CompletionEngineTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41F5FDB51DBC480000C753B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41F5FDC31DBC481C00C753B5 /* CompletionEngine.m in Sources */,
+				41F5FDC41DBC481C00C753B5 /* Trie.m in Sources */,
+				41F5FDC51DBC481C00C753B5 /* AutoCompletionPanelController.m in Sources */,
+				41F5FDC61DBC481C00C753B5 /* Container.m in Sources */,
+				41F5FDBC1DBC480000C753B5 /* FunctionalTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +558,16 @@
 			isa = PBXTargetDependency;
 			target = 410CB21B1DB1229400F586B5 /* Programming_Keyboard */;
 			targetProxy = 41F5FD9B1DBC0EDE00C753B5 /* PBXContainerItemProxy */;
+		};
+		41F5FDAE1DBC3F2900C753B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 410CB21B1DB1229400F586B5 /* Programming_Keyboard */;
+			targetProxy = 41F5FDAD1DBC3F2900C753B5 /* PBXContainerItemProxy */;
+		};
+		41F5FDBF1DBC480000C753B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 410CB21B1DB1229400F586B5 /* Programming_Keyboard */;
+			targetProxy = 41F5FDBE1DBC480000C753B5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -634,6 +795,70 @@
 			};
 			name = Release;
 		};
+		41F5FDB01DBC3F2900C753B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				INFOPLIST_FILE = CompletionEngineTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fingerwizards.CompletionEngineTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Programming_Keyboard.app/Programming_Keyboard";
+			};
+			name = Debug;
+		};
+		41F5FDB11DBC3F2900C753B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				INFOPLIST_FILE = CompletionEngineTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fingerwizards.CompletionEngineTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Programming_Keyboard.app/Programming_Keyboard";
+			};
+			name = Release;
+		};
+		41F5FDC11DBC480000C753B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				INFOPLIST_FILE = FunctionalTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fingerwizards.FunctionalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Programming_Keyboard.app/Programming_Keyboard";
+			};
+			name = Debug;
+		};
+		41F5FDC21DBC480000C753B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				INFOPLIST_FILE = FunctionalTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fingerwizards.FunctionalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Programming_Keyboard.app/Programming_Keyboard";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -678,6 +903,22 @@
 			buildConfigurations = (
 				41F5FD9D1DBC0EDE00C753B5 /* Debug */,
 				41F5FD9E1DBC0EDE00C753B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		41F5FDAF1DBC3F2900C753B5 /* Build configuration list for PBXNativeTarget "CompletionEngineTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41F5FDB01DBC3F2900C753B5 /* Debug */,
+				41F5FDB11DBC3F2900C753B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		41F5FDC01DBC480000C753B5 /* Build configuration list for PBXNativeTarget "FunctionalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41F5FDC11DBC480000C753B5 /* Debug */,
+				41F5FDC21DBC480000C753B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

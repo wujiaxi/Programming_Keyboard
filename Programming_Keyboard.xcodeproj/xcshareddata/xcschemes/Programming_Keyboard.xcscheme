@@ -22,10 +22,10 @@
          </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "41F5FD951DBC0EDE00C753B5"
@@ -50,6 +50,26 @@
                BlueprintIdentifier = "41F5FD951DBC0EDE00C753B5"
                BuildableName = "Programming_KeyboardTests.xctest"
                BlueprintName = "Programming_KeyboardTests"
+               ReferencedContainer = "container:Programming_Keyboard.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "41F5FDA71DBC3F2900C753B5"
+               BuildableName = "CompletionEngineTest.xctest"
+               BlueprintName = "CompletionEngineTest"
+               ReferencedContainer = "container:Programming_Keyboard.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "41F5FDB81DBC480000C753B5"
+               BuildableName = "FunctionalTests.xctest"
+               BlueprintName = "FunctionalTests"
                ReferencedContainer = "container:Programming_Keyboard.xcodeproj">
             </BuildableReference>
          </TestableReference>
