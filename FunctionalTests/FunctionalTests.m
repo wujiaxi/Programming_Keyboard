@@ -50,7 +50,7 @@
 }
 
 - (void) assertString:(NSString*) target{
-    NSLog(@"%@", self.app.codes.text);
+    NSLog(@"\n%@", self.app.codes.text);
     XCTAssert([self.app.codes.text isEqualToString:target]);
 }
 
@@ -70,7 +70,7 @@
             [self.app moveCursorRight:nil];
         }
     }else{
-        for(int i = 0; i < offset; ++i){
+        for(int i = 0; i < -offset; ++i){
             [self.app moveCursorLeft:nil];
         }
     }
@@ -94,6 +94,34 @@
     [self pressKey:@"{"];
     [self assertString:@"\n\n{\n    \n}"];
     XCTAssert([self getIndex] == 8);//wind to correct position
+    
+    [self pressKey:@"{"];
+    [self assertString:@"\n\n{\n    {\n        \n    }\n}"];
+    XCTAssert([self getIndex] == 18);//wind to correct position
+}
+
+- (void)testDeletingInnerScope {
+    [self pressKey:@"{"];
+    [self assertString:@"{\n    \n}"];
+    XCTAssert([self getIndex] == 6);//wind to correct position
+    
+    [self pressKey:@"{"];
+    [self assertString:@"{\n    {\n        \n    }\n}"];
+    XCTAssert([self getIndex] == 16);//wind to correct position
+    
+    [self pressKey:@"Enter"];
+    [self assertString:@"{\n    {\n        \n        \n    }\n}"];
+    XCTAssert([self getIndex] == 25);//wind to correct position
+    
+    [self pressKey:@"{"];
+    [self assertString:@"{\n    {\n        \n        {\n            \n        }\n    }\n}"];
+    XCTAssert([self getIndex] == 39);//wind to correct position
+    
+    [self moveCursor:-13];
+    [self pressKey:@"BackSpace"];
+    [self assertString:@"{\n    {\n        \n        \n        \n    \n    }\n}"];
+    XCTAssert([self getIndex] == 25);//wind to correct position
+
 }
 
 @end
