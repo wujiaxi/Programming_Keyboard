@@ -63,6 +63,11 @@
 - (NSString*) fixScopeRight:(NSString*) code
                       from:(NSInteger) rightBrace;
 
+    //cursor control:
+- (NSInteger) OffsetToPrevLine:(UITextView*) codes;
+- (NSInteger) OffsetToNextLine:(UITextView*) codes;
+
+
 @end
 
 

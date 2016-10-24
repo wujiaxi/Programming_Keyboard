@@ -33,6 +33,11 @@
 
 -(IBAction)MoveCursorRight:(UIButton *)sender;
 
+-(IBAction)MoveCursorDown:(UIButton *)sender;
+
+-(IBAction)MoveCursorUp:(UIButton *)sender;
+
+
 //keyboard helpers
 -(IBAction)keyboardButton:(UIButton *)sender;
 -(void) BackSpaceButton:(NSTimer*)timer;

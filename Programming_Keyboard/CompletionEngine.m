@@ -312,4 +312,60 @@
     return nil;
 }
 
+//cursor control:
+//the value cur cursor will be [0... textlength], where
+//the last value indicates the cursor is at the end of the text
+//value is the index to the right of the actual cursor
+- (NSInteger) OffsetToLineOffset:(NSInteger) offset
+                            code:(UITextView*) codes{
+    NSInteger CurrentLineCursor = [codes offsetFromPosition:codes.beginningOfDocument
+                                                 toPosition:[codes selectedTextRange].start];
+    UITextPosition* pos = [codes selectedTextRange].start;
+    NSInteger target = CurrentLineCursor;
+    NSInteger PrevLineEnd = CurrentLineCursor - 1;
+    NSString* text = codes.text;
+    while(PrevLineEnd >= 0 && [text characterAtIndex:PrevLineEnd]!='\n'){
+        --PrevLineEnd;
+    }
+    NSInteger LineOffset = CurrentLineCursor - PrevLineEnd - 1;
+
+    if(offset > 0){
+        for(NSInteger i = CurrentLineCursor; i <= [text length]; ++i){
+            if(i < [text length] && [text characterAtIndex:i] == '\n' ){
+                offset--;
+            }
+            if(offset == 0 || i == [text length]){
+                target = MIN(i+1, (NSInteger)[text length]); break;
+            }
+        }
+    }else{
+        offset--;
+        for(NSInteger i = CurrentLineCursor - 1; i >= 0; --i){
+            if([text characterAtIndex:i] == '\n' ){
+                offset++;
+            }
+            if(offset == 0 || i == 0){
+                target = i+1; break;
+            }
+        }
+    }
+    for(NSInteger i = target; i <= [text length]; ++i){
+        if(i == [text length] || [text characterAtIndex:i] == '\n'){
+            LineOffset = MIN(LineOffset, i - target);
+            break;
+        }
+    }
+       
+    return (target - CurrentLineCursor) + LineOffset;
+}
+
+- (NSInteger) OffsetToPrevLine:(UITextView*) codes{
+    return [self OffsetToLineOffset:-1 code:codes];
+    
+}
+
+- (NSInteger) OffsetToNextLine:(UITextView*) codes{
+    return [self OffsetToLineOffset:1 code:codes];
+}
+
 @end

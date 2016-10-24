@@ -61,7 +61,7 @@
 
 - (NSInteger) getIndex{
     return [self.codes offsetFromPosition:self.codes.beginningOfDocument
-                               toPosition:[self.app.completionEngine cursor:self.codes with:0]];
+                          toPosition:[self.codes selectedTextRange].start];
 }
 
 - (void) moveCursor:(NSInteger) offset{
@@ -122,6 +122,30 @@
     [self assertString:@"{\n    {\n        \n        \n        \n    \n    }\n}"];
     XCTAssert([self getIndex] == 25);//wind to correct position
 
+}
+
+- (void)testMovingUp {
+    [self pressKey:@"{"];
+    [self assertString:@"{\n    \n}"];
+    XCTAssert([self getIndex] == 6);//wind to correct position
+    
+    [self.app MoveCursorUp:nil];
+    XCTAssert([self getIndex] == 1);
+    
+    [self.app MoveCursorDown:nil];
+    XCTAssert([self getIndex] == 3);
+}
+
+- (void)testMovingDown {
+    [self pressKey:@"{"];
+    [self assertString:@"{\n    \n}"];
+    XCTAssert([self getIndex] == 6);//wind to correct position
+    
+    [self.app MoveCursorDown:nil];
+    XCTAssert([self getIndex] == 8);
+    
+    [self.app MoveCursorUp:nil];
+    XCTAssert([self getIndex] == 3);
 }
 
 @end

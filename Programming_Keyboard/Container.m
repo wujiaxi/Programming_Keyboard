@@ -62,7 +62,9 @@
         if(subview.tag == CONTROL_TAG){
             for(UIButton* button in subview.subviews){
                 if([button.titleLabel.text isEqualToString:@"Left"]||
-                    [button.titleLabel.text isEqualToString:@"Right"]){
+                   [button.titleLabel.text isEqualToString:@"Right"]||
+                   [button.titleLabel.text isEqualToString:@"Up"]||
+                   [button.titleLabel.text isEqualToString:@"Down"]){
                     [self RegisterButton:button
                          toSelectorBegin:@"TouchBegin:"
                            toSelectorEnd:@"TouchEnd:"];
@@ -105,6 +107,21 @@
 -(IBAction)keyboardButtonTouched:(UIButton *)sender{
     NSLog(@"button %@ touched to update current key", sender.titleLabel.text);
     self.currentKey = sender;
+}
+
+-(IBAction)MoveCursorUp:(UIButton *)sender{
+    NSInteger offset = [self.completionEngine OffsetToPrevLine:self.codes];
+    for(NSInteger i = 0; i < -offset; ++i){
+        [self MoveCursorLeft:sender];
+    }
+}
+
+-(IBAction)MoveCursorDown:(UIButton *)sender{
+    NSInteger offset = [self.completionEngine OffsetToNextLine:self.codes];
+    for(NSInteger i = 0; i < offset; ++i){
+        [self MoveCursorRight:sender];
+    }
+    
 }
 
 -(IBAction)MoveCursorLeft:(UIButton *)sender{
