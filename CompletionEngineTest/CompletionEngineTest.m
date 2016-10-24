@@ -30,11 +30,64 @@
     
 }
 
+-(void)MoveCursorByOffset:(NSInteger)offset{
+    UITextRange* selected = [self.codes selectedTextRange];
+    if(selected){
+        UITextPosition* next = [self.codes
+                                positionFromPosition:selected.start
+                                offset:offset];
+        if(next){
+            self.codes.selectedTextRange = [self.codes textRangeFromPosition:next
+                                                                  toPosition:next];
+        }
+    }
+}
+
 - (void)testCompletionSmoke1 {
     [self.completionEngine inputPressed:@"a" textField:self.codes];
     XCTAssert([self.codes.text isEqualToString:@"a"]);
     [self.completionEngine inputPressed:@"BackSpace" textField:self.codes];
     XCTAssert([self.codes.text isEqualToString:@""]);
+}
+
+- (void)testFindPreviousLineCursor {
+    [self.codes insertText:@"\n\n"];
+    XCTAssert([self.completionEngine OffsetToNextLine:self.codes] == 0);
+    XCTAssert([self.completionEngine OffsetToPrevLine:self.codes] == -1);
+}
+
+- (void)testFindNextLineCursor {
+    [self.codes insertText:@"\n\n"];
+    [self MoveCursorByOffset:-1];
+    XCTAssert([self.completionEngine OffsetToNextLine:self.codes] == 1);
+    XCTAssert([self.completionEngine OffsetToPrevLine:self.codes] == 0);
+}
+
+- (void)testMultipleMotionBack {
+    [self.codes insertText:@"b\na\ncdefg\nabc"];
+    XCTAssert([self.completionEngine OffsetToPrevLine:self.codes] == -6);
+    [self MoveCursorByOffset:-6];
+    XCTAssert([self.completionEngine OffsetToPrevLine:self.codes] == -4);
+    [self MoveCursorByOffset:-4];
+    XCTAssert([self.completionEngine OffsetToPrevLine:self.codes] == -2);
+}
+
+- (void)testMultipleMotionForward {
+    [self.codes insertText:@"b\na\ncdefg\nabc"];
+    XCTAssert([self.completionEngine OffsetToPrevLine:self.codes] == -6);
+    [self MoveCursorByOffset:-7];
+    XCTAssert([self.completionEngine OffsetToNextLine:self.codes] == 6);
+}
+
+- (void)testMotionForwardOverflow {
+    [self.codes insertText:@"ab\nb"];
+    [self MoveCursorByOffset:-2];
+    XCTAssert([self.completionEngine OffsetToNextLine:self.codes] == 2);
+}
+
+- (void)testMotionBackwardOverflow {
+    [self.codes insertText:@"a\nab"];
+    XCTAssert([self.completionEngine OffsetToPrevLine:self.codes] == -3);
 }
 
 @end

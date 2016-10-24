@@ -26,6 +26,8 @@
 
 - (NSInteger) inputPressed:(NSString*) input
                  textField:(UITextView*) code;
+
+
 //add a char to the current search state
 - (void) addChar:(NSString *) c;
 
@@ -60,6 +62,11 @@
                   from:(NSInteger) leftBrace;
 - (NSString*) fixScopeRight:(NSString*) code
                       from:(NSInteger) rightBrace;
+
+    //cursor control:
+- (NSInteger) OffsetToPrevLine:(UITextView*) codes;
+- (NSInteger) OffsetToNextLine:(UITextView*) codes;
+
 
 @end
 

@@ -50,7 +50,7 @@
 }
 
 - (void) assertString:(NSString*) target{
-    NSLog(@"%@", self.app.codes.text);
+    NSLog(@"\n%@", self.app.codes.text);
     XCTAssert([self.app.codes.text isEqualToString:target]);
 }
 
@@ -61,17 +61,17 @@
 
 - (NSInteger) getIndex{
     return [self.codes offsetFromPosition:self.codes.beginningOfDocument
-                               toPosition:[self.app.completionEngine cursor:self.codes with:0]];
+                          toPosition:[self.codes selectedTextRange].start];
 }
 
 - (void) moveCursor:(NSInteger) offset{
     if(offset > 0){
         for(int i = 0; i < offset; ++i){
-            [self.app moveCursorRight:nil];
+            [self.app MoveCursorRight:nil];
         }
     }else{
-        for(int i = 0; i < offset; ++i){
-            [self.app moveCursorLeft:nil];
+        for(int i = 0; i < -offset; ++i){
+            [self.app MoveCursorLeft:nil];
         }
     }
 }
@@ -94,6 +94,58 @@
     [self pressKey:@"{"];
     [self assertString:@"\n\n{\n    \n}"];
     XCTAssert([self getIndex] == 8);//wind to correct position
+    
+    [self pressKey:@"{"];
+    [self assertString:@"\n\n{\n    {\n        \n    }\n}"];
+    XCTAssert([self getIndex] == 18);//wind to correct position
+}
+
+- (void)testDeletingInnerScope {
+    [self pressKey:@"{"];
+    [self assertString:@"{\n    \n}"];
+    XCTAssert([self getIndex] == 6);//wind to correct position
+    
+    [self pressKey:@"{"];
+    [self assertString:@"{\n    {\n        \n    }\n}"];
+    XCTAssert([self getIndex] == 16);//wind to correct position
+    
+    [self pressKey:@"Enter"];
+    [self assertString:@"{\n    {\n        \n        \n    }\n}"];
+    XCTAssert([self getIndex] == 25);//wind to correct position
+    
+    [self pressKey:@"{"];
+    [self assertString:@"{\n    {\n        \n        {\n            \n        }\n    }\n}"];
+    XCTAssert([self getIndex] == 39);//wind to correct position
+    
+    [self moveCursor:-13];
+    [self pressKey:@"BackSpace"];
+    [self assertString:@"{\n    {\n        \n        \n        \n    \n    }\n}"];
+    XCTAssert([self getIndex] == 25);//wind to correct position
+
+}
+
+- (void)testMovingUp {
+    [self pressKey:@"{"];
+    [self assertString:@"{\n    \n}"];
+    XCTAssert([self getIndex] == 6);//wind to correct position
+    
+    [self.app MoveCursorUp:nil];
+    XCTAssert([self getIndex] == 1);
+    
+    [self.app MoveCursorDown:nil];
+    XCTAssert([self getIndex] == 3);
+}
+
+- (void)testMovingDown {
+    [self pressKey:@"{"];
+    [self assertString:@"{\n    \n}"];
+    XCTAssert([self getIndex] == 6);//wind to correct position
+    
+    [self.app MoveCursorDown:nil];
+    XCTAssert([self getIndex] == 8);
+    
+    [self.app MoveCursorUp:nil];
+    XCTAssert([self getIndex] == 3);
 }
 
 @end
