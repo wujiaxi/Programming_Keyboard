@@ -7,11 +7,19 @@
 //
 
 #import "Container.h"
+#import "GTMOAuth2ViewControllerTouch.h"
+#import "GTLDrive.h"
 #define KEYBOARD_TAG 1
 #define CONTROL_TAG 2
 
+static NSString *const kKeychainItemName = @"Drive API";
+static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka6.apps.googleusercontent.com";
 
-@interface Container ()  <UIPopoverPresentationControllerDelegate, CompletionSelectionDelegate>
+
+@interface Container ()  <UIPopoverPresentationControllerDelegate,
+                            CompletionSelectionDelegate,
+                            FileSyncDelegate>
+
 @property(nonatomic, strong) NSMutableDictionary* keyboardLayout;
 @property(nonatomic, strong) NSMutableDictionary* ControlLayout;
 
@@ -29,16 +37,31 @@
     NSLog(@"main container init");
     
     self.codes.inputView = [UIView new];
-    [self.codes becomeFirstResponder];
 
     //init data structure
     self.completionEngine = [[CompletionEngine alloc] initWithDemo];
+    
+    //init google dirve
+    self.service = [[GTLServiceDrive alloc] init];
+    self.service.authorizer =
+    [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
+                                                          clientID:kClientID
+                                                      clientSecret:nil];
+    self.driveModel = [[DriveModel alloc] init];
+    self.driveModel.delegate = self;
+    self.driveModel.service = self.service;
+    
 }
 
 - (void)viewDidLayoutSubviews{
     self.keyboardLayout = [NSMutableDictionary new];
     self.ButtonToSelector = [NSMutableDictionary new];
-    
+    if (!self.service.authorizer.canAuthorize) {
+        // Not yet authorized, request authorization by pushing the login UI onto the UI stack.
+        [self presentViewController:[self createAuthController] animated:YES completion:nil];
+    }
+    [self.driveModel fetchFiles];
+    [self.driveModel SetupSketch];
     for(UIView * subview in self.view.subviews){
         if(subview.tag == KEYBOARD_TAG){
             for(UIButton* button in subview.subviews){
@@ -68,7 +91,6 @@
                     [self RegisterButton:button
                          toSelectorBegin:@"TouchBegin:"
                            toSelectorEnd:@"TouchEnd:"];
-                    NSString* buttonName = button.titleLabel.text;
                     [self.ButtonToSelector setObject:[NSString stringWithFormat:@"MoveCursor%@:", button.titleLabel.text]
                                               forKey:button.titleLabel.text];
 
@@ -76,15 +98,20 @@
             }
         }
     }
+    [self.codes becomeFirstResponder];
 }
 
 - (void) RegisterButton:(UIButton*) button
              toSelectorBegin:(NSString* ) selectorBeginName
              toSelectorEnd:(NSString* ) selectorEndName{
 
-    [button addTarget:self action:NSSelectorFromString(selectorBeginName) forControlEvents: UIControlEventTouchDown];
-    [button addTarget:self action:NSSelectorFromString(selectorEndName) forControlEvents:
-     UIControlEventTouchUpInside | UIControlEventTouchUpOutside | UIControlEventTouchCancel];
+    [button addTarget:self
+               action:NSSelectorFromString(selectorBeginName)
+     forControlEvents: UIControlEventTouchDown];
+    
+    [button addTarget:self
+               action:NSSelectorFromString(selectorEndName)
+     forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchUpOutside | UIControlEventTouchCancel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -192,9 +219,7 @@
     switch(sender.state){
         case UIGestureRecognizerStateBegan:{
             //normal action:
-            UIButton* button = sender.view;
-            NSLog(@"normal key long press triggered %@", button.titleLabel.text);
-            [self keyboardButton:button];
+            [self keyboardButton:(UIButton*)sender.view];
             
             
             //init the view
@@ -267,5 +292,75 @@
     popoverPresentationController willRepositionPopoverToRect:(inout CGRect *)rect inView:(inout UIView *__autoreleasing  _Nonnull *)view {
     
     // called when the Popover changes positon
+}
+
+// Creates the auth controller for authorizing access to Drive API.
+- (GTMOAuth2ViewControllerTouch *)createAuthController {
+    GTMOAuth2ViewControllerTouch *authController;
+    // If modifying these scopes, delete your previously saved credentials by
+    // resetting the iOS simulator or uninstall the app.
+    NSArray *scopes = [NSArray arrayWithObjects:kGTLAuthScopeDriveMetadata, kGTLAuthScopeDrive, nil];
+    authController = [[GTMOAuth2ViewControllerTouch alloc]
+                      initWithScope:[scopes componentsJoinedByString:@" "]
+                      clientID:kClientID
+                      clientSecret:nil
+                      keychainItemName:kKeychainItemName
+                      delegate:self
+                      finishedSelector:@selector(viewController:finishedWithAuth:error:)];
+    return authController;
+}
+
+// Handle completion of the authorization process, and update the Drive API
+// with the new credentials.
+- (void)viewController:(GTMOAuth2ViewControllerTouch *)viewController
+      finishedWithAuth:(GTMOAuth2Authentication *)authResult
+                 error:(NSError *)error {
+    if (error != nil) {
+        [self showAlert:@"Authentication Error" message:error.localizedDescription];
+        self.service.authorizer = nil;
+    }
+    else {
+        self.service.authorizer = authResult;
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+// Helper for showing an alert
+- (void)showAlert:(NSString *)title message:(NSString *)message {
+    UIAlertController *alert =
+    [UIAlertController alertControllerWithTitle:title
+                                        message:message
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *ok =
+    [UIAlertAction actionWithTitle:@"OK"
+                             style:UIAlertActionStyleDefault
+                           handler:^(UIAlertAction * action)
+     {
+         [alert dismissViewControllerAnimated:YES completion:nil];
+     }];
+    [alert addAction:ok];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+
+//sync file delegate:
+// Process the response and display output.
+- (void)displayResultWithTicket:(GTLServiceTicket *)ticket
+             finishedWithObject:(GTLDriveFileList *)response
+                          error:(NSError *)error {
+    if (error == nil) {
+        NSMutableString *filesString = [[NSMutableString alloc] init];
+        if (response.files.count > 0) {
+            [filesString appendString:@"\nFiles:\n"];
+            for (GTLDriveFile *file in response.files) {
+                [filesString appendFormat:@"%@ (%@)\n", file.name, file.identifier];
+            }
+        } else {
+            [filesString appendString:@"No files found."];
+        }
+        NSLog(@"file pulled: %@", filesString);
+    } else {
+        [self showAlert:@"Error" message:error.localizedDescription];
+    }
 }
 @end

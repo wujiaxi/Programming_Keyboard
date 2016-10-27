@@ -7,11 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#import "GTMOAuth2ViewControllerTouch.h"
+#import "GTLDrive.h"
+
 // pop up view
 #import "AutoCompletionPanelController.h"
 
 // data helpers
 #import "CompletionEngine.h"
+#import "DriveModel.h"
+
 @interface Container : UIViewController
 @property (nonatomic, weak) AutoCompletionPanelController *completionPanel;
 
@@ -44,6 +50,9 @@
 
 //pop up gesture
 -(IBAction) CompletionLongPressed:(UILongPressGestureRecognizer *) sender;
+
+@property (nonatomic, strong) GTLServiceDrive *service;
+@property (nonatomic, strong) DriveModel *driveModel;
 
 @end
 
