@@ -69,10 +69,9 @@ static NSString *const SketchName = @"_sketch.txt";
         if (error == nil) {
             
             NSLog(@"Have results");
-            // Iterate over fileList.files array
             NSLog(@"%@", fileList.files);
             if([fileList.files count] > 0){
-                //fetch the identifier
+                //fetch the file identifier
                 GTLDriveFile *workingFolder = (fileList.files[0]);
                 self.WorkSpaceID = workingFolder.identifier;
                 GTLQueryDrive *query = [GTLQueryDrive queryForFilesList];
@@ -94,7 +93,7 @@ static NSString *const SketchName = @"_sketch.txt";
                 return;
             }
             
-            //create new sketch
+            //folder created, try to create new sketch file
             
             GTLDriveFile *folder = [GTLDriveFile object];
             folder.name = PathName;
@@ -104,7 +103,8 @@ static NSString *const SketchName = @"_sketch.txt";
                                                                uploadParameters:nil];
             [self.service executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
                                                                  GTLDriveFile *updatedFile,
-                                                                 NSError *error) {
+                                                                  NSError *error) {
+                //create the sketch file here
                 if (error == nil) {
                     self.WorkSpaceID = updatedFile.identifier;
                     NSLog(@"Created folder");
