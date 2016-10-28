@@ -320,7 +320,6 @@
                             code:(UITextView*) codes{
     NSInteger CurrentLineCursor = [codes offsetFromPosition:codes.beginningOfDocument
                                                  toPosition:[codes selectedTextRange].start];
-    UITextPosition* pos = [codes selectedTextRange].start;
     NSInteger target = CurrentLineCursor;
     NSInteger PrevLineEnd = CurrentLineCursor - 1;
     NSString* text = codes.text;

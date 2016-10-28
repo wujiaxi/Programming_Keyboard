@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0423E29DE99B672DF4668E7CDDF5FC9FF1E54808",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0423E29DE99B672DF4668E7CDDF5FC9FF1E54808" : 9223372036854775807,
+    "A85133527DCBF0A3515BA28AB90F6B8102F02AE3" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2D7472B1-10A0-4A58-86C9-895BA6407A92",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0423E29DE99B672DF4668E7CDDF5FC9FF1E54808" : "Programming_Keyboard\/",
+    "A85133527DCBF0A3515BA28AB90F6B8102F02AE3" : "tmp\/ios-quickeditor\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Programming_Keyboard",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Programming_Keyboard.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/junlong-gao\/Programming_Keyboard.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0423E29DE99B672DF4668E7CDDF5FC9FF1E54808"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/googledrive\/ios-quickeditor.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A85133527DCBF0A3515BA28AB90F6B8102F02AE3"
+    }
+  ]
+}
