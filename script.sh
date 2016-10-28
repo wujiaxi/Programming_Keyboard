@@ -1,17 +1,28 @@
 #!/bin/bash
-set -e
+set -x
 
 sudo gem install xcpretty
+sudo gem install cocoapods
 
+pod install
 OS=${1:-'10.1'}
 
-echo $OS
+build_errors_file=build_errors.log
 
+# Pipe errors to file
 echo "building the project"
-xcodebuild \
-	-project Programming_Keyboard.xcodeproj \
+xcodebuild -workspace Programming_Keyboard.xcworkspace \
 	-scheme Programming_Keyboard \
 	-sdk iphonesimulator$OS 'CODE_SIGN_IDENTITY=-' \
 	-destination "platform=iOS Simulator,name=iPad Air 2,OS=$OS" \
-	test|xcpretty
+	test|xcpretty 2> $build_errors_file
 
+errors=`grep -wc "The following build commands failed" $build_errors_file`
+if [ "$errors" != "0" ]
+then
+    echo "BUILD FAILED. Error Log:"
+    cat $build_errors_file
+    rm $build_errors_file
+    exit 1
+fi
+rm $build_errors_file

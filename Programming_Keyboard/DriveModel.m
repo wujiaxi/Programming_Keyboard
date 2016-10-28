@@ -79,7 +79,7 @@ static NSString *const SketchName = @"_sketch.txt";
                     }
                     
                 }];
-                    //get the sketch identifier
+                //get the sketch identifier
                 return;
             }
             
