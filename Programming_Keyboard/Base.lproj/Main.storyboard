@@ -1431,6 +1431,15 @@
                                             <action selector="MoveCursorRight:" destination="BYZ-38-t0r" eventType="touchUpInside" id="njg-Yi-88u"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAg-Sp-h72">
+                                        <rect key="frame" x="98" y="4" width="81" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <state key="normal" title="Commit"/>
+                                        <connections>
+                                            <action selector="CommitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pq5-Wj-E0m"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>

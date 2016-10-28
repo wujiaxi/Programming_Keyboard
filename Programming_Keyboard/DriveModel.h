@@ -7,18 +7,16 @@
 #import "GTLDrive.h"
 
 @protocol FileSyncDelegate <NSObject>
-- (void)displayResultWithTicket:(GTLServiceTicket *)ticket
-             finishedWithObject:(GTLDriveFileList *)response
-                          error:(NSError *)error;
+- (void) populateTextField:(NSString*) data;
 @end
 
 @interface DriveModel : NSObject
 @property (nonatomic, weak) GTLServiceDrive *service;
 @property (nonatomic, weak) id<FileSyncDelegate> delegate;
 
-- (void)fetchFiles;
-
 - (void) SetupSketch;
+
+- (void) commit:(NSString*) codes;
 
 @end
 

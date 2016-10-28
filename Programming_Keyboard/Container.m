@@ -60,8 +60,8 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
         // Not yet authorized, request authorization by pushing the login UI onto the UI stack.
         [self presentViewController:[self createAuthController] animated:YES completion:nil];
     }
-    [self.driveModel fetchFiles];
     [self.driveModel SetupSketch];
+    
     for(UIView * subview in self.view.subviews){
         if(subview.tag == KEYBOARD_TAG){
             for(UIButton* button in subview.subviews){
@@ -343,24 +343,15 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
     
 }
 
-//sync file delegate:
-// Process the response and display output.
-- (void)displayResultWithTicket:(GTLServiceTicket *)ticket
-             finishedWithObject:(GTLDriveFileList *)response
-                          error:(NSError *)error {
-    if (error == nil) {
-        NSMutableString *filesString = [[NSMutableString alloc] init];
-        if (response.files.count > 0) {
-            [filesString appendString:@"\nFiles:\n"];
-            for (GTLDriveFile *file in response.files) {
-                [filesString appendFormat:@"%@ (%@)\n", file.name, file.identifier];
-            }
-        } else {
-            [filesString appendString:@"No files found."];
-        }
-        NSLog(@"file pulled: %@", filesString);
-    } else {
-        [self showAlert:@"Error" message:error.localizedDescription];
-    }
+//file handler
+
+- (void) populateTextField:(NSString*) data{
+    self.codes.text = data;
 }
+
+-(IBAction)CommitButton:(UIButton *)sender{
+    [self.driveModel commit:self.codes.text];
+}
+
+
 @end
