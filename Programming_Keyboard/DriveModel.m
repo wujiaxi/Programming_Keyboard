@@ -33,15 +33,11 @@ static NSString *const SketchName = @"_sketch.txt";
     NSString *name = SketchName;
     NSString *content = codes;
     NSString *mimeType = @"text/plain";
-    
     GTLDriveFile *metadata = [GTLDriveFile object];
     metadata.name = name;
-    
-    
     NSData *data = [content dataUsingEncoding:NSUTF8StringEncoding];
     GTLUploadParameters *uploadParameters = [GTLUploadParameters uploadParametersWithData:data
                                                                                  MIMEType:mimeType];
-    
     GTLQueryDrive *query = [GTLQueryDrive queryForFilesUpdateWithObject:metadata
                                                                  fileId:self.SketchID
                                                        uploadParameters:uploadParameters];
@@ -67,9 +63,6 @@ static NSString *const SketchName = @"_sketch.txt";
                                                   GTLDriveFileList *fileList,
                                                   NSError *error) {
         if (error == nil) {
-            
-            NSLog(@"Have results");
-            NSLog(@"%@", fileList.files);
             if([fileList.files count] > 0){
                 //fetch the file identifier
                 GTLDriveFile *workingFolder = (fileList.files[0]);
@@ -80,25 +73,20 @@ static NSString *const SketchName = @"_sketch.txt";
                                                                      GTLDriveFileList *fileList,
                                                                      NSError *error) {
                     if (error == nil) {
-                        NSLog(@"Have results");
-                        // Iterate over fileList.files array
-                        NSLog(@"%@", fileList.files);
                         GTLDriveFile *updatedFile = (fileList.files[0]);
                         self.SketchID = updatedFile.identifier;
                         [self fetchData];
-                        
                     }
                     
                 }];
+                    //get the sketch identifier
                 return;
             }
             
             //folder created, try to create new sketch file
-            
             GTLDriveFile *folder = [GTLDriveFile object];
             folder.name = PathName;
             folder.mimeType = @"application/vnd.google-apps.folder";
-            
             GTLQueryDrive *query = [GTLQueryDrive queryForFilesCreateWithObject:folder
                                                                uploadParameters:nil];
             [self.service executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
@@ -106,26 +94,21 @@ static NSString *const SketchName = @"_sketch.txt";
                                                                   NSError *error) {
                 //create the sketch file here
                 if (error == nil) {
+                    //create the sketch file here
                     self.WorkSpaceID = updatedFile.identifier;
-                    NSLog(@"Created folder");
                     NSString *name = SketchName;
                     NSString *content = @"Start typing your code here...";
                     NSString *mimeType = @"text/plain";
-                    
                     GTLDriveFile *metadata = [GTLDriveFile object];
                     metadata.name = name;
-
-                    
                     NSData *data = [content dataUsingEncoding:NSUTF8StringEncoding];
                     GTLUploadParameters *uploadParameters = [GTLUploadParameters uploadParametersWithData:data MIMEType:mimeType];
                     metadata.parents = @[updatedFile.identifier];
-
                     GTLQueryDrive *query = [GTLQueryDrive queryForFilesCreateWithObject:metadata
                                                                        uploadParameters:uploadParameters];
                     [self.service executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
                                                                          GTLDriveFile *updatedFile,
                                                                          NSError *error) {
-                        
                         if (error == nil) {
                             NSLog(@"File %@", updatedFile);
                             self.SketchID = updatedFile.identifier;
@@ -149,7 +132,6 @@ static NSString *const SketchName = @"_sketch.txt";
     NSString *url = [NSString stringWithFormat:@"https://www.googleapis.com/drive/v3/files/%@?alt=media",
                      self.SketchID];
     GTMSessionFetcher *fetcher = [self.service.fetcherService fetcherWithURLString:url];
-    
     [fetcher beginFetchWithCompletionHandler:^(NSData *data, NSError *error) {
         if (error == nil) {
             NSLog(@"Retrieved file content");

@@ -43,8 +43,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
     
     //init google dirve
     self.service = [[GTLServiceDrive alloc] init];
-    self.service.authorizer =
-    [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
+    self.service.authorizer = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
                                                           clientID:kClientID
                                                       clientSecret:nil];
     self.driveModel = [[DriveModel alloc] init];
@@ -59,8 +58,9 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
     if (!self.service.authorizer.canAuthorize) {
         // Not yet authorized, request authorization by pushing the login UI onto the UI stack.
         [self presentViewController:[self createAuthController] animated:YES completion:nil];
+    }else{
+        [self.driveModel SetupSketch];
     }
-    [self.driveModel SetupSketch];
     
     for(UIView * subview in self.view.subviews){
         if(subview.tag == KEYBOARD_TAG){
@@ -322,6 +322,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
     else {
         self.service.authorizer = authResult;
         [self dismissViewControllerAnimated:YES completion:nil];
+        [self.driveModel SetupSketch];
     }
 }
 
