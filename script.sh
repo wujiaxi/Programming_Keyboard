@@ -4,7 +4,7 @@ set -x
 sudo gem install xcpretty
 sudo gem install cocoapods
 
-pod install
+pod install --verbose
 OS=${1:-'10.1'}
 
 build_errors_file=build_errors.log
