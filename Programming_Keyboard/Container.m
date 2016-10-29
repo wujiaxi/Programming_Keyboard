@@ -55,6 +55,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
     
 }
 
+#pragma mark - initialization
 - (void)viewDidLayoutSubviews{
     self.keyboardLayout = [NSMutableDictionary new];
     self.ButtonToSelector = [NSMutableDictionary new];
@@ -124,7 +125,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
 }
 
 
-#pragma mark - Completion Selection Delegate
+#pragma mark - Completion Selection Panel Delegate
 -(void) selectedCompletion:(NSString *)entry
 {
     //NSLog(@"selected completion %@", entry);
@@ -133,8 +134,12 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
     [self.completionEngine rewind];
 }
 
+#pragma mark - UIevent button touched
+-(IBAction)CommitButton:(UIButton *)sender{
+    [self.driveModel Commit:self.codes.text];
+}
 
-// button touch down
+
 // button touch down
 -(IBAction)CompletionLanguageSelected:(UIButton *)sender{
     //NSLog(@"button %@ touched to update current key", sender.titleLabel.text);
@@ -154,6 +159,14 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
     popController.sourceView = self.controls;
     popController.sourceRect = sender.frame;
     popController.delegate = self;
+}
+
+- (IBAction)signoutButtonClicked:(id)sender {
+        // Sign out
+    [GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:kKeychainItemName];
+    [[self service] setAuthorizer:nil];
+    self.setup = NO;
+    [self presentViewController:[self createAuthController] animated:YES completion:nil];
 }
 
 -(IBAction)keyboardButtonTouched:(UIButton *)sender{
@@ -208,6 +221,19 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
 
 }
 
+
+//keyboard helpers
+-(IBAction)keyboardButton:(UIButton *)sender{
+    NSString* input = sender.titleLabel.text;
+    //NSLog(@"button %@ touched up", input);
+    NSInteger rewindOffset = [self.completionEngine inputPressed:input
+                                                       textField:self.codes];
+    [self.completionEngine printDebug];
+    [self moveCursorByOffset:rewindOffset];
+}
+
+
+#pragma mark - helpers
 -(void)moveCursorByOffset:(NSInteger)offset{
     UITextRange* selected = [self.codes selectedTextRange];
     if(selected){
@@ -221,16 +247,6 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
     }
 }
 
-//keyboard helpers
--(IBAction)keyboardButton:(UIButton *)sender{
-    NSString* input = sender.titleLabel.text;
-    //NSLog(@"button %@ touched up", input);
-    NSInteger rewindOffset = [self.completionEngine inputPressed:input
-                                                       textField:self.codes];
-    [self.completionEngine printDebug];
-    [self moveCursorByOffset:rewindOffset];
-}
-
 //backspace helpers
 -(void) BackSpaceButton:(NSTimer*)timer {
     NSInteger rewindOffset = [self.completionEngine inputPressed:@"BackSpace"
@@ -239,6 +255,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
     [self moveCursorByOffset:rewindOffset];
 }
 
+#pragma mark - long press hold triggered event
 //pop up gesture
 -(IBAction) CompletionLongPressed:(UILongPressGestureRecognizer *) sender{
     switch(sender.state){
@@ -280,6 +297,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
     
 }
 
+#pragma mark - long hold helper
 - (void) TouchBegin:(UIButton*)sender {
     //NSLog(@"triggered %@", sender.titleLabel.text);
     NSString* SelectorName = [self.ButtonToSelector objectForKey:sender.titleLabel.text];
@@ -368,15 +386,12 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
 }
 
 //file handler
-
+#pragma mark - delegate method from drive model
 - (void) populateTextField:(NSString*) data{
     self.codes.text = data;
     [self.driveModel SetupCompletion:@"cpp"];
 }
 
--(IBAction)CommitButton:(UIButton *)sender{
-    [self.driveModel Commit:self.codes.text];
-}
 
 - (void) populateCompletion:(NSString *) name
              withCompletion:(NSString *) data{
