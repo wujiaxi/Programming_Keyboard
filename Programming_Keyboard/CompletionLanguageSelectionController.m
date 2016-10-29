@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.AvailableList = @[@"cpp", @"java"];
+    self.AvailableList = @[@"cpp", @"java", @"go"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

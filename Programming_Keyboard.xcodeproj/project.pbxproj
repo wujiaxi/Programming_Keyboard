@@ -35,6 +35,21 @@
 		41F5FDC51DBC481C00C753B5 /* AutoCompletionPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF041DB15ECE0061F27F /* AutoCompletionPanelController.m */; };
 		41F5FDC61DBC481C00C753B5 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 410CB2261DB1229400F586B5 /* Container.m */; };
 		AA833B238467E3587D2FA3A0 /* libPods-FunctionalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8167191D054E566186CB4677 /* libPods-FunctionalTests.a */; };
+		B0000CE01DC4EFFC00D4AF44 /* _Schema_cpp.txt in Resources */ = {isa = PBXBuildFile; fileRef = B0000CDE1DC4EFFC00D4AF44 /* _Schema_cpp.txt */; };
+		B0000CE11DC4EFFC00D4AF44 /* _Schema_cpp.txt in Resources */ = {isa = PBXBuildFile; fileRef = B0000CDE1DC4EFFC00D4AF44 /* _Schema_cpp.txt */; };
+		B0000CE21DC4EFFC00D4AF44 /* _Schema_cpp.txt in Resources */ = {isa = PBXBuildFile; fileRef = B0000CDE1DC4EFFC00D4AF44 /* _Schema_cpp.txt */; };
+		B0000CE31DC4EFFC00D4AF44 /* _Schema_cpp.txt in Resources */ = {isa = PBXBuildFile; fileRef = B0000CDE1DC4EFFC00D4AF44 /* _Schema_cpp.txt */; };
+		B0000CE41DC4EFFC00D4AF44 /* _Schema_cpp.txt in Resources */ = {isa = PBXBuildFile; fileRef = B0000CDE1DC4EFFC00D4AF44 /* _Schema_cpp.txt */; };
+		B0000CE51DC4EFFC00D4AF44 /* _Schema_java.txt in Resources */ = {isa = PBXBuildFile; fileRef = B0000CDF1DC4EFFC00D4AF44 /* _Schema_java.txt */; };
+		B0000CE61DC4EFFC00D4AF44 /* _Schema_java.txt in Resources */ = {isa = PBXBuildFile; fileRef = B0000CDF1DC4EFFC00D4AF44 /* _Schema_java.txt */; };
+		B0000CE71DC4EFFC00D4AF44 /* _Schema_java.txt in Resources */ = {isa = PBXBuildFile; fileRef = B0000CDF1DC4EFFC00D4AF44 /* _Schema_java.txt */; };
+		B0000CE81DC4EFFC00D4AF44 /* _Schema_java.txt in Resources */ = {isa = PBXBuildFile; fileRef = B0000CDF1DC4EFFC00D4AF44 /* _Schema_java.txt */; };
+		B0000CE91DC4EFFC00D4AF44 /* _Schema_java.txt in Resources */ = {isa = PBXBuildFile; fileRef = B0000CDF1DC4EFFC00D4AF44 /* _Schema_java.txt */; };
+		B0000CEB1DC4F40B00D4AF44 /* _Schema_go.txt in Resources */ = {isa = PBXBuildFile; fileRef = B0000CEA1DC4F40B00D4AF44 /* _Schema_go.txt */; };
+		B0000CEC1DC4F40B00D4AF44 /* _Schema_go.txt in Resources */ = {isa = PBXBuildFile; fileRef = B0000CEA1DC4F40B00D4AF44 /* _Schema_go.txt */; };
+		B0000CED1DC4F40B00D4AF44 /* _Schema_go.txt in Resources */ = {isa = PBXBuildFile; fileRef = B0000CEA1DC4F40B00D4AF44 /* _Schema_go.txt */; };
+		B0000CEE1DC4F40B00D4AF44 /* _Schema_go.txt in Resources */ = {isa = PBXBuildFile; fileRef = B0000CEA1DC4F40B00D4AF44 /* _Schema_go.txt */; };
+		B0000CEF1DC4F40B00D4AF44 /* _Schema_go.txt in Resources */ = {isa = PBXBuildFile; fileRef = B0000CEA1DC4F40B00D4AF44 /* _Schema_go.txt */; };
 		B00F2FCF1DC463220013710C /* CompletionLanguageSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = B00F2FCE1DC463220013710C /* CompletionLanguageSelectionController.m */; };
 		B051FDD11DC2A107008049DC /* DriveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B051FDD01DC2A107008049DC /* DriveModel.m */; };
 		B051FDD21DC2A107008049DC /* DriveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B051FDD01DC2A107008049DC /* DriveModel.m */; };
@@ -117,6 +132,9 @@
 		92830170A03863AE4A27A0C3 /* Pods-Programming_KeyboardTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Programming_KeyboardTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Programming_KeyboardTests/Pods-Programming_KeyboardTests.release.xcconfig"; sourceTree = "<group>"; };
 		9B0455F67C96590B9A02C586 /* Pods-Programming_KeyboardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Programming_KeyboardTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Programming_KeyboardTests/Pods-Programming_KeyboardTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A59693CAE41EC25C05E6BE85 /* libPods-Programming_Keyboard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Programming_Keyboard.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0000CDE1DC4EFFC00D4AF44 /* _Schema_cpp.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = _Schema_cpp.txt; path = schemas/_Schema_cpp.txt; sourceTree = "<group>"; };
+		B0000CDF1DC4EFFC00D4AF44 /* _Schema_java.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = _Schema_java.txt; path = schemas/_Schema_java.txt; sourceTree = "<group>"; };
+		B0000CEA1DC4F40B00D4AF44 /* _Schema_go.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = _Schema_go.txt; path = schemas/_Schema_go.txt; sourceTree = "<group>"; };
 		B00F2FCD1DC463220013710C /* CompletionLanguageSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletionLanguageSelectionController.h; sourceTree = "<group>"; };
 		B00F2FCE1DC463220013710C /* CompletionLanguageSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletionLanguageSelectionController.m; sourceTree = "<group>"; };
 		B051FDD01DC2A107008049DC /* DriveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriveModel.m; sourceTree = "<group>"; };
@@ -180,6 +198,7 @@
 		410CB2131DB1229400F586B5 = {
 			isa = PBXGroup;
 			children = (
+				B0000CDC1DC4EFE700D4AF44 /* Resources */,
 				410CB21E1DB1229400F586B5 /* Programming_Keyboard */,
 				41F5FD971DBC0EDE00C753B5 /* TrieTests */,
 				41F5FDA91DBC3F2900C753B5 /* CompletionEngineTest */,
@@ -313,6 +332,24 @@
 				16DBCEC1F8ED13B5A4D059C8 /* libPods-CompletionEngineTest.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B0000CDC1DC4EFE700D4AF44 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B0000CDD1DC4EFED00D4AF44 /* Schema */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		B0000CDD1DC4EFED00D4AF44 /* Schema */ = {
+			isa = PBXGroup;
+			children = (
+				B0000CEA1DC4F40B00D4AF44 /* _Schema_go.txt */,
+				B0000CDE1DC4EFFC00D4AF44 /* _Schema_cpp.txt */,
+				B0000CDF1DC4EFFC00D4AF44 /* _Schema_java.txt */,
+			);
+			name = Schema;
 			sourceTree = "<group>";
 		};
 		B00F2FCC1DC462D70013710C /* CompletionLanguageSelection */ = {
@@ -530,8 +567,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				410CB22F1DB1229400F586B5 /* LaunchScreen.storyboard in Resources */,
+				B0000CEB1DC4F40B00D4AF44 /* _Schema_go.txt in Resources */,
 				410CB22C1DB1229400F586B5 /* Assets.xcassets in Resources */,
 				410CB22A1DB1229400F586B5 /* Main.storyboard in Resources */,
+				B0000CE01DC4EFFC00D4AF44 /* _Schema_cpp.txt in Resources */,
+				B0000CE51DC4EFFC00D4AF44 /* _Schema_java.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +579,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0000CE11DC4EFFC00D4AF44 /* _Schema_cpp.txt in Resources */,
+				B0000CEC1DC4F40B00D4AF44 /* _Schema_go.txt in Resources */,
+				B0000CE61DC4EFFC00D4AF44 /* _Schema_java.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +589,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0000CE21DC4EFFC00D4AF44 /* _Schema_cpp.txt in Resources */,
+				B0000CED1DC4F40B00D4AF44 /* _Schema_go.txt in Resources */,
+				B0000CE71DC4EFFC00D4AF44 /* _Schema_java.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,6 +599,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0000CE31DC4EFFC00D4AF44 /* _Schema_cpp.txt in Resources */,
+				B0000CEE1DC4F40B00D4AF44 /* _Schema_go.txt in Resources */,
+				B0000CE81DC4EFFC00D4AF44 /* _Schema_java.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,6 +609,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0000CE41DC4EFFC00D4AF44 /* _Schema_cpp.txt in Resources */,
+				B0000CEF1DC4F40B00D4AF44 /* _Schema_go.txt in Resources */,
+				B0000CE91DC4EFFC00D4AF44 /* _Schema_java.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

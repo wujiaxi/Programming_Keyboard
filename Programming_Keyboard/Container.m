@@ -26,7 +26,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
 
 @property(nonatomic, strong) NSMutableDictionary* ButtonToSelector;
 @property(nonatomic, strong) NSTimer* Timer;
-
+@property(nonatomic) BOOL setup;
 @end
 
 @implementation Container
@@ -35,7 +35,8 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"main container init");
+    self.setup = NO;
+    //NSLog(@"main container init");
     
     self.codes.inputView = [UIView new];
 
@@ -51,15 +52,17 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
     self.driveModel.delegate = self;
     self.driveModel.service = self.service;
     
+    
 }
 
 - (void)viewDidLayoutSubviews{
     self.keyboardLayout = [NSMutableDictionary new];
     self.ButtonToSelector = [NSMutableDictionary new];
-    if (!self.service.authorizer.canAuthorize) {
+    if (!self.service.authorizer.canAuthorize && !self.setup) {
         // Not yet authorized, request authorization by pushing the login UI onto the UI stack.
         [self presentViewController:[self createAuthController] animated:YES completion:nil];
     }else{
+        self.setup = YES;
         [self.driveModel SetupSketch];
     }
     
@@ -74,7 +77,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
                                               forKey:button.titleLabel.text];
                     
                 }else if (![button.titleLabel.text isEqualToString:@"Enter"]){
-                    NSLog(@"registered %@\n", button.titleLabel.text);
+                    //NSLog(@"registered %@\n", button.titleLabel.text);
                     UILongPressGestureRecognizer*  rec = [[UILongPressGestureRecognizer alloc]
                                                           initWithTarget:self
                                                           action:@selector(CompletionLongPressed:)];
@@ -124,7 +127,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
 #pragma mark - Completion Selection Delegate
 -(void) selectedCompletion:(NSString *)entry
 {
-    NSLog(@"selected completion %@", entry);
+    //NSLog(@"selected completion %@", entry);
     [self.codes insertText:[entry substringFromIndex:
                             [self.completionEngine from]]];
     [self.completionEngine rewind];
@@ -134,7 +137,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
 // button touch down
 // button touch down
 -(IBAction)CompletionLanguageSelected:(UIButton *)sender{
-    NSLog(@"button %@ touched to update current key", sender.titleLabel.text);
+    //NSLog(@"button %@ touched to update current key", sender.titleLabel.text);
     //init the view
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     self.LanguageList = [storyboard instantiateViewControllerWithIdentifier:@"CompletionSelection"];
@@ -154,7 +157,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
 }
 
 -(IBAction)keyboardButtonTouched:(UIButton *)sender{
-    NSLog(@"button %@ touched to update current key", sender.titleLabel.text);
+    //NSLog(@"button %@ touched to update current key", sender.titleLabel.text);
     self.currentKey = sender;
 }
 
@@ -176,12 +179,12 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
 -(IBAction)MoveCursorLeft:(UIButton *)sender{
     NSString* prevChar =[self.completionEngine prevChar:self.codes];
     if(prevChar){
-        NSLog(@"moving left to \"%@\"", prevChar);
+        //NSLog(@"moving left to \"%@\"", prevChar);
         if([prevChar isEqualToString:@"{"]) [self.completionEngine LeaveScope];
         if([prevChar isEqualToString:@"}"]) [self.completionEngine EnterScope];
-        NSLog(@"the current scope level is %d", self.completionEngine.scopeLevel);
+        //NSLog(@"the current scope level is %d", self.completionEngine.scopeLevel);
     }else{
-        NSLog(@"no prev");
+        //NSLog(@"no prev");
     }
     [self moveCursorByOffset:-1];
     [self.completionEngine rewind];
@@ -195,12 +198,12 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
     [self.completionEngine printDebug];
     NSString* prevChar =[self.completionEngine prevChar:self.codes];
     if(prevChar){
-        NSLog(@"moving right past \"%@\"", prevChar);
+        //NSLog(@"moving right past \"%@\"", prevChar);
         if([prevChar isEqualToString:@"{"]) [self.completionEngine EnterScope];
         if([prevChar isEqualToString:@"}"]) [self.completionEngine LeaveScope];
-        NSLog(@"the current scope level is %d", self.completionEngine.scopeLevel);
+        //NSLog(@"the current scope level is %d", self.completionEngine.scopeLevel);
     }else{
-        NSLog(@"no prev");
+        //NSLog(@"no prev");
     }
 
 }
@@ -221,7 +224,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
 //keyboard helpers
 -(IBAction)keyboardButton:(UIButton *)sender{
     NSString* input = sender.titleLabel.text;
-    NSLog(@"button %@ touched up", input);
+    //NSLog(@"button %@ touched up", input);
     NSInteger rewindOffset = [self.completionEngine inputPressed:input
                                                        textField:self.codes];
     [self.completionEngine printDebug];
@@ -266,10 +269,10 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
             break;
         }
         case UIGestureRecognizerStateChanged:
-            NSLog(@"State changed");
+            //NSLog(@"State changed");
             break;
         case UIGestureRecognizerStateEnded:
-            NSLog(@"State End");
+            //NSLog(@"State End");
             break;
         default:
             break;
@@ -278,7 +281,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
 }
 
 - (void) TouchBegin:(UIButton*)sender {
-    NSLog(@"triggered %@", sender.titleLabel.text);
+    //NSLog(@"triggered %@", sender.titleLabel.text);
     NSString* SelectorName = [self.ButtonToSelector objectForKey:sender.titleLabel.text];
     self.Timer = [NSTimer scheduledTimerWithTimeInterval:0.1
                                               target:self
@@ -297,7 +300,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
     (UIPopoverPresentationController *)popoverPresentationController {
     
     // called when a Popover is dismissed
-    NSLog(@"Popover was dismissed with external tap.");
+    //NSLog(@"Popover was dismissed with external tap.");
 }
 
 - (BOOL)popoverPresentationControllerShouldDismissPopover:
@@ -342,7 +345,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
     else {
         self.service.authorizer = authResult;
         [self dismissViewControllerAnimated:YES completion:nil];
-        [self.driveModel SetupSketch];
+        //[self.driveModel SetupSketch];
     }
 }
 
@@ -377,7 +380,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
 
 - (void) populateCompletion:(NSString *) name
              withCompletion:(NSString *) data{
-    NSLog(@"swich to %@", name);
+    //NSLog(@"swich to %@", name);
     [self.completionEngine SwitchCompletionFromFile:data];
 }
 

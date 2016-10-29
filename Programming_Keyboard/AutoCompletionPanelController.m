@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"auto completion did load");
+    //NSLog(@"auto completion did load");
     self.preferredContentSize = CGSizeMake(480, 380);
     
     // Do any additional setup after loading the view.
