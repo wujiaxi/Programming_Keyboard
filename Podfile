@@ -2,7 +2,7 @@ platform :ios, '10.0'
 
 def available_pods
     pod 'GoogleAPIClient/Drive', '~> 1.0.2'
-    pod 'GTMOAuth2', '~> 1.1.0'
+    pod 'GTMOAuth2', '~> 1.1.4'
 end
 
 
