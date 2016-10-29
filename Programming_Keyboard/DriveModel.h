@@ -7,7 +7,9 @@
 #import "GTLDrive.h"
 
 @protocol FileSyncDelegate <NSObject>
-- (void) populateTextField:(NSString*) data;
+- (void) populateTextField:(NSString* ) data;
+- (void) populateCompletion:(NSString *) name
+             withCompletion:(NSString *) data;
 @end
 
 @interface DriveModel : NSObject
@@ -16,7 +18,10 @@
 
 - (void) SetupSketch;
 
-- (void) commit:(NSString*) codes;
+- (void) Commit:(NSString*) codes;
+
+- (void) SetupCompletion:(NSString *) language;
+
 
 @end
 

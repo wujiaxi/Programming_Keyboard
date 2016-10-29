@@ -17,6 +17,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
 
 
 @interface Container ()  <UIPopoverPresentationControllerDelegate,
+                            CompletionLanguageDelegate,
                             CompletionSelectionDelegate,
                             FileSyncDelegate>
 
@@ -39,7 +40,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
     self.codes.inputView = [UIView new];
 
     //init data structure
-    self.completionEngine = [[CompletionEngine alloc] initWithDemo];
+    self.completionEngine = [[CompletionEngine alloc] init];
     
     //init google dirve
     self.service = [[GTLServiceDrive alloc] init];
@@ -131,6 +132,27 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
 
 
 // button touch down
+// button touch down
+-(IBAction)CompletionLanguageSelected:(UIButton *)sender{
+    NSLog(@"button %@ touched to update current key", sender.titleLabel.text);
+    //init the view
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    self.LanguageList = [storyboard instantiateViewControllerWithIdentifier:@"CompletionSelection"];
+    self.LanguageList.delegate = self;
+    self.LanguageList.modalPresentationStyle = UIModalPresentationPopover;
+    
+    
+    //start the view
+    UIPopoverPresentationController *popController = [self.LanguageList popoverPresentationController];
+    [self presentViewController:self.LanguageList
+                       animated:YES
+                     completion:nil];
+    popController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    popController.sourceView = self.controls;
+    popController.sourceRect = sender.frame;
+    popController.delegate = self;
+}
+
 -(IBAction)keyboardButtonTouched:(UIButton *)sender{
     NSLog(@"button %@ touched to update current key", sender.titleLabel.text);
     self.currentKey = sender;
@@ -239,8 +261,6 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
                              completion:nil];
             popController.permittedArrowDirections = UIPopoverArrowDirectionAny;
             popController.sourceView = self.keyboard;
-            NSLog(@"%f %f", self.currentKey.frame.origin.x, self.currentKey.frame.origin.y);
-            NSLog(@"%@", self.currentKey);
             popController.sourceRect = self.currentKey.frame;
             popController.delegate = self;
             break;
@@ -348,11 +368,20 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
 
 - (void) populateTextField:(NSString*) data{
     self.codes.text = data;
+    [self.driveModel SetupCompletion:@"cpp"];
 }
 
 -(IBAction)CommitButton:(UIButton *)sender{
-    [self.driveModel commit:self.codes.text];
+    [self.driveModel Commit:self.codes.text];
 }
 
+- (void) populateCompletion:(NSString *) name
+             withCompletion:(NSString *) data{
+    NSLog(@"swich to %@", name);
+    [self.completionEngine SwitchCompletionFromFile:data];
+}
 
+- (void) SelectedLanguage:(NSString *)language{
+    [self.driveModel SetupCompletion:language];
+}
 @end

@@ -35,6 +35,7 @@
 		41F5FDC51DBC481C00C753B5 /* AutoCompletionPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4119FF041DB15ECE0061F27F /* AutoCompletionPanelController.m */; };
 		41F5FDC61DBC481C00C753B5 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 410CB2261DB1229400F586B5 /* Container.m */; };
 		AA833B238467E3587D2FA3A0 /* libPods-FunctionalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8167191D054E566186CB4677 /* libPods-FunctionalTests.a */; };
+		B00F2FCF1DC463220013710C /* CompletionLanguageSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = B00F2FCE1DC463220013710C /* CompletionLanguageSelectionController.m */; };
 		B051FDD11DC2A107008049DC /* DriveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B051FDD01DC2A107008049DC /* DriveModel.m */; };
 		B051FDD21DC2A107008049DC /* DriveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B051FDD01DC2A107008049DC /* DriveModel.m */; };
 		B051FDD31DC2A107008049DC /* DriveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B051FDD01DC2A107008049DC /* DriveModel.m */; };
@@ -116,6 +117,8 @@
 		92830170A03863AE4A27A0C3 /* Pods-Programming_KeyboardTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Programming_KeyboardTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Programming_KeyboardTests/Pods-Programming_KeyboardTests.release.xcconfig"; sourceTree = "<group>"; };
 		9B0455F67C96590B9A02C586 /* Pods-Programming_KeyboardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Programming_KeyboardTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Programming_KeyboardTests/Pods-Programming_KeyboardTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A59693CAE41EC25C05E6BE85 /* libPods-Programming_Keyboard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Programming_Keyboard.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B00F2FCD1DC463220013710C /* CompletionLanguageSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletionLanguageSelectionController.h; sourceTree = "<group>"; };
+		B00F2FCE1DC463220013710C /* CompletionLanguageSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletionLanguageSelectionController.m; sourceTree = "<group>"; };
 		B051FDD01DC2A107008049DC /* DriveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriveModel.m; sourceTree = "<group>"; };
 		B051FDD51DC2A115008049DC /* DriveModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DriveModel.h; sourceTree = "<group>"; };
 		C1462E3BB3D14E2FB89C19BE /* libPods-Programming_KeyboardTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Programming_KeyboardTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +206,7 @@
 		410CB21E1DB1229400F586B5 /* Programming_Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				B00F2FCC1DC462D70013710C /* CompletionLanguageSelection */,
 				4119FF071DB173350061F27F /* model */,
 				4119FF021DB15EBC0061F27F /* autoCompletionPanel */,
 				410CB2381DB122D000F586B5 /* delegations */,
@@ -309,6 +313,15 @@
 				16DBCEC1F8ED13B5A4D059C8 /* libPods-CompletionEngineTest.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B00F2FCC1DC462D70013710C /* CompletionLanguageSelection */ = {
+			isa = PBXGroup;
+			children = (
+				B00F2FCD1DC463220013710C /* CompletionLanguageSelectionController.h */,
+				B00F2FCE1DC463220013710C /* CompletionLanguageSelectionController.m */,
+			);
+			name = CompletionLanguageSelection;
 			sourceTree = "<group>";
 		};
 		F651990FEA82E8074EC6E256 /* Pods */ = {
@@ -742,6 +755,7 @@
 			files = (
 				4119FF091DB173540061F27F /* CompletionEngine.m in Sources */,
 				B051FDD11DC2A107008049DC /* DriveModel.m in Sources */,
+				B00F2FCF1DC463220013710C /* CompletionLanguageSelectionController.m in Sources */,
 				410CB2271DB1229400F586B5 /* Container.m in Sources */,
 				4119FF051DB15ECE0061F27F /* AutoCompletionPanelController.m in Sources */,
 				410CB2241DB1229400F586B5 /* AppDelegate.m in Sources */,
