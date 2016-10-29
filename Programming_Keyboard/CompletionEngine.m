@@ -75,6 +75,7 @@
         [self.dict addWord:schema[i]
                      sofar:schema[i]];
     }
+    [self rewind];
 }
 
 - (NSInteger) inputPressed:(NSString*) input

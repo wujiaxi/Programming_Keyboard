@@ -13,6 +13,7 @@
 
 // pop up view
 #import "AutoCompletionPanelController.h"
+#import "CompletionLanguageSelectionController.h"
 
 // data helpers
 #import "CompletionEngine.h"
@@ -20,6 +21,7 @@
 
 @interface Container : UIViewController
 @property (nonatomic, weak) AutoCompletionPanelController *completionPanel;
+@property (nonatomic, weak) CompletionLanguageSelectionController *LanguageList;
 
 @property (nonatomic) CompletionEngine *completionEngine;
 
@@ -29,6 +31,9 @@
 @property (nonatomic, weak) IBOutlet UITextView *codes;
 // keyboard view:
 @property (nonatomic, weak) IBOutlet UIView *keyboard;
+
+@property (nonatomic, weak) IBOutlet UIView *controls;
+
 
 -(void)moveCursorByOffset:(NSInteger)offset;
 
