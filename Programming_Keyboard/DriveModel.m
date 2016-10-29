@@ -8,7 +8,7 @@ static NSString *const SketchName = @"_sketch.txt";
 
 @interface DriveModel()
 @property (nonatomic, strong) NSString* rst;
-@property (nonatomic, strong) UIAlertView *alert;
+//@property (nonatomic, strong) ;
 @property (nonatomic, strong) NSString* SketchID;
 @property (nonatomic, strong) NSString* WorkSpaceID;
 
@@ -28,7 +28,8 @@ static NSString *const SketchName = @"_sketch.txt";
 }
 
 - (void) Commit:(NSString*) codes{
-    self.alert = [DriveModel showLoadingMessageWithTitle:@"Commiting the code to cloud..."
+    NSLog(@"Commit: %@", codes);
+    UIAlertView *alert = [DriveModel showLoadingMessageWithTitle:@"Commiting the code to cloud..."
                                                 delegate:self];
     NSString *name = SketchName;
     NSString *content = codes;
@@ -45,17 +46,19 @@ static NSString *const SketchName = @"_sketch.txt";
                                                          GTLDriveFile *updatedFile,
                                                          NSError *error) {
         if (error == nil) {
-            NSLog(@"File %@", updatedFile);
+            //NSLog(@"File %@", updatedFile);
         } else {
             NSLog(@"An error occurred: %@", error);
         }
-        [self.alert dismissWithClickedButtonIndex:0 animated:YES];
+        [alert dismissWithClickedButtonIndex:0 animated:YES];
 
     }];
 }
 
 - (void) QueryFile:(NSString*) name
-          callback:(void (^)(GTLDriveFileList* fileList)) completionHandler{
+          callback:(void (^)(GTLDriveFileList* fileList)) completionHandler
+    failedCallback:(void (^)(NSError *error)) failHandler{
+    NSLog(@"QueryFile: %@", name);
     GTLQueryDrive *query = [GTLQueryDrive queryForFilesList];
     query.q = [NSString stringWithFormat:@"name = '%@'", name];
     [self.service executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
@@ -65,22 +68,25 @@ static NSString *const SketchName = @"_sketch.txt";
             completionHandler(fileList);
         } else {
             NSLog(@"An error occurred when querying file: %@ with %@", name, error);
+            failHandler(error);
         }
     }];
 }
 
 - (void) Readfile:(NSString* ) identifier
          Callback:(void (^)(NSString* data)) completionHandler{
+    NSLog(@"Readfile: %@", identifier);
     NSString *url = [NSString stringWithFormat:@"https://www.googleapis.com/drive/v3/files/%@?alt=media",
                      identifier];
     GTMSessionFetcher *fetcher = [self.service.fetcherService fetcherWithURLString:url];
     [fetcher beginFetchWithCompletionHandler:^(NSData *data, NSError *error) {
         NSString* newStr = nil;
         if (error == nil) {
-            NSLog(@"Retrieved file content");
             // Do something with data
             
             newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"Retrieved file content: %@",newStr);
+
             completionHandler(newStr);
 
         } else {
@@ -94,6 +100,7 @@ static NSString *const SketchName = @"_sketch.txt";
            parentId:(NSString *) parentIdentifier
           withValue:(NSString *) content
            callback:(void (^)(GTLDriveFile *createdFile)) completionHandler{
+    NSLog(@"To Created file %@", name);
     NSString *mimeType = @"text/plain";
     GTLDriveFile *metadata = [GTLDriveFile object];
     metadata.name = name;
@@ -106,7 +113,7 @@ static NSString *const SketchName = @"_sketch.txt";
                                                          GTLDriveFile *file,
                                                          NSError *error) {
         if (error == nil) {
-            NSLog(@"File %@", file);
+            NSLog(@"Created file %@", file);
             completionHandler(file);
             //self.SketchID = updatedFile.identifier;
         } else {
@@ -118,6 +125,7 @@ static NSString *const SketchName = @"_sketch.txt";
 - (void) CreateFolder:(NSString *) name
            parentId:(NSString *) parentIdentifier
            callback:(void (^)(GTLDriveFile *createdFolder)) completionHandler{
+    NSLog(@"To Created Folder %@", name);
     GTLDriveFile *folder = [GTLDriveFile object];
     folder.name = PathName;
     folder.mimeType = @"application/vnd.google-apps.folder";
@@ -128,6 +136,7 @@ static NSString *const SketchName = @"_sketch.txt";
                                                          GTLDriveFile *folder,
                                                          NSError *error) {
         if (error == nil) {
+            NSLog(@"Created Folder %@", name);
             completionHandler(folder);
         }else{
             NSLog(@"An error occurred when creating the file: %@ with %@", name, error);
@@ -137,10 +146,10 @@ static NSString *const SketchName = @"_sketch.txt";
 
 
 - (void) SetupSketch{
-    self.alert = [DriveModel showLoadingMessageWithTitle:@"Setting up sketch board on cloud..."
+    NSLog(@"to SetupSketch");
+    UIAlertView *alert = [DriveModel showLoadingMessageWithTitle:@"Setting up sketch board on cloud..."
                                                 delegate:self];
-    [self QueryFile:PathName
-    callback:^(GTLDriveFileList* fileList){
+    [self QueryFile:PathName callback:^(GTLDriveFileList* fileList){
         
         if([fileList.files count]>0){
             GTLDriveFile *workingFolder = (fileList.files[0]);
@@ -152,10 +161,10 @@ static NSString *const SketchName = @"_sketch.txt";
                 self.SketchID = updatedFile.identifier;
                 [self Readfile:self.SketchID
                 Callback:^(NSString* newStr){
-                    [self.alert dismissWithClickedButtonIndex:0 animated:YES];
+                    [alert dismissWithClickedButtonIndex:0 animated:YES];
                     [self.delegate populateTextField:newStr];
                 }];
-            }];
+            } failedCallback:nil];
             return;
         }
         //create the folder:
@@ -172,26 +181,52 @@ static NSString *const SketchName = @"_sketch.txt";
                 self.SketchID = createdFile.identifier;
                 [self Readfile:self.SketchID
                 Callback:^(NSString* newStr){
-                    [self.alert dismissWithClickedButtonIndex:0 animated:YES];
+                    [alert dismissWithClickedButtonIndex:0 animated:YES];
                     [self.delegate populateTextField:newStr];
                 }];
             }];
         }];
-    }];
+    }
+     failedCallback:nil];
     
 }
 
 - (void) SetupCompletion:(NSString *) language{
-    self.alert = [DriveModel showLoadingMessageWithTitle:@"Reading completion from cloud..."
+    NSLog(@"to SetupCompletion");
+
+    NSString* filename = [NSString stringWithFormat:@"_Schema_%@", language];
+    NSString* fullFilename = [NSString stringWithFormat:@"%@.txt", filename];
+
+    UIAlertView *alert = [DriveModel showLoadingMessageWithTitle:@"Reading completion from cloud..."
                                                 delegate:self];
-    [self QueryFile:[NSString stringWithFormat:@"_Schema_%@.txt", language]
+    [self QueryFile:fullFilename
     callback:^(GTLDriveFileList* fileList){
         GTLDriveFile *file = (fileList.files[0]);
-        [self Readfile:file.identifier Callback:^(NSString* data){
-            [self.alert dismissWithClickedButtonIndex:0 animated:YES];
+        if(file){
+            NSLog(@"successfully loaded schema from cloud");
+            [self Readfile:file.identifier Callback:^(NSString* data){
+                [alert dismissWithClickedButtonIndex:0 animated:YES];
+                [self.delegate populateCompletion:language withCompletion:data];
+            }];
+        }else{
+            NSLog(@"cannot find cloud schema, loading default");
+            NSString* filename = [NSString stringWithFormat:@"_Schema_%@", language];
+            NSString* filePath =
+            [[NSBundle mainBundle] pathForResource:filename
+                                            ofType:@"txt"
+                                       inDirectory:nil];
+            NSLog(@"%@", [NSBundle mainBundle]);
+            NSString* data = [[NSString alloc] initWithData:
+                              [NSData dataWithContentsOfFile:filePath]
+                                                   encoding:NSUTF8StringEncoding];
+            NSLog(@"\n\nthe string %@",data);
             [self.delegate populateCompletion:language withCompletion:data];
-        }];
-    }];
+            [self CreateFile:fullFilename parentId:nil withValue:data callback:^(GTLDriveFile *created){
+                NSLog(@"remote schema created");
+                [alert dismissWithClickedButtonIndex:0 animated:YES];
+            }];
+        }
+    } failedCallback:nil];
 }
 
 

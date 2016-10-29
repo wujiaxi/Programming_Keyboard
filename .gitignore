@@ -1,3 +1,4 @@
 build
 Pods
 Podfile.lock
+build_errors.log

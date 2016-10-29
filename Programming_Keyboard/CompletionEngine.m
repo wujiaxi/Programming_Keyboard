@@ -27,7 +27,7 @@
     if(self = [super init]){
         self.completionPair = [NSMutableSet setWithArray:
                                @[@"(",@")", @"[", @"]", @"\"", @"'", @"{"]];
-        NSLog(@"init with array");
+        //NSLog(@"init with array");
         self.limit = 1;
         self.scopeLevel = 0;
         self.dict = [[Trie alloc] initWithKey:'\0'];
@@ -82,14 +82,14 @@
             textField:(UITextView*) code{
     NSString* prevChar =[self prevChar:code];
     if([input isEqualToString:@"BackSpace"]){
-        NSLog(@"test length: %lu", (unsigned long)[code.text length]);
-        NSLog(@"%@", [code selectedTextRange]);
+        //NSLog(@"test length: %lu", (unsigned long)[code.text length]);
+        //NSLog(@"%@", [code selectedTextRange]);
         
         
         //fix scope
         if([prevChar isEqualToString:@"{"] ||
            [prevChar isEqualToString:@"}"]){
-            NSLog(@"%@", [code selectedTextRange]);
+            //NSLog(@"%@", [code selectedTextRange]);
             
             UITextPosition* cursor = [code selectedTextRange].start;
             NSInteger Bracelocation =
@@ -110,7 +110,7 @@
             }
             
             if(newCode){
-                NSLog(@"replaced scope: %@", newCode);
+                //NSLog(@"replaced scope: %@", newCode);
                 code.text = newCode;
                 [self rewind];
                 return offset;
@@ -135,12 +135,12 @@
         
         //trivial chars - check pairs first
         NSArray* completionPair = [self completionPair:input];
-        NSLog(@"reseted pair: %@", completionPair);
+        //NSLog(@"reseted pair: %@", completionPair);
         if(completionPair){
             [self rewind];
             [code insertText:completionPair[0]];
             NSInteger offset = [completionPair[1] integerValue];
-            NSLog(@"offset by: %ld", (long)-offset);
+            //NSLog(@"offset by: %ld", (long)-offset);
             return -offset;
         }
         
@@ -193,10 +193,10 @@
     NSArray* rst = [self dumpList];
     if(rst){
         for(NSString* s in rst){
-            NSLog(@"%@", s);
+            //NSLog(@"%@", s);
         }
     }else{
-        NSLog(@"no completion available");
+        //NSLog(@"no completion available");
     }
 }
 

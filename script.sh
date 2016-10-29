@@ -1,11 +1,18 @@
 #!/bin/bash
 set -x
+OS=${1:-'10.1'}
 
 sudo gem install xcpretty
 sudo gem install cocoapods
 
 pod install --verbose
-OS=${1:-'10.1'}
+
+if [ -z "$2" ];
+then
+	rm -rf "${HOME}/Library/Caches/CocoaPods"
+	rm -rf "`pwd`/Pods/"
+	pod update
+fi
 
 build_errors_file=build_errors.log
 

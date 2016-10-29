@@ -4,4 +4,4 @@ notifications:
   slack: eecs481team:W22pFAfnGJAhps8RZ4QvXYCB
 script: 
 - ls -a
-- ./script.sh '10.0'
+- ./script.sh '10.0' 'CI'
