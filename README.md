@@ -19,3 +19,4 @@ Deceptively Simple, Vastly Powerful.
 2. The completion stops when rewind cursor backwards.
 3. Now the completion only consists of a predefined set of C++ keyword. 
 4. Uses a google drive (not umich google drive) account for sketch board sync.
+5. The Schema file is supposed to be of the form "_Schema_[name].txt" where name now support "cpp", "java".

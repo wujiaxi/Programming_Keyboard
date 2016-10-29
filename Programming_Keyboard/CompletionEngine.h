@@ -24,6 +24,8 @@
 
 - (id) initWithDemo;
 
+- (void) SwitchCompletionFromFile:(NSString *)file;
+
 - (NSInteger) inputPressed:(NSString*) input
                  textField:(UITextView*) code;
 

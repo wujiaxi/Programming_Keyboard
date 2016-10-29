@@ -39,7 +39,7 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
     self.codes.inputView = [UIView new];
 
     //init data structure
-    self.completionEngine = [[CompletionEngine alloc] initWithDemo];
+    self.completionEngine = [[CompletionEngine alloc] init];
     
     //init google dirve
     self.service = [[GTLServiceDrive alloc] init];
@@ -348,11 +348,17 @@ static NSString *const kClientID = @"55359119705-ucdj2bdv598gdpbpn57on3pd2fsa8ka
 
 - (void) populateTextField:(NSString*) data{
     self.codes.text = data;
+    [self.driveModel SetupCompletion:@"cpp"];
 }
 
 -(IBAction)CommitButton:(UIButton *)sender{
-    [self.driveModel commit:self.codes.text];
+    [self.driveModel Commit:self.codes.text];
 }
 
+- (void) populateCompletion:(NSString *) name
+             withCompletion:(NSString *) data{
+    NSLog(@"swich to @%", name);
+    [self.completionEngine SwitchCompletionFromFile:data];
+}
 
 @end

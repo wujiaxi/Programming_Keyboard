@@ -57,6 +57,26 @@
     return [self initWithArray:sample];
 }
 
+- (id) init{
+    if(self = [super init]){
+        self.completionPair = [NSMutableSet setWithArray:
+                               @[@"(",@")", @"[", @"]", @"\"", @"'", @"{"]];
+        self.limit = 1;
+        self.scopeLevel = 0;
+        [self rewind];
+    }
+    return self;
+}
+
+- (void) SwitchCompletionFromFile:(NSString *)file{
+    NSArray *schema=[file componentsSeparatedByString:@"\n"];
+    self.dict = [[Trie alloc] initWithKey:'\0'];
+    for(int i = 0; i < [schema count]; ++i){
+        [self.dict addWord:schema[i]
+                     sofar:schema[i]];
+    }
+}
+
 - (NSInteger) inputPressed:(NSString*) input
             textField:(UITextView*) code{
     NSString* prevChar =[self prevChar:code];
