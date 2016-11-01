@@ -8,6 +8,8 @@
 
 #import "Catagories.h"
 
+#define BACKSPACE @"⇦"
+#define ENTER @"↵"
 
 
 @implementation Container (KeyboardCatagory)
@@ -17,14 +19,14 @@
     for(UIView * subview in self.view.subviews){
         if(subview.tag == KEYBOARD_TAG){
             for(UIButton* button in subview.subviews){
-                if([button.titleLabel.text isEqualToString:@"BackSpace"]){
+                if([button.titleLabel.text isEqualToString:BACKSPACE]){
                     [self RegisterButton:button
                          toSelectorBegin:@"TouchBegin:"
                            toSelectorEnd:@"TouchEnd:"];
                     [self.ButtonToSelector setObject:@"BackSpaceButton:"
                                               forKey:button.titleLabel.text];
                     
-                }else if (![button.titleLabel.text isEqualToString:@"Enter"]){
+                }else if (![button.titleLabel.text isEqualToString:ENTER]){
                         //NSLog(@"registered %@\n", button.titleLabel.text);
                     UILongPressGestureRecognizer*  rec = [[UILongPressGestureRecognizer alloc]
                                                           initWithTarget:self
