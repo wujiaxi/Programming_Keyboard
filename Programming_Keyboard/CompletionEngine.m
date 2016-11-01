@@ -193,10 +193,10 @@
     NSArray* rst = [self dumpList];
     if(rst){
         for(NSString* s in rst){
-            //NSLog(@"%@", s);
+            NSLog(@"%@", s);
         }
     }else{
-        //NSLog(@"no completion available");
+        NSLog(@"no completion available");
     }
 }
 
