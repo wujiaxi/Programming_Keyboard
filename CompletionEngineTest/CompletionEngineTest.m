@@ -7,8 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "../Programming_Keyboard/CompletionEngine.h"
-
+#import "CompletionEngine.h"
+#import "Catagories.h"
 @interface CompletionEngineTest : XCTestCase
 @property (nonatomic, strong) CompletionEngine* completionEngine;
 @property (nonatomic, strong) UITextView* codes;
@@ -46,7 +46,7 @@
 - (void)testCompletionSmoke1 {
     [self.completionEngine inputPressed:@"a" textField:self.codes];
     XCTAssert([self.codes.text isEqualToString:@"a"]);
-    [self.completionEngine inputPressed:@"BackSpace" textField:self.codes];
+    [self.completionEngine inputPressed:BACKSPACE textField:self.codes];
     XCTAssert([self.codes.text isEqualToString:@""]);
 }
 

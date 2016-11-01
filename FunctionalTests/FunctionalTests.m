@@ -35,13 +35,13 @@
     }
     {
         UIButton *sampleButton = [[UIButton alloc] init];
-        NSString *title = [NSString stringWithFormat:@"BackSpace"];
+        NSString *title = [NSString stringWithFormat:BACKSPACE];
         [sampleButton setTitle:title forState:UIControlStateNormal];
         [self.keyboard setObject:sampleButton forKey:title];
     }
     {
         UIButton *sampleButton = [[UIButton alloc] init];
-        NSString *title = [NSString stringWithFormat:@"Enter"];
+        NSString *title = [NSString stringWithFormat:ENTER];
         [sampleButton setTitle:title forState:UIControlStateNormal];
         [self.keyboard setObject:sampleButton forKey:title];
     }
@@ -89,7 +89,7 @@
     XCTAssert([self getIndex] == 6);//wind to correct position
     
     [self moveCursor:2];
-    [self pressKey:@"BackSpace"];
+    [self pressKey:BACKSPACE];
     [self assertString:@"\n\n"];
     XCTAssert([self getIndex] == 2);//wind to correct position
     
@@ -111,7 +111,7 @@
     [self assertString:@"{\n    {\n        \n    }\n}"];
     XCTAssert([self getIndex] == 16);//wind to correct position
     
-    [self pressKey:@"Enter"];
+    [self pressKey:ENTER];
     [self assertString:@"{\n    {\n        \n        \n    }\n}"];
     XCTAssert([self getIndex] == 25);//wind to correct position
     
@@ -120,7 +120,7 @@
     XCTAssert([self getIndex] == 39);//wind to correct position
     
     [self moveCursor:-13];
-    [self pressKey:@"BackSpace"];
+    [self pressKey:BACKSPACE];
     [self assertString:@"{\n    {\n        \n        \n        \n    \n    }\n}"];
     XCTAssert([self getIndex] == 25);//wind to correct position
 

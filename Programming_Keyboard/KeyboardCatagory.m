@@ -8,8 +8,7 @@
 
 #import "Catagories.h"
 
-#define BACKSPACE @"⇦"
-#define ENTER @"↵"
+
 
 
 @implementation Container (KeyboardCatagory)
@@ -73,7 +72,7 @@
 
 //backspace helpers
 -(void) BackSpaceButton:(NSTimer*)timer {
-    NSInteger rewindOffset = [self.completionEngine inputPressed:@"BackSpace"
+    NSInteger rewindOffset = [self.completionEngine inputPressed:BACKSPACE
                                                        textField:self.codes];
     [self.completionEngine printDebug];
     [self moveCursorByOffset:rewindOffset];

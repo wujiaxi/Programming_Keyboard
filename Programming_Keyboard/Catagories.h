@@ -14,4 +14,7 @@
 
 #define KEYBOARD_TAG 1
 #define CONTROL_TAG 2
+
+#define BACKSPACE @"⇦"
+#define ENTER @"↵"
 #endif /* Catagories_h */
