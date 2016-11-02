@@ -19,6 +19,17 @@
 @implementation TrieTests
 
 - (void) list1:(NSArray*) list1
+       equalTo: (NSArray*) list2 {
+    XCTAssert([list1 count] == [list2 count]);
+    list1 = [list1 sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    list2 = [list2 sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    for ( int i = 0; i < [list1 count]; i++ )
+    {
+        XCTAssert( [list1[i] isEqualToString: list2[i]] );
+    }
+}
+/*
+- (void) list1:(NSArray*) list1
        equalTo:(NSArray*) list2{
     if(list1 == nil || list2 == nil){
         XCTAssert((list1==nil) && (list2==nil));
@@ -39,7 +50,7 @@
         }
     }
     return false;
-}
+}*/
 
 - (void)setUp {
     [super setUp];
