@@ -34,7 +34,7 @@
                     UILongPressGestureRecognizer*  rec = [[UILongPressGestureRecognizer alloc]
                                                           initWithTarget:self
                                                           action:@selector(CompletionLongPressed:)];
-                    rec.minimumPressDuration = 0.7;
+                    rec.minimumPressDuration = COMPLETIONDELAY;
                     [rec setDelegate:self];
                     [button addGestureRecognizer:rec];
                     [self.keyboardLayout setObject:rec forKey:button.titleLabel.text];
@@ -42,7 +42,7 @@
                 UILongPressGestureRecognizer*  DelayedAction = [[UILongPressGestureRecognizer alloc]
                                                                 initWithTarget:self
                                                                 action:@selector(keyboardButton:)];
-                DelayedAction.minimumPressDuration = 0.06;
+                DelayedAction.minimumPressDuration = STANDARDDELAY;
                 [DelayedAction setDelegate:self];
                 [button addGestureRecognizer:DelayedAction];
             }
@@ -95,6 +95,8 @@
         [button setTitle:target forState:UIControlStateSelected];
         [button setTitle:target forState:UIControlStateHighlighted];
     }
+    [self.codes becomeFirstResponder];
+
 }
 
 //backspace helpers
@@ -116,6 +118,8 @@
     [self.codes insertText:[entry substringFromIndex:
                             [self.completionEngine from]]];
     [self.completionEngine rewind];
+    [self.codes becomeFirstResponder];
+
 }
 
 
@@ -181,6 +185,8 @@
     popController.sourceView = self.controls;
     popController.sourceRect = sender.frame;
     popController.delegate = self;
+    [self.codes becomeFirstResponder];
+
 }
 
     //keyboard helpers
@@ -228,11 +234,15 @@
                                                        textField:self.codes];
     [self.completionEngine printDebug];
     [self moveCursorByOffset:rewindOffset];
+    [self.codes becomeFirstResponder];
+
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
     shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
+    [self.codes becomeFirstResponder];
+
     return YES;
 }
 
@@ -242,6 +252,8 @@
     
         // called when a Popover is dismissed
         NSLog(@"Popover was dismissed with external tap.");
+    [self.codes becomeFirstResponder];
+
 }
 
 - (BOOL)popoverPresentationControllerShouldDismissPopover:
@@ -249,6 +261,8 @@
     
         // return YES if the Popover should be dismissed
         // return NO if the Popover should not be dismissed
+    [self.codes becomeFirstResponder];
+
     return YES;
 }
 
@@ -256,6 +270,8 @@
 popoverPresentationController willRepositionPopoverToRect:(inout CGRect *)rect inView:(inout UIView *__autoreleasing  _Nonnull *)view {
     
         // called when the Popover changes positon
+    [self.codes becomeFirstResponder];
+
 }
 
 
@@ -268,11 +284,15 @@ popoverPresentationController willRepositionPopoverToRect:(inout CGRect *)rect i
                                                 selector:NSSelectorFromString(SelectorName)
                                                 userInfo:nil
                                                  repeats:YES];
+    [self.codes becomeFirstResponder];
+
 }
 
 - (void) TouchEnd:(UIButton*)sender {
     [self.Timer invalidate];
     self.Timer = nil;
+    [self.codes becomeFirstResponder];
+
 }
 
 -(void) SetSecondKeys{
@@ -317,5 +337,10 @@ popoverPresentationController willRepositionPopoverToRect:(inout CGRect *)rect i
     [self.Switcher addObject:self.SecondFunctionalKey];
 }
 
+- (IBAction)Clear:(UIButton* )sender{
+    self.codes.text = @"";
+    [self.completionEngine rewind];
+    self.completionEngine.scopeLevel = 0;
+}
 
 @end

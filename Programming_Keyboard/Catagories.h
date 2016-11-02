@@ -20,4 +20,7 @@
 #define SHIFT @"⇪"
 #define SPACE @" "
 
+#define STANDARDDELAY 0.06
+#define COMPLETIONDELAY 0.5
+
 #endif /* Catagories_h */

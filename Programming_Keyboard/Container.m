@@ -31,6 +31,8 @@
     //NSLog(@"main container init");
     
     self.codes.inputView = [UIView new];
+    self.codes.autocorrectionType = UITextAutocorrectionTypeNo;
+
 
     //init data structure
     self.completionEngine = [[CompletionEngine alloc] init];
@@ -59,6 +61,7 @@
     
     [self SetupKeyboard];
     [self.codes becomeFirstResponder];
+
 }
 
 - (void)didReceiveMemoryWarning {

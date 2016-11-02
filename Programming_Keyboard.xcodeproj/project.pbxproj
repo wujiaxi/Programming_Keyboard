@@ -225,11 +225,9 @@
 		410CB2131DB1229400F586B5 = {
 			isa = PBXGroup;
 			children = (
+				413C39A61DC993E1004660C8 /* Tests */,
 				B0000CDC1DC4EFE700D4AF44 /* Resources */,
 				410CB21E1DB1229400F586B5 /* Programming_Keyboard */,
-				41F5FD971DBC0EDE00C753B5 /* TrieTests */,
-				41F5FDA91DBC3F2900C753B5 /* CompletionEngineTest */,
-				41F5FDBA1DBC480000C753B5 /* FunctionalTests */,
 				410CB21D1DB1229400F586B5 /* Products */,
 				F651990FEA82E8074EC6E256 /* Pods */,
 				61FD5C3FC07FD11A020443DE /* Frameworks */,
@@ -252,11 +250,8 @@
 		410CB21E1DB1229400F586B5 /* Programming_Keyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B00F2FCC1DC462D70013710C /* CompletionLanguageSelection */,
-				4119FF071DB173350061F27F /* model */,
-				4119FF021DB15EBC0061F27F /* autoCompletionPanel */,
-				410CB2371DB122C500F586B5 /* ui */,
-				410CB2361DB122B900F586B5 /* ContainerView */,
+				4119FF071DB173350061F27F /* Model */,
+				410CB2361DB122B900F586B5 /* App */,
 				410CB2301DB1229400F586B5 /* Info.plist */,
 				410CB21F1DB1229400F586B5 /* Supporting Files */,
 			);
@@ -271,9 +266,10 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		410CB2361DB122B900F586B5 /* ContainerView */ = {
+		410CB2361DB122B900F586B5 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				410CB2371DB122C500F586B5 /* UI */,
 				413C399A1DC918BC004660C8 /* DriveNetworking */,
 				413C39911DC914CD004660C8 /* CursorControl */,
 				413C39801DC90FB9004660C8 /* KeyboardCatagory */,
@@ -281,10 +277,10 @@
 				410CB2261DB1229400F586B5 /* Container.m */,
 				413C39A31DC91B65004660C8 /* Catagories.h */,
 			);
-			name = ContainerView;
+			name = App;
 			sourceTree = "<group>";
 		};
-		410CB2371DB122C500F586B5 /* ui */ = {
+		410CB2371DB122C500F586B5 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				410CB2381DB122D000F586B5 /* delegations */,
@@ -292,7 +288,7 @@
 				410CB22B1DB1229400F586B5 /* Assets.xcassets */,
 				410CB22D1DB1229400F586B5 /* LaunchScreen.storyboard */,
 			);
-			name = ui;
+			name = UI;
 			sourceTree = "<group>";
 		};
 		410CB2381DB122D000F586B5 /* delegations */ = {
@@ -304,16 +300,16 @@
 			name = delegations;
 			sourceTree = "<group>";
 		};
-		4119FF021DB15EBC0061F27F /* autoCompletionPanel */ = {
+		4119FF021DB15EBC0061F27F /* AutoCompletionPanel */ = {
 			isa = PBXGroup;
 			children = (
 				4119FF031DB15ECE0061F27F /* AutoCompletionPanelController.h */,
 				4119FF041DB15ECE0061F27F /* AutoCompletionPanelController.m */,
 			);
-			name = autoCompletionPanel;
+			name = AutoCompletionPanel;
 			sourceTree = "<group>";
 		};
-		4119FF071DB173350061F27F /* model */ = {
+		4119FF071DB173350061F27F /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				4119FF081DB173540061F27F /* CompletionEngine.m */,
@@ -323,12 +319,13 @@
 				B051FDD01DC2A107008049DC /* DriveModel.m */,
 				B051FDD51DC2A115008049DC /* DriveModel.h */,
 			);
-			name = model;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		413C39801DC90FB9004660C8 /* KeyboardCatagory */ = {
 			isa = PBXGroup;
 			children = (
+				4119FF021DB15EBC0061F27F /* AutoCompletionPanel */,
 				413C39891DC912DD004660C8 /* KeyboardCatagory.h */,
 				413C398A1DC912DD004660C8 /* KeyboardCatagory.m */,
 			);
@@ -347,10 +344,21 @@
 		413C399A1DC918BC004660C8 /* DriveNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				B00F2FCC1DC462D70013710C /* CompletionLanguageSelection */,
 				413C399B1DC918DA004660C8 /* DriveCatagory.h */,
 				413C399C1DC918DA004660C8 /* DriveCatagory.m */,
 			);
 			name = DriveNetworking;
+			sourceTree = "<group>";
+		};
+		413C39A61DC993E1004660C8 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				41F5FD971DBC0EDE00C753B5 /* TrieTests */,
+				41F5FDA91DBC3F2900C753B5 /* CompletionEngineTest */,
+				41F5FDBA1DBC480000C753B5 /* FunctionalTests */,
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 		41F5FD971DBC0EDE00C753B5 /* TrieTests */ = {

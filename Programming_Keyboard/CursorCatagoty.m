@@ -16,6 +16,8 @@
     for(NSInteger i = 0; i < -offset; ++i){
         [self MoveCursorLeft:sender];
     }
+    [self.codes becomeFirstResponder];
+
 }
 
 -(IBAction)MoveCursorDown:(UIButton *)sender{
@@ -23,7 +25,8 @@
     for(NSInteger i = 0; i < offset; ++i){
         [self MoveCursorRight:sender];
     }
-    
+    [self.codes becomeFirstResponder];
+
 }
 
 -(IBAction)MoveCursorLeft:(UIButton *)sender{
@@ -37,7 +40,8 @@
     [self moveCursorByOffset:-1];
     [self.completionEngine rewind];
     [self.completionEngine printDebug];
-    
+    [self.codes becomeFirstResponder];
+
 }
 
 -(IBAction)MoveCursorRight:(UIButton *)sender{
@@ -50,6 +54,8 @@
         if([prevChar isEqualToString:@"{"]) [self.completionEngine EnterScope];
         if([prevChar isEqualToString:@"}"]) [self.completionEngine LeaveScope];
     }
+    [self.codes becomeFirstResponder];
+
 }
 
 

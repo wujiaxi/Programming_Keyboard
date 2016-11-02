@@ -30,6 +30,6 @@
 - (void) TouchBegin:(UIButton*)sender;
 - (void) TouchEnd:(UIButton*)sender;
 
-
+- (IBAction) Clear:(UIButton*)sender;
 
 @end

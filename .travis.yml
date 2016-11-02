@@ -2,6 +2,8 @@ language: objective-c
 osx_image: xcode8
 notifications:
   slack: eecs481team:W22pFAfnGJAhps8RZ4QvXYCB
+before_install:
+- pod update
 script: 
 - ls -a
-- ./script.sh '10.0' 'CI'
+- ./script.sh '10.0' 

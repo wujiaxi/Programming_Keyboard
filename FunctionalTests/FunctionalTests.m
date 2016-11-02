@@ -159,4 +159,10 @@
     XCTAssert([self getIndex] == 3);
 }
 
+- (void)testClearMovingDown {
+    [self testMovingDown];
+    [self.app Clear:nil];
+    [self testMovingDown];
+}
+
 @end
