@@ -68,7 +68,7 @@ static NSString *const SketchName = @"_sketch.txt";
             completionHandler(fileList);
         } else {
             NSLog(@"An error occurred when querying file: %@ with %@", name, error);
-            failHandler(error);
+            if(failHandler) failHandler(error);
         }
     }];
 }

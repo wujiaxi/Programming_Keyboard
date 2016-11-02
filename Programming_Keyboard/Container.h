@@ -7,57 +7,44 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MaterialControls/MDButton.h>
 
 #import "GTMOAuth2ViewControllerTouch.h"
 #import "GTLDrive.h"
 
 // pop up view
-#import "AutoCompletionPanelController.h"
-#import "CompletionLanguageSelectionController.h"
+
 
 // data helpers
 #import "CompletionEngine.h"
 #import "DriveModel.h"
+#import "CompletionLanguageSelectionController.h"
+#import "AutoCompletionPanelController.h"
+
 
 @interface Container : UIViewController
-@property (nonatomic, weak) AutoCompletionPanelController *completionPanel;
 @property (nonatomic, weak) CompletionLanguageSelectionController *LanguageList;
+@property (nonatomic, weak) AutoCompletionPanelController *completionPanel;
+@property (nonatomic, strong) CompletionEngine *completionEngine;
+@property(nonatomic) BOOL DriveReady;
+@property (nonatomic) BOOL KeyboardReady;
 
-@property (nonatomic) CompletionEngine *completionEngine;
-
-//current key
 @property (nonatomic, weak) IBOutlet UIButton *currentKey;
-// text display:
-@property (nonatomic, weak) IBOutlet UITextView *codes;
-// keyboard view:
 @property (nonatomic, weak) IBOutlet UIView *keyboard;
-
+@property(nonatomic, strong) NSMutableDictionary* ControlLayout;
+@property(nonatomic, strong) NSTimer* Timer;
+@property(nonatomic, strong) NSMutableDictionary* keyboardLayout;
+@property(nonatomic, strong) NSMutableDictionary* ButtonToSelector;
+@property (nonatomic, weak) IBOutlet UITextView *codes;
 @property (nonatomic, weak) IBOutlet UIView *controls;
-
-
--(void)moveCursorByOffset:(NSInteger)offset;
-
-// button touch down
--(IBAction)keyboardButtonTouched:(UIButton *)sender;
-
--(IBAction)MoveCursorLeft:(UIButton *)sender;
-
--(IBAction)MoveCursorRight:(UIButton *)sender;
-
--(IBAction)MoveCursorDown:(UIButton *)sender;
-
--(IBAction)MoveCursorUp:(UIButton *)sender;
-
-
-//keyboard helpers
--(IBAction)keyboardButton:(UIButton *)sender;
--(void) BackSpaceButton:(NSTimer*)timer;
-
-//pop up gesture
--(IBAction) CompletionLongPressed:(UILongPressGestureRecognizer *) sender;
-
 @property (nonatomic, strong) GTLServiceDrive *service;
 @property (nonatomic, strong) DriveModel *driveModel;
+
+@property (nonatomic, strong) NSMutableDictionary* FirstFunctionalKey;
+@property (nonatomic, strong) NSMutableDictionary* SecondFunctionalKey;
+@property (nonatomic, strong) NSMutableArray* KeysHasSecondFunctions;
+@property (nonatomic, strong) NSMutableArray* Switcher;
+@property (nonatomic) NSInteger Shift;
 
 @end
 

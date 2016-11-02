@@ -7,7 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "../Programming_Keyboard/Container.h"
+#import <UIKit/UIGestureRecognizerSubclass.h> //set state to be writable
+
+#import "Catagories.h"
+
+
 
 @interface FunctionalTests : XCTestCase
 @property (nonatomic, strong) Container* app;
@@ -33,20 +37,27 @@
     }
     {
         UIButton *sampleButton = [[UIButton alloc] init];
-        NSString *title = [NSString stringWithFormat:@"BackSpace"];
+        NSString *title = [NSString stringWithFormat:BACKSPACE];
         [sampleButton setTitle:title forState:UIControlStateNormal];
         [self.keyboard setObject:sampleButton forKey:title];
     }
     {
         UIButton *sampleButton = [[UIButton alloc] init];
-        NSString *title = [NSString stringWithFormat:@"Enter"];
+        NSString *title = [NSString stringWithFormat:ENTER];
         [sampleButton setTitle:title forState:UIControlStateNormal];
         [self.keyboard setObject:sampleButton forKey:title];
     }
 }
 
 - (void) pressKey:(NSString*) name{
-    [self.app keyboardButton:[self.keyboard objectForKey:name]];
+    if([name isEqualToString:BACKSPACE]){
+        [self.app BackSpaceButton:nil]; return;
+    }
+    UILongPressGestureRecognizer *trigger = [UILongPressGestureRecognizer  new];
+    UIButton* sender = [self.keyboard objectForKey:name];
+    [sender addGestureRecognizer:trigger];
+    trigger.state = UIGestureRecognizerStateBegan;
+    [self.app keyboardButton:trigger];
 }
 
 - (void) assertString:(NSString*) target{
@@ -87,7 +98,7 @@
     XCTAssert([self getIndex] == 6);//wind to correct position
     
     [self moveCursor:2];
-    [self pressKey:@"BackSpace"];
+    [self pressKey:BACKSPACE];
     [self assertString:@"\n\n"];
     XCTAssert([self getIndex] == 2);//wind to correct position
     
@@ -109,7 +120,7 @@
     [self assertString:@"{\n    {\n        \n    }\n}"];
     XCTAssert([self getIndex] == 16);//wind to correct position
     
-    [self pressKey:@"Enter"];
+    [self pressKey:ENTER];
     [self assertString:@"{\n    {\n        \n        \n    }\n}"];
     XCTAssert([self getIndex] == 25);//wind to correct position
     
@@ -118,7 +129,7 @@
     XCTAssert([self getIndex] == 39);//wind to correct position
     
     [self moveCursor:-13];
-    [self pressKey:@"BackSpace"];
+    [self pressKey:BACKSPACE];
     [self assertString:@"{\n    {\n        \n        \n        \n    \n    }\n}"];
     XCTAssert([self getIndex] == 25);//wind to correct position
 
@@ -146,6 +157,12 @@
     
     [self.app MoveCursorUp:nil];
     XCTAssert([self getIndex] == 3);
+}
+
+- (void)testClearMovingDown {
+    [self testMovingDown];
+    [self.app Clear:nil];
+    [self testMovingDown];
 }
 
 @end

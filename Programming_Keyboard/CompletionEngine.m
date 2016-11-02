@@ -81,7 +81,7 @@
 - (NSInteger) inputPressed:(NSString*) input
             textField:(UITextView*) code{
     NSString* prevChar =[self prevChar:code];
-    if([input isEqualToString:@"BackSpace"]){
+    if([input isEqualToString:@"⇦"]){
         //NSLog(@"test length: %lu", (unsigned long)[code.text length]);
         //NSLog(@"%@", [code selectedTextRange]);
         
@@ -123,13 +123,16 @@
         
     }else{
         //white chars
-        if([input isEqualToString:@"Enter"]){
+        if([input isEqualToString:@"↵"]){
             [self rewind];
             [code insertText:[self scopedNewline]];
             return 0;
-        }else if([input isEqualToString:@"Space"]){
+        }else if([input isEqualToString:@" "]){
             [self rewind];
             [code insertText:@" "];
+            return 0;
+        }else if([input isEqualToString:@"⇪"]){
+            NSLog(@"shift pressed");
             return 0;
         }
         
@@ -193,10 +196,10 @@
     NSArray* rst = [self dumpList];
     if(rst){
         for(NSString* s in rst){
-            //NSLog(@"%@", s);
+            NSLog(@"%@", s);
         }
     }else{
-        //NSLog(@"no completion available");
+        NSLog(@"no completion available");
     }
 }
 

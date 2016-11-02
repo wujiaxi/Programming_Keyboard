@@ -10,12 +10,300 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Programming_Keyboard/Container.m"
-            timestampString = "499467095.366218"
+            timestampString = "499745644.079869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "-viewDidLayoutSubviews"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Container viewDidLayoutSubviews]"
+                  moduleName = "Programming_Keyboard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/Container.m"
+                  timestampString = "499740940.370475"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "412">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Container viewDidLayoutSubviews]"
+                  moduleName = "FunctionalTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/Container.m"
+                  timestampString = "499740940.936125"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "412">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Programming_Keyboard/KeyboardCatagory.m"
+            timestampString = "499745575.269964"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
+            landmarkName = "-popoverPresentationControllerDidDismissPopover:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Container(KeyboardCatagory) popoverPresentationControllerDidDismissPopover:]"
+                  moduleName = "Programming_Keyboard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
+                  timestampString = "499740940.374661"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "244"
+                  endingLineNumber = "244"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Container(KeyboardCatagory) popoverPresentationControllerDidDismissPopover:]"
+                  moduleName = "FunctionalTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
+                  timestampString = "499740940.939178"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "244"
+                  endingLineNumber = "244"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Programming_Keyboard/KeyboardCatagory.m"
+            timestampString = "499745575.269964"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-BackSpaceButton:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Container(KeyboardCatagory) BackSpaceButton:]"
+                  moduleName = "Programming_Keyboard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
+                  timestampString = "499740940.38784"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Container(KeyboardCatagory) BackSpaceButton:]"
+                  moduleName = "FunctionalTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
+                  timestampString = "499740940.967364"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Programming_Keyboard/KeyboardCatagory.m"
+            timestampString = "499745575.269964"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "-TouchEnd:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Container(KeyboardCatagory) TouchEnd:]"
+                  moduleName = "Programming_Keyboard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
+                  timestampString = "499740940.391122"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "274"
+                  endingLineNumber = "274"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Container(KeyboardCatagory) TouchEnd:]"
+                  moduleName = "FunctionalTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
+                  timestampString = "499740940.970142"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "274"
+                  endingLineNumber = "274"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Programming_Keyboard/KeyboardCatagory.m"
+            timestampString = "499745575.269964"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
+            landmarkName = "-TouchBegin:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Container(KeyboardCatagory) TouchBegin:]"
+                  moduleName = "Programming_Keyboard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
+                  timestampString = "499740940.394163"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "265"
+                  endingLineNumber = "265"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Container(KeyboardCatagory) TouchBegin:]"
+                  moduleName = "FunctionalTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
+                  timestampString = "499740940.972849"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "265"
+                  endingLineNumber = "265"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Programming_Keyboard/KeyboardCatagory.m"
+            timestampString = "499745575.269964"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "-CompletionLanguageSelected:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Container(KeyboardCatagory) CompletionLanguageSelected:]"
+                  moduleName = "Programming_Keyboard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
+                  timestampString = "499740940.397154"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "169"
+                  endingLineNumber = "169"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Container(KeyboardCatagory) CompletionLanguageSelected:]"
+                  moduleName = "FunctionalTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
+                  timestampString = "499740940.975505"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "169"
+                  endingLineNumber = "169"
+                  offsetFromSymbolStart = "68">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FunctionalTests/FunctionalTests.m"
+            timestampString = "499741173.785159"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "-pressKey:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
