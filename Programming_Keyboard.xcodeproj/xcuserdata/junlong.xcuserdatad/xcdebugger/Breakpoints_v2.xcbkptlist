@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FunctionalTests/FunctionalTests.m"
-            timestampString = "499719084.133706"
+            timestampString = "499741173.785159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "-assertString:"
             landmarkType = "7">
             <Locations>
@@ -200,11 +200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FunctionalTests/FunctionalTests.m"
-            timestampString = "499719084.133706"
+            timestampString = "499741173.785159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "-testDeletingInnerScope"
             landmarkType = "7">
          </BreakpointContent>
@@ -216,11 +216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FunctionalTests/FunctionalTests.m"
-            timestampString = "499719084.133706"
+            timestampString = "499741173.785159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "-testDeletingInnerScope"
             landmarkType = "7">
          </BreakpointContent>
@@ -452,23 +452,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FunctionalTests/FunctionalTests.m"
-            timestampString = "499719084.133706"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "-testMovingUp"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FunctionalTests/FunctionalTests.m"
-            timestampString = "499719084.133706"
+            timestampString = "499741173.785159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
@@ -484,13 +468,153 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FunctionalTests/FunctionalTests.m"
-            timestampString = "499719084.133706"
+            timestampString = "499741173.785159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "-testMovingUp"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FunctionalTests testMovingUp]"
+                  moduleName = "FunctionalTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/FunctionalTests/FunctionalTests.m"
+                  timestampString = "499740940.945241"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "1600">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FunctionalTests testMovingUp]"
+                  moduleName = "FunctionalTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/FunctionalTests/FunctionalTests.m"
+                  timestampString = "499740940.947442"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "2644">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FunctionalTests testMovingUp]"
+                  moduleName = "FunctionalTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/FunctionalTests/FunctionalTests.m"
+                  timestampString = "499740940.949564"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "2680">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FunctionalTests testMovingUp]"
+                  moduleName = "FunctionalTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/FunctionalTests/FunctionalTests.m"
+                  timestampString = "499740940.951746"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "2760">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FunctionalTests/FunctionalTests.m"
+            timestampString = "499741173.785159"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "-testMovingDown"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FunctionalTests testMovingDown]"
+                  moduleName = "FunctionalTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/FunctionalTests/FunctionalTests.m"
+                  timestampString = "499740940.955227"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "1600">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FunctionalTests testMovingDown]"
+                  moduleName = "FunctionalTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/FunctionalTests/FunctionalTests.m"
+                  timestampString = "499740940.95719"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "2644">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FunctionalTests testMovingDown]"
+                  moduleName = "FunctionalTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/FunctionalTests/FunctionalTests.m"
+                  timestampString = "499740940.959177"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "2680">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FunctionalTests testMovingDown]"
+                  moduleName = "FunctionalTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/FunctionalTests/FunctionalTests.m"
+                  timestampString = "499740940.961118"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "2760">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -532,13 +656,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Programming_Keyboard/Container.m"
-            timestampString = "499719945.531169"
+            timestampString = "499740133.123577"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "-didReceiveMemoryWarning"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Container didReceiveMemoryWarning]"
+                  moduleName = "Programming_Keyboard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/Container.m"
+                  timestampString = "499740940.384399"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Container didReceiveMemoryWarning]"
+                  moduleName = "FunctionalTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/Container.m"
+                  timestampString = "499740940.964503"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -13,27 +13,40 @@
 
 @implementation Container (KeyboardCatagory)
 
+
 -(void) SetupKeyboard{
     if(self.KeyboardReady) return;
+    [self SetSecondKeys];
+    self.Shift = 0;
     for(UIView * subview in self.view.subviews){
         if(subview.tag == KEYBOARD_TAG){
             for(UIButton* button in subview.subviews){
                 if([button.titleLabel.text isEqualToString:BACKSPACE]){
-                    [self RegisterButton:button
-                         toSelectorBegin:@"TouchBegin:"
-                           toSelectorEnd:@"TouchEnd:"];
                     [self.ButtonToSelector setObject:@"BackSpaceButton:"
                                               forKey:button.titleLabel.text];
                     
-                }else if (![button.titleLabel.text isEqualToString:ENTER]){
+                    
+                }else if (![button.titleLabel.text isEqualToString:ENTER]
+                          && ![button.titleLabel.text isEqualToString:SHIFT]
+                          && ![button.titleLabel.text isEqualToString:SPACE]){
                         //NSLog(@"registered %@\n", button.titleLabel.text);
+                    [self.KeysHasSecondFunctions addObject:button];
                     UILongPressGestureRecognizer*  rec = [[UILongPressGestureRecognizer alloc]
                                                           initWithTarget:self
                                                           action:@selector(CompletionLongPressed:)];
+                    rec.minimumPressDuration = 0.7;
+                    [rec setDelegate:self];
                     [button addGestureRecognizer:rec];
                     [self.keyboardLayout setObject:rec forKey:button.titleLabel.text];
                 }
+                UILongPressGestureRecognizer*  DelayedAction = [[UILongPressGestureRecognizer alloc]
+                                                                initWithTarget:self
+                                                                action:@selector(keyboardButton:)];
+                DelayedAction.minimumPressDuration = 0.06;
+                [DelayedAction setDelegate:self];
+                [button addGestureRecognizer:DelayedAction];
             }
+            
         }
         if(subview.tag == CONTROL_TAG){
             for(UIButton* button in subview.subviews){
@@ -50,6 +63,7 @@
                 }
             }
         }
+        
     }
     self.KeyboardReady = YES;
 
@@ -70,12 +84,28 @@
 }
 
 
+    //shift keys:
+-(void) ResetLayout{
+    self.Shift++;
+    NSDictionary* next = self.Switcher[(self.Shift % 2)];
+    for(UIButton* button in self.KeysHasSecondFunctions){
+        NSString* source = [NSString stringWithString:button.titleLabel.text];
+        NSString* target = [next objectForKey:source];
+        [button setTitle:target forState:UIControlStateNormal];
+        [button setTitle:target forState:UIControlStateSelected];
+        [button setTitle:target forState:UIControlStateHighlighted];
+    }
+}
+
 //backspace helpers
 -(void) BackSpaceButton:(NSTimer*)timer {
+    
     NSInteger rewindOffset = [self.completionEngine inputPressed:BACKSPACE
                                                        textField:self.codes];
     [self.completionEngine printDebug];
     [self moveCursorByOffset:rewindOffset];
+    [self.codes becomeFirstResponder];
+
 }
 
 
@@ -91,10 +121,11 @@
 
 
 -(IBAction) CompletionLongPressed:(UILongPressGestureRecognizer *) sender{
+    [self.codes becomeFirstResponder];
     switch(sender.state){
         case UIGestureRecognizerStateBegan:{
                 //normal action:
-            [self keyboardButton:(UIButton*)sender.view];
+                //[self keyboardButton:(UIButton*)sender.view];
             
             
                 //init the view
@@ -127,6 +158,7 @@
         default:
             break;
     }
+    [self.codes becomeFirstResponder];
     
 }
 
@@ -152,18 +184,56 @@
 }
 
     //keyboard helpers
--(IBAction)keyboardButton:(UIButton *)sender{
+-(IBAction)keyboardButton:(UILongPressGestureRecognizer *) trigger{
+    UIButton* sender = (UIButton*)trigger.view;
     NSString* input = sender.titleLabel.text;
-        //NSLog(@"button %@ touched up", input);
-    NSInteger rewindOffset = [self.completionEngine inputPressed:input
-                                                       textField:self.codes];
-    [self.completionEngine printDebug];
-    [self moveCursorByOffset:rewindOffset];
+    switch(trigger.state){
+        case UIGestureRecognizerStateBegan:{
+            
+            if([input isEqualToString:SHIFT]){
+                [self ResetLayout]; return;
+            }
+            if([input isEqualToString:BACKSPACE]){
+                [self TouchBegin:sender];
+                return;
+            }
+            NSInteger rewindOffset = [self.completionEngine inputPressed:input
+                                                               textField:self.codes];
+            [self.completionEngine printDebug];
+            [self moveCursorByOffset:rewindOffset];
+        }
+        case UIGestureRecognizerStateChanged:
+                //NSLog(@"State changed");
+            break;
+        case UIGestureRecognizerStateEnded:{
+            if([input isEqualToString:BACKSPACE]){
+                [self TouchEnd:sender];
+                return;
+            }
+        }
+            
+            break;
+        default:
+            break;
+    }
+    [self.codes becomeFirstResponder];
+
+    
 }
 
 -(IBAction)keyboardButtonTouched:(UIButton *)sender{
         //NSLog(@"button %@ touched to update current key", sender.titleLabel.text);
     self.currentKey = sender;
+    NSInteger rewindOffset = [self.completionEngine inputPressed:sender.titleLabel.text
+                                                       textField:self.codes];
+    [self.completionEngine printDebug];
+    [self moveCursorByOffset:rewindOffset];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+    shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
 }
 
     // MARK delegations for pop over:
@@ -203,6 +273,48 @@ popoverPresentationController willRepositionPopoverToRect:(inout CGRect *)rect i
 - (void) TouchEnd:(UIButton*)sender {
     [self.Timer invalidate];
     self.Timer = nil;
+}
+
+-(void) SetSecondKeys{
+        //first row:
+    self.SecondFunctionalKey = [NSMutableDictionary new];
+    self.FirstFunctionalKey = [NSMutableDictionary new];
+    self.KeysHasSecondFunctions = [NSMutableArray new];
+    self.Switcher = [NSMutableArray new];
+    [self.SecondFunctionalKey setObject:@"`" forKey:@"~"];
+    [self.SecondFunctionalKey setObject:@"!" forKey:@"1"];
+    [self.SecondFunctionalKey setObject:@"@" forKey:@"2"];
+    [self.SecondFunctionalKey setObject:@"#" forKey:@"3"];
+    [self.SecondFunctionalKey setObject:@"$" forKey:@"4"];
+    [self.SecondFunctionalKey setObject:@"%" forKey:@"5"];
+    [self.SecondFunctionalKey setObject:@"^" forKey:@"6"];
+    [self.SecondFunctionalKey setObject:@"&" forKey:@"7"];
+    [self.SecondFunctionalKey setObject:@"*" forKey:@"8"];
+    [self.SecondFunctionalKey setObject:@"(" forKey:@"9"];
+    [self.SecondFunctionalKey setObject:@")" forKey:@"0"];
+    [self.SecondFunctionalKey setObject:@"_" forKey:@"-"];
+    [self.SecondFunctionalKey setObject:@"+" forKey:@"="];
+        //alphabet:
+    for(char c = 'a'; c<='z'; ++c){
+        NSString *source = [NSString stringWithFormat:@"%c", c];
+        NSString *target = [source uppercaseString];
+        [self.SecondFunctionalKey setObject:target forKey:source];
+    }
+        //right part:
+    [self.SecondFunctionalKey setObject:@"{" forKey:@"["];
+    [self.SecondFunctionalKey setObject:@"}" forKey:@"]"];
+    [self.SecondFunctionalKey setObject:@"|" forKey:@"\\"];
+    [self.SecondFunctionalKey setObject:@":" forKey:@";"];
+    [self.SecondFunctionalKey setObject:@"\"" forKey:@"'"];
+    [self.SecondFunctionalKey setObject:@"<" forKey:@","];
+    [self.SecondFunctionalKey setObject:@">" forKey:@"."];
+    [self.SecondFunctionalKey setObject:@"?" forKey:@"/"];
+    
+    for(NSString* key in self.SecondFunctionalKey){
+        [self.FirstFunctionalKey setObject:key forKey:[self.SecondFunctionalKey objectForKey:key]];
+    }
+    [self.Switcher addObject:self.FirstFunctionalKey];
+    [self.Switcher addObject:self.SecondFunctionalKey];
 }
 
 

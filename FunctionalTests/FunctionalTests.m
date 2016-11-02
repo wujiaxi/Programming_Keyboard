@@ -7,6 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <UIKit/UIGestureRecognizerSubclass.h> //set state to be writable
+
 #import "Catagories.h"
 
 
@@ -48,7 +50,14 @@
 }
 
 - (void) pressKey:(NSString*) name{
-    [self.app keyboardButton:[self.keyboard objectForKey:name]];
+    if([name isEqualToString:BACKSPACE]){
+        [self.app BackSpaceButton:nil]; return;
+    }
+    UILongPressGestureRecognizer *trigger = [UILongPressGestureRecognizer  new];
+    UIButton* sender = [self.keyboard objectForKey:name];
+    [sender addGestureRecognizer:trigger];
+    trigger.state = UIGestureRecognizerStateBegan;
+    [self.app keyboardButton:trigger];
 }
 
 - (void) assertString:(NSString*) target{

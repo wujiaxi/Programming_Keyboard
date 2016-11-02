@@ -12,11 +12,12 @@
 @interface Container (KeyboardCatagory)
 
 -(void) SetupKeyboard;
+-(void) SetSecondKeys;
 
 -(void) BackSpaceButton:(NSTimer*)timer;
 -(IBAction) CompletionLongPressed:(UILongPressGestureRecognizer *) sender;
 
--(IBAction)keyboardButton:(UIButton *)sender;
+-(IBAction)keyboardButton:(UILongPressGestureRecognizer *) trigger;
 -(IBAction)keyboardButtonTouched:(UIButton *)sender;
 
 -(IBAction)CompletionLanguageSelected:(UIButton *)sender;

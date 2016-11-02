@@ -16,6 +16,7 @@
 @interface Container ()  <UIPopoverPresentationControllerDelegate,
                             CompletionLanguageDelegate,
                             CompletionSelectionDelegate,
+                            UIGestureRecognizerDelegate,
                             FileSyncDelegate>
 
 @end

@@ -40,5 +40,11 @@
 @property (nonatomic, strong) GTLServiceDrive *service;
 @property (nonatomic, strong) DriveModel *driveModel;
 
+@property (nonatomic, strong) NSMutableDictionary* FirstFunctionalKey;
+@property (nonatomic, strong) NSMutableDictionary* SecondFunctionalKey;
+@property (nonatomic, strong) NSMutableArray* KeysHasSecondFunctions;
+@property (nonatomic, strong) NSMutableArray* Switcher;
+@property (nonatomic) NSInteger Shift;
+
 @end
 

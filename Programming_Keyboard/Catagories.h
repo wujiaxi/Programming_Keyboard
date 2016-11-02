@@ -17,4 +17,7 @@
 
 #define BACKSPACE @"⇦"
 #define ENTER @"↵"
+#define SHIFT @"⇪"
+#define SPACE @" "
+
 #endif /* Catagories_h */
