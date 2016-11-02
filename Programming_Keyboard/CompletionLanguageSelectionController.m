@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.preferredContentSize = CGSizeMake(190, 290);
     self.AvailableList = @[@"cpp", @"java", @"go"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
