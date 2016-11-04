@@ -147,6 +147,20 @@
     XCTAssert([self getIndex] == 3);
 }
 
+- (void) testSimpleMoveUp {
+    [self pressKey:@"a"];
+    [self pressKey:ENTER];
+    [self pressKey:@"b"];
+    XCTAssert([self getIndex] == 3);
+    
+    [self.app MoveCursorLeft:nil];
+    XCTAssert([self getIndex] == 2);
+
+    [self.app MoveCursorUp:nil];
+    XCTAssert([self getIndex] == 0);
+
+}
+
 - (void)testMovingDown {
     [self pressKey:@"{"];
     [self assertString:@"{\n    \n}"];

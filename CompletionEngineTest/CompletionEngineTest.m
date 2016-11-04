@@ -60,7 +60,7 @@
     [self.codes insertText:@"\n\n"];
     [self MoveCursorByOffset:-1];
     XCTAssert([self.completionEngine OffsetToNextLine:self.codes] == 1);
-    XCTAssert([self.completionEngine OffsetToPrevLine:self.codes] == 0);
+    XCTAssert([self.completionEngine OffsetToPrevLine:self.codes] == -1);
 }
 
 - (void)testMultipleMotionBack {
