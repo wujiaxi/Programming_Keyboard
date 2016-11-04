@@ -6,6 +6,7 @@ Deceptively Simple, Vastly Powerful.
 ## An EECS481 Project by Finger Wizards
 #Demos:
 ![DEMO](demos/context_aware_assistence.gif?raw=true "Title=Context Aware Assistance")
+![DEMO](demos/context_aware_assistence_2.gif?raw=true "Title=Context Aware Assistance")
 ![DEMO](demos/prefix.gif?raw=true "Title=prefix completion")
 
 #Team:
