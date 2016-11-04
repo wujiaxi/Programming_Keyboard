@@ -17,38 +17,6 @@
             endingLineNumber = "56"
             landmarkName = "-viewDidLayoutSubviews"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[Container viewDidLayoutSubviews]"
-                  moduleName = "Programming_Keyboard"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/Container.m"
-                  timestampString = "499740940.370475"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "412">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[Container viewDidLayoutSubviews]"
-                  moduleName = "FunctionalTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/Container.m"
-                  timestampString = "499740940.936125"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "412">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,27 +42,27 @@
                   moduleName = "Programming_Keyboard"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
-                  timestampString = "499740940.374661"
+                  timestampString = "499973756.623335"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "244"
-                  endingLineNumber = "244"
-                  offsetFromSymbolStart = "64">
+                  startingLineNumber = "255"
+                  endingLineNumber = "255"
+                  offsetFromSymbolStart = "84">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[Container(KeyboardCatagory) popoverPresentationControllerDidDismissPopover:]"
-                  moduleName = "FunctionalTests"
+                  moduleName = "CompletionEngineTest"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
-                  timestampString = "499740940.939178"
+                  timestampString = "499973757.027328"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "244"
-                  endingLineNumber = "244"
-                  offsetFromSymbolStart = "64">
+                  startingLineNumber = "255"
+                  endingLineNumber = "255"
+                  offsetFromSymbolStart = "84">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -122,11 +90,11 @@
                   moduleName = "Programming_Keyboard"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
-                  timestampString = "499740940.38784"
+                  timestampString = "499973756.626335"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "103"
-                  endingLineNumber = "103"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
                   offsetFromSymbolStart = "72">
                </Location>
                <Location
@@ -134,14 +102,14 @@
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[Container(KeyboardCatagory) BackSpaceButton:]"
-                  moduleName = "FunctionalTests"
+                  moduleName = "CompletionEngineTest"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
-                  timestampString = "499740940.967364"
+                  timestampString = "499973757.030662"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "103"
-                  endingLineNumber = "103"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
                   offsetFromSymbolStart = "72">
                </Location>
             </Locations>
@@ -170,11 +138,11 @@
                   moduleName = "Programming_Keyboard"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
-                  timestampString = "499740940.391122"
+                  timestampString = "499973756.629492"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "274"
-                  endingLineNumber = "274"
+                  startingLineNumber = "292"
+                  endingLineNumber = "292"
                   offsetFromSymbolStart = "72">
                </Location>
                <Location
@@ -182,14 +150,14 @@
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[Container(KeyboardCatagory) TouchEnd:]"
-                  moduleName = "FunctionalTests"
+                  moduleName = "CompletionEngineTest"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
-                  timestampString = "499740940.970142"
+                  timestampString = "499973757.033806"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "274"
-                  endingLineNumber = "274"
+                  startingLineNumber = "292"
+                  endingLineNumber = "292"
                   offsetFromSymbolStart = "72">
                </Location>
             </Locations>
@@ -218,11 +186,11 @@
                   moduleName = "Programming_Keyboard"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
-                  timestampString = "499740940.394163"
+                  timestampString = "499973756.63247"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "265"
-                  endingLineNumber = "265"
+                  startingLineNumber = "281"
+                  endingLineNumber = "281"
                   offsetFromSymbolStart = "72">
                </Location>
                <Location
@@ -230,14 +198,14 @@
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[Container(KeyboardCatagory) TouchBegin:]"
-                  moduleName = "FunctionalTests"
+                  moduleName = "CompletionEngineTest"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
-                  timestampString = "499740940.972849"
+                  timestampString = "499973757.036773"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "265"
-                  endingLineNumber = "265"
+                  startingLineNumber = "281"
+                  endingLineNumber = "281"
                   offsetFromSymbolStart = "72">
                </Location>
             </Locations>
@@ -266,11 +234,11 @@
                   moduleName = "Programming_Keyboard"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
-                  timestampString = "499740940.397154"
+                  timestampString = "499973756.643023"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "169"
-                  endingLineNumber = "169"
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
                   offsetFromSymbolStart = "68">
                </Location>
                <Location
@@ -278,15 +246,127 @@
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[Container(KeyboardCatagory) CompletionLanguageSelected:]"
-                  moduleName = "FunctionalTests"
+                  moduleName = "CompletionEngineTest"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/KeyboardCatagory.m"
-                  timestampString = "499740940.975505"
+                  timestampString = "499973757.039453"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "169"
-                  endingLineNumber = "169"
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
                   offsetFromSymbolStart = "68">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FunctionalTests/FunctionalTests.m"
+            timestampString = "499972336.547446"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "-testSimpleMoveUp"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FunctionalTests/FunctionalTests.m"
+            timestampString = "499972369.842702"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "-testSimpleMoveUp"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FunctionalTests/FunctionalTests.m"
+            timestampString = "499972394.328877"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "-testSimpleMoveUp"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FunctionalTests/FunctionalTests.m"
+            timestampString = "499972602.038721"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "-testMovingDown"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Programming_Keyboard/CompletionEngine.m"
+            timestampString = "499973380.352733"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
+            landmarkName = "-OffsetToLineOffset:code:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CompletionEngine OffsetToLineOffset:code:]"
+                  moduleName = "Programming_Keyboard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/CompletionEngine.m"
+                  timestampString = "499973756.658269"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "347"
+                  endingLineNumber = "347"
+                  offsetFromSymbolStart = "264">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CompletionEngine OffsetToLineOffset:code:]"
+                  moduleName = "CompletionEngineTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/Programming_Keyboard/CompletionEngine.m"
+                  timestampString = "499973757.060525"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "347"
+                  endingLineNumber = "347"
+                  offsetFromSymbolStart = "264">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -297,14 +377,154 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FunctionalTests/FunctionalTests.m"
-            timestampString = "499741173.785159"
+            filePath = "CompletionEngineTest/CompletionEngineTest.m"
+            timestampString = "499973568.130008"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "-pressKey:"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "-testFindNextLineCursor"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CompletionEngineTest testFindNextLineCursor]"
+                  moduleName = "CompletionEngineTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/CompletionEngineTest/CompletionEngineTest.m"
+                  timestampString = "499973757.063379"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "592">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CompletionEngineTest testFindNextLineCursor]"
+                  moduleName = "CompletionEngineTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/CompletionEngineTest/CompletionEngineTest.m"
+                  timestampString = "499973757.065527"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "1760">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CompletionEngineTest testFindNextLineCursor]"
+                  moduleName = "CompletionEngineTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/CompletionEngineTest/CompletionEngineTest.m"
+                  timestampString = "499973757.06768"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "1796">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CompletionEngineTest testFindNextLineCursor]"
+                  moduleName = "CompletionEngineTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/CompletionEngineTest/CompletionEngineTest.m"
+                  timestampString = "499973757.069781"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "1876">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CompletionEngineTest/CompletionEngineTest.m"
+            timestampString = "499973569.507984"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "-testFindNextLineCursor"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CompletionEngineTest testFindNextLineCursor]"
+                  moduleName = "CompletionEngineTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/CompletionEngineTest/CompletionEngineTest.m"
+                  timestampString = "499973757.072937"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "116">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CompletionEngineTest testFindNextLineCursor]"
+                  moduleName = "CompletionEngineTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/CompletionEngineTest/CompletionEngineTest.m"
+                  timestampString = "499973757.074927"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "588">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CompletionEngineTest testFindNextLineCursor]"
+                  moduleName = "CompletionEngineTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/CompletionEngineTest/CompletionEngineTest.m"
+                  timestampString = "499973757.076844"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "1028">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CompletionEngineTest testFindNextLineCursor]"
+                  moduleName = "CompletionEngineTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junlong/workspace/Programming_Keyboard/CompletionEngineTest/CompletionEngineTest.m"
+                  timestampString = "499973757.078755"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "1108">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

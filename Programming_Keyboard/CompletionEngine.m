@@ -368,7 +368,13 @@
                 offset++;
             }
             if(offset == 0 || i == 0){
-                target = i+1; break;
+                target = i+1;
+                if(i == 0 && offset < 0){
+                        //i should bounce back to the start of the document
+                        //instead of pointing to previous line end
+                    target = i;
+                }
+                break;
             }
         }
     }
