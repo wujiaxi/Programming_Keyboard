@@ -43,43 +43,13 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "41F5FDA71DBC3F2900C753B5"
-               BuildableName = "CompletionEngineTest.xctest"
-               BlueprintName = "CompletionEngineTest"
-               ReferencedContainer = "container:Programming_Keyboard.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "41F5FDB81DBC480000C753B5"
-               BuildableName = "FunctionalTests.xctest"
-               BlueprintName = "FunctionalTests"
-               ReferencedContainer = "container:Programming_Keyboard.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "41F5FD951DBC0EDE00C753B5"
-               BuildableName = "Programming_KeyboardTests.xctest"
-               BlueprintName = "Programming_KeyboardTests"
-               ReferencedContainer = "container:Programming_Keyboard.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "410CB21B1DB1229400F586B5"
-            BuildableName = "Programming_Keyboard.app"
-            BlueprintName = "Programming_Keyboard"
+            BlueprintIdentifier = "B003E34E1DB1C81B00B5201A"
+            BuildableName = "keyboard.appex"
+            BlueprintName = "keyboard"
             ReferencedContainer = "container:Programming_Keyboard.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
