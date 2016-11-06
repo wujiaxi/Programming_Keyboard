@@ -7,6 +7,8 @@ Deceptively Simple, Vastly Powerful.
 #Demos:
 ![DEMO](demos/context_aware_assistence.gif?raw=true "Title=Context Aware Assistance")
 ![DEMO](demos/context_aware_assistence_2.gif?raw=true "Title=Context Aware Assistance")
+![DEMO](demos/google_login.gif?raw=true "Title=Context Aware Assistance")
+![DEMO](demos/commit_to_google_drive.gif?raw=true "Title=Context Aware Assistance")
 ![DEMO](demos/prefix.gif?raw=true "Title=prefix completion")
 
 #Team:
