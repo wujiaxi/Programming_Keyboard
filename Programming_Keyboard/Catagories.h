@@ -22,5 +22,6 @@
 
 #define STANDARDDELAY 0.001
 #define COMPLETIONDELAY 0.5
+#define BACKSPACEDELAY 0.5
 
 #endif /* Catagories_h */
