@@ -20,7 +20,8 @@
 
 -(IBAction)keyboardButton:(UILongPressGestureRecognizer *) trigger;
 -(IBAction)keyboardButtonTouched:(UIButton *)sender;
-
+-(IBAction) BackSpacePressed:(UIButton*) button;
+-(void) BackSpaceLongPressed:(UILongPressGestureRecognizer *) trigger;
 -(IBAction)CompletionLanguageSelected:(UIButton *)sender;
 -(void) selectedCompletion:(NSString *)entry;
 

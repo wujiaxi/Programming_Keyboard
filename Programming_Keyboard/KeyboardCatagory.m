@@ -23,6 +23,13 @@
         if(subview.tag == KEYBOARD_TAG){
             for(UIButton* button in subview.subviews){
                 if([button.titleLabel.text isEqualToString:BACKSPACE]){
+                    UILongPressGestureRecognizer*  rec = [[UILongPressGestureRecognizer alloc]
+                                                          initWithTarget:self
+                                                          action:@selector(BackSpaceLongPressed:)];
+                    rec.minimumPressDuration = BACKSPACEDELAY;
+                    [rec setDelegate:self];
+                    [button addGestureRecognizer:rec];
+                    [self.keyboardLayout setObject:rec forKey:button.titleLabel.text];
                     [self.ButtonToSelector setObject:@"BackSpaceButton:"
                                               forKey:button.titleLabel.text];
                 }else if (![button.titleLabel.text isEqualToString:ENTER]
@@ -37,13 +44,15 @@
                     [rec setDelegate:self];
                     [button addGestureRecognizer:rec];
                     [self.keyboardLayout setObject:rec forKey:button.titleLabel.text];
+                    
+                    UILongPressGestureRecognizer*  DelayedAction = [[UILongPressGestureRecognizer alloc]
+                                                                    initWithTarget:self
+                                                                    action:@selector(keyboardButton:)];
+                    DelayedAction.minimumPressDuration = STANDARDDELAY;
+                    [DelayedAction setDelegate:self];
+                    [button addGestureRecognizer:DelayedAction];
                 }
-                UILongPressGestureRecognizer*  DelayedAction = [[UILongPressGestureRecognizer alloc]
-                                                                initWithTarget:self
-                                                                action:@selector(keyboardButton:)];
-                DelayedAction.minimumPressDuration = STANDARDDELAY;
-                [DelayedAction setDelegate:self];
-                [button addGestureRecognizer:DelayedAction];
+                
             }
             
         }
@@ -138,6 +147,43 @@
 
 }
 
+-(IBAction) BackSpacePressed:(UIButton*) button {
+    
+    NSInteger rewindOffset = [self.completionEngine inputPressed:BACKSPACE
+                                                       textField:self.codes];
+    [self.completionEngine printDebug];
+    [self moveCursorByOffset:rewindOffset];
+    [self.codes becomeFirstResponder];
+    
+}
+
+-(void) BackSpaceLongPressed:(UILongPressGestureRecognizer *) trigger {
+    
+    UIButton* sender = (UIButton*)trigger.view;
+    NSString* input = sender.titleLabel.text;
+    switch(trigger.state){
+        case UIGestureRecognizerStateBegan:{
+            if([input isEqualToString:BACKSPACE]){
+                [self TouchBegin:sender];
+            }
+            break;
+        }
+        case UIGestureRecognizerStateChanged:
+                //NSLog(@"State changed");
+            break;
+        case UIGestureRecognizerStateEnded:{
+            if([input isEqualToString:BACKSPACE]){
+                [self TouchEnd:sender];
+                break;
+            }
+        }
+        default:
+            break;
+    }
+    [self.codes becomeFirstResponder];
+    
+}
+
 
 #pragma mark - Completion Selection Panel Delegate
 -(void) selectedCompletion:(NSString *)entry
@@ -227,10 +273,7 @@
             if([input isEqualToString:SHIFT]){
                 [self ResetLayout]; return;
             }
-            if([input isEqualToString:BACKSPACE]){
-                [self TouchBegin:sender];
-                return;
-            }
+            
             NSInteger rewindOffset = [self.completionEngine inputPressed:input
                                                                textField:self.codes];
             [self.completionEngine printDebug];
@@ -240,10 +283,7 @@
                 //NSLog(@"State changed");
             break;
         case UIGestureRecognizerStateEnded:{
-            if([input isEqualToString:BACKSPACE]){
-                [self TouchEnd:sender];
-                return;
-            }
+            
         }
             
             break;
@@ -294,8 +334,9 @@
     return YES;
 }
 
-- (void)popoverPresentationController:(UIPopoverPresentationController *)
-popoverPresentationController willRepositionPopoverToRect:(inout CGRect *)rect inView:(inout UIView *__autoreleasing  _Nonnull *)view {
+- (void)popoverPresentationController:(UIPopoverPresentationController *)popoverPresentationController
+          willRepositionPopoverToRect:(inout CGRect *)rect
+                               inView:(inout UIView *__autoreleasing  _Nonnull *)view {
     
         // called when the Popover changes positon
     [self.codes becomeFirstResponder];

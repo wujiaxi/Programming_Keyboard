@@ -43,6 +43,9 @@
                                         <state key="normal" title="⇦">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="BackSpacePressed:" destination="BYZ-38-t0r" eventType="touchDown" id="LzE-p8-mBb"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sy4-IL-FtH" customClass="MDButton">
                                         <rect key="frame" x="948" y="182" width="77" height="88"/>
