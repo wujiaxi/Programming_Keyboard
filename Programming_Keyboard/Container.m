@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.DriveReady = NO;
+    self.DriveLoading = NO;
     self.KeyboardReady = NO;
     
     //NSLog(@"main container init");
@@ -49,17 +49,18 @@
 
 #pragma mark - initialization
 - (void)viewDidLayoutSubviews{
+    if(self.DriveLoading) return;
     self.keyboardLayout = [NSMutableDictionary new];
     self.ButtonToSelector = [NSMutableDictionary new];
-    if (!self.service.authorizer.canAuthorize && !self.DriveReady) {
+    if (!self.service.authorizer.canAuthorize) {
         // Not yet authorized, request authorization by pushing the login UI onto the UI stack.
         [self presentViewController:[self createAuthController] animated:YES completion:nil];
+        self.DriveLoading = YES;
     }else{
-        self.DriveReady = YES;
         [self.driveModel SetupSketch];
+        [self SetupKeyboard];
     }
     
-    [self SetupKeyboard];
     [self.codes becomeFirstResponder];
 
 }

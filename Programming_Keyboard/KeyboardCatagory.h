@@ -12,6 +12,7 @@
 @interface Container (KeyboardCatagory)
 
 -(void) SetupKeyboard;
+-(void) FixKeyboard;
 -(void) SetSecondKeys;
 
 -(void) BackSpaceButton:(NSTimer*)timer;

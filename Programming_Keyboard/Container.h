@@ -26,7 +26,7 @@
 @property (nonatomic, weak) CompletionLanguageSelectionController *LanguageList;
 @property (nonatomic, weak) AutoCompletionPanelController *completionPanel;
 @property (nonatomic, strong) CompletionEngine *completionEngine;
-@property(nonatomic) BOOL DriveReady;
+@property(nonatomic) BOOL DriveLoading;
 @property (nonatomic) BOOL KeyboardReady;
 
 @property (nonatomic, weak) IBOutlet UIButton *currentKey;

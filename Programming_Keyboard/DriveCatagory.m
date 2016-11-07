@@ -38,11 +38,11 @@
     if (error != nil) {
         [self showAlert:@"Authentication Error" message:error.localizedDescription];
         self.service.authorizer = nil;
-        self.DriveReady = YES;
     }
     else {
         self.service.authorizer = authResult;
         [self dismissViewControllerAnimated:YES completion:nil];
+        self.DriveLoading = NO;
             //[self.driveModel SetupSketch];
     }
 }
@@ -77,7 +77,7 @@
         // Sign out
     [GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:kKeychainItemName];
     [[self service] setAuthorizer:nil];
-    self.DriveReady = NO;
+    self.DriveLoading = YES;
     [self presentViewController:[self createAuthController] animated:YES completion:nil];
 }
 

@@ -15,6 +15,7 @@
 
 
 -(void) SetupKeyboard{
+    [self FixKeyboard];
     if(self.KeyboardReady) return;
     [self SetSecondKeys];
     self.Shift = 0;
@@ -24,8 +25,6 @@
                 if([button.titleLabel.text isEqualToString:BACKSPACE]){
                     [self.ButtonToSelector setObject:@"BackSpaceButton:"
                                               forKey:button.titleLabel.text];
-                    
-                    
                 }else if (![button.titleLabel.text isEqualToString:ENTER]
                           && ![button.titleLabel.text isEqualToString:SHIFT]
                           && ![button.titleLabel.text isEqualToString:SPACE]){
@@ -67,6 +66,35 @@
     }
     self.KeyboardReady = YES;
 
+}
+
+
+-(void) FixKeyboard{
+    for(UIView * subview in self.view.subviews){
+        if(subview.tag == KEYBOARD_TAG){
+            for(UIButton* button in subview.subviews){
+                if([button.titleLabel.text isEqualToString:BACKSPACE]){
+                    [self.ButtonToSelector setObject:@"BackSpaceButton:"
+                                              forKey:button.titleLabel.text];
+                    break;
+                }
+            }
+            
+        }
+        if(subview.tag == CONTROL_TAG){
+            for(UIButton* button in subview.subviews){
+                if([button.titleLabel.text isEqualToString:@"Left"]||
+                   [button.titleLabel.text isEqualToString:@"Right"]||
+                   [button.titleLabel.text isEqualToString:@"Up"]||
+                   [button.titleLabel.text isEqualToString:@"Down"]){
+                    [self.ButtonToSelector setObject:[NSString stringWithFormat:@"MoveCursor%@:", button.titleLabel.text]
+                                              forKey:button.titleLabel.text];
+                    
+                }
+            }
+        }
+        
+    }
 }
 
 
