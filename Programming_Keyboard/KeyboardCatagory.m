@@ -23,6 +23,7 @@
         if(subview.tag == KEYBOARD_TAG){
             for(UIButton* button in subview.subviews){
                 if([button.titleLabel.text isEqualToString:BACKSPACE]){
+                        //backspace
                     UILongPressGestureRecognizer*  rec = [[UILongPressGestureRecognizer alloc]
                                                           initWithTarget:self
                                                           action:@selector(BackSpaceLongPressed:)];
@@ -32,27 +33,31 @@
                     [self.keyboardLayout setObject:rec forKey:button.titleLabel.text];
                     [self.ButtonToSelector setObject:@"BackSpaceButton:"
                                               forKey:button.titleLabel.text];
-                }else if (![button.titleLabel.text isEqualToString:ENTER]
-                          && ![button.titleLabel.text isEqualToString:SHIFT]
-                          && ![button.titleLabel.text isEqualToString:SPACE]){
-                        //NSLog(@"registered %@\n", button.titleLabel.text);
-                    [self.KeysHasSecondFunctions addObject:button];
-                    UILongPressGestureRecognizer*  rec = [[UILongPressGestureRecognizer alloc]
-                                                          initWithTarget:self
-                                                          action:@selector(CompletionLongPressed:)];
-                    rec.minimumPressDuration = COMPLETIONDELAY;
-                    [rec setDelegate:self];
-                    [button addGestureRecognizer:rec];
-                    [self.keyboardLayout setObject:rec forKey:button.titleLabel.text];
-                    
+                }else{
+                    if (![button.titleLabel.text isEqualToString:ENTER]
+                        && ![button.titleLabel.text isEqualToString:SHIFT]
+                        && ![button.titleLabel.text isEqualToString:SPACE]){
+                            //NSLog(@"registered %@\n", button.titleLabel.text);
+                            //normal keys
+                        [self.KeysHasSecondFunctions addObject:button];
+                        UILongPressGestureRecognizer*  rec = [[UILongPressGestureRecognizer alloc]
+                                                              initWithTarget:self
+                                                              action:@selector(CompletionLongPressed:)];
+                        rec.minimumPressDuration = COMPLETIONDELAY;
+                        [rec setDelegate:self];
+                        [button addGestureRecognizer:rec];
+                        [self.keyboardLayout setObject:rec forKey:button.titleLabel.text];
+                        
+                        
+                    }
                     UILongPressGestureRecognizer*  DelayedAction = [[UILongPressGestureRecognizer alloc]
                                                                     initWithTarget:self
                                                                     action:@selector(keyboardButton:)];
                     DelayedAction.minimumPressDuration = STANDARDDELAY;
                     [DelayedAction setDelegate:self];
                     [button addGestureRecognizer:DelayedAction];
+                    
                 }
-                
             }
             
         }
