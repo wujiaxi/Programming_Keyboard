@@ -1,5 +1,6 @@
-language: objective-c
 osx_image: xcode8
+language: objective-c
+cache: cocoapods
 notifications:
   slack: eecs481team:W22pFAfnGJAhps8RZ4QvXYCB
 before_install:
