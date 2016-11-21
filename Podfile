@@ -1,9 +1,10 @@
 platform :ios, '10.0'
 
 def available_pods
-    pod 'GoogleAPIClient/Drive', '~> 1.0.5'
+    pod 'GoogleAPIClientForREST/Drive'
     pod 'GTMOAuth2', '~> 1.1.0'
     pod 'MaterialControls', '~> 1.2.2'
+    pod 'GTMAppAuth'
 end
 
 

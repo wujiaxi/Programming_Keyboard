@@ -4,7 +4,7 @@
 #define DRIVEMODEL_H
 
 #import "GTMOAuth2ViewControllerTouch.h"
-#import "GTLDrive.h"
+#import "GTLRDrive.h"
 
 @protocol FileSyncDelegate <NSObject>
 - (void) populateTextField:(NSString* ) data;
@@ -13,7 +13,7 @@
 @end
 
 @interface DriveModel : NSObject
-@property (nonatomic, weak) GTLServiceDrive *service;
+@property (nonatomic, weak) GTLRDriveService *service;
 @property (nonatomic, weak) id<FileSyncDelegate> delegate;
 
 - (void) SetupSketch;

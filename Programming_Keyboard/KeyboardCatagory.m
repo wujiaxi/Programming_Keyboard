@@ -15,6 +15,9 @@
 
 
 -(void) SetupKeyboard{
+    UITextInputAssistantItem* item = [self.codes inputAssistantItem];
+    item.leadingBarButtonGroups = @[];
+    item.trailingBarButtonGroups = @[];
     [self FixKeyboard];
     if(self.KeyboardReady) return;
     [self SetSecondKeys];
@@ -209,6 +212,7 @@
                             [self.completionEngine from]]];
     [self.completionEngine rewind];
     [self.codes becomeFirstResponder];
+    self.codes.inputAssistantItem.leadingBarButtonGroups = @[];
 
 }
 
@@ -216,6 +220,7 @@
 
 -(IBAction) CompletionLongPressed:(UILongPressGestureRecognizer *) sender{
     [self.codes becomeFirstResponder];
+
     switch(sender.state){
         case UIGestureRecognizerStateBegan:{
                 //normal action:
@@ -276,11 +281,13 @@
     popController.sourceRect = sender.frame;
     popController.delegate = self;
     [self.codes becomeFirstResponder];
+    self.codes.inputAssistantItem.leadingBarButtonGroups = @[];
 
 }
 
     //keyboard helpers
 -(IBAction)keyboardButton:(UILongPressGestureRecognizer *) trigger{
+    self.codes.inputAssistantItem.leadingBarButtonGroups = @[];
     UIButton* sender = (UIButton*)trigger.view;
     NSString* input = sender.titleLabel.text;
     switch(trigger.state){
@@ -307,6 +314,7 @@
             break;
     }
     [self.codes becomeFirstResponder];
+    self.codes.inputAssistantItem.leadingBarButtonGroups = @[];
 
     
 }
@@ -319,6 +327,8 @@
     [self.completionEngine printDebug];
     [self moveCursorByOffset:rewindOffset];
     [self.codes becomeFirstResponder];
+    self.codes.inputAssistantItem.leadingBarButtonGroups = @[];
+
 
 }
 
@@ -326,6 +336,8 @@
     shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     [self.codes becomeFirstResponder];
+    self.codes.inputAssistantItem.leadingBarButtonGroups = @[];
+
 
     return YES;
 }
