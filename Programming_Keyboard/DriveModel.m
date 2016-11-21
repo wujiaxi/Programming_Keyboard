@@ -202,8 +202,8 @@ static NSString *const SketchName = @"_sketch.txt";
                                                 delegate:self];
     [self QueryFile:fullFilename
     callback:^(GTLRDrive_FileList* fileList){
-        GTLRDrive_File *file = (fileList.files[0]);
-        if(file){
+        if([fileList.files count] > 0){
+            GTLRDrive_File *file = (fileList.files[0]);
             NSLog(@"successfully loaded schema from cloud");
             [self Readfile:file.identifier Callback:^(NSString* data){
                 [alert dismissWithClickedButtonIndex:0 animated:YES];

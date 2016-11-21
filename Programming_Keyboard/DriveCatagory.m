@@ -96,12 +96,14 @@
                                                         callback:^(OIDAuthState *_Nullable authState,
                                                                    NSError *_Nullable error)
           {
+              self.DriveLoading = NO;
               if (authState) {
                   GTMAppAuthFetcherAuthorization *authorization =
                   [[GTMAppAuthFetcherAuthorization alloc] initWithAuthState:authState];
                   
                   [self setGtmAuthorization:authorization];
                   [self.driveModel SetupSketch];
+                  [self SetupKeyboard];
 
                   //[self logMessage:@"Got authorization tokens. Access token: %@",
                   // authState.lastTokenResponse.accessToken];
@@ -143,6 +145,9 @@
         // Sign out
     //[GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:kKeychainItemName];
     [[self service] setAuthorizer:nil];
+    self.DriveLoading = YES;
+    [self viewDidLayoutSubviews];
+    [self authWithAutoCodeExchange];
     self.DriveLoading = YES;
     //[self presentViewController:[self createAuthController] animated:YES completion:nil];
 }
