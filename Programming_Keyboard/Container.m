@@ -13,6 +13,7 @@
 
 
 
+
 @interface Container ()  <UIPopoverPresentationControllerDelegate,
                             CompletionLanguageDelegate,
                             CompletionSelectionDelegate,
@@ -39,9 +40,10 @@
     
     //init google dirve
     self.service = [[GTLServiceDrive alloc] init];
-    self.service.authorizer = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
-                                                          clientID:kClientID
-                                                      clientSecret:nil];
+    self.service.authorizer = self.authorization;
+    //[GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
+    //                                                      clientID:kClientID
+    //                                                clientSecret:nil];
     self.driveModel = [[DriveModel alloc] init];
     self.driveModel.delegate = self;
     self.driveModel.service = self.service;
@@ -54,7 +56,8 @@
     self.ButtonToSelector = [NSMutableDictionary new];
     if (!self.service.authorizer.canAuthorize) {
         // Not yet authorized, request authorization by pushing the login UI onto the UI stack.
-        [self presentViewController:[self createAuthController] animated:YES completion:nil];
+        //[self presentViewController:[self createAuthController] animated:YES completion:nil];
+        [self authWithAutoCodeExchange];
         self.DriveLoading = YES;
     }else{
         [self.driveModel SetupSketch];
