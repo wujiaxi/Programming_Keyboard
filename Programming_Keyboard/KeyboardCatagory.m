@@ -23,7 +23,18 @@
         if(subview.tag == KEYBOARD_TAG){
             for(UIButton* button in subview.subviews){
                 if([button.titleLabel.text isEqualToString:BACKSPACE]){
-                        //backspace
+                    [self.ButtonToSelector setObject:@"BackSpaceButton:"
+                                              forKey:button.titleLabel.text];
+                    
+                    
+                }else if (![button.titleLabel.text isEqualToString:ENTER]
+                          && ![button.titleLabel.text isEqualToString:SHIFT]
+
+                          
+                          && ![button.titleLabel.text isEqualToString:SPACE]){
+                        //NSLog(@"registered %@\n", button.titleLabel.text);
+                    [self.KeysHasSecondFunctions addObject:button];
+
                     UILongPressGestureRecognizer*  rec = [[UILongPressGestureRecognizer alloc]
                                                           initWithTarget:self
                                                           action:@selector(BackSpaceLongPressed:)];
