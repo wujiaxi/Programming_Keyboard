@@ -15,7 +15,7 @@
 #import "GTMSessionFetcherService.h"
 
 #import "GTMOAuth2ViewControllerTouch.h"
-#import "GTLDrive.h"
+#import "GTLRDrive.h"
 
 // pop up view
 
@@ -44,7 +44,7 @@
 @property (nonatomic, weak) IBOutlet UIView *controls;
 
 @property (nonatomic, strong) GTMAppAuthFetcherAuthorization *authorization;
-@property (nonatomic, strong) GTLServiceDrive *service;
+@property (nonatomic, strong) GTLRDriveService *service;
 @property (nonatomic, strong) DriveModel *driveModel;
 
 @property (nonatomic, strong) NSMutableDictionary* FirstFunctionalKey;

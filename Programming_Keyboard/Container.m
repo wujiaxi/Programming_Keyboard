@@ -9,7 +9,7 @@
 #import "Container.h"
 #import "GTMOAuth2ViewControllerTouch.h"
 #import "Catagories.h"
-#import "GTLDrive.h"
+#import "GTLRDrive.h"
 
 
 
@@ -39,7 +39,7 @@
     self.completionEngine = [[CompletionEngine alloc] init];
     
     //init google dirve
-    self.service = [[GTLServiceDrive alloc] init];
+    self.service = [[GTLRDriveService alloc] init];
     self.service.authorizer = self.authorization;
     //[GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
     //                                                      clientID:kClientID

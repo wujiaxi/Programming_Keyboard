@@ -56,6 +56,7 @@
         return;
     }
     self.authorization = authorization;
+    self.service.authorizer = authorization;
 }
 
 - (void)authWithAutoCodeExchange {
@@ -74,7 +75,7 @@
          //[self logMessage:@"Got configuration: %@", configuration];
          
          // builds authentication request
-         NSArray *scopes = [NSArray arrayWithObjects:kGTLAuthScopeDriveMetadata, kGTLAuthScopeDrive, nil];
+         NSArray *scopes = [NSArray arrayWithObjects:kGTLRAuthScopeDriveMetadata, kGTLRAuthScopeDrive, kGTLRAuthScopeDriveFile, nil];
 
          OIDAuthorizationRequest *request =
          [[OIDAuthorizationRequest alloc] initWithConfiguration:configuration
