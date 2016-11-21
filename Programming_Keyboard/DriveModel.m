@@ -1,5 +1,5 @@
 #import "DriveModel.h"
-#import "GTLDrive.h"
+#import "GTLRDrive.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
@@ -34,16 +34,17 @@ static NSString *const SketchName = @"_sketch.txt";
     NSString *name = SketchName;
     NSString *content = codes;
     NSString *mimeType = @"text/plain";
-    GTLDriveFile *metadata = [GTLDriveFile object];
+    GTLRDrive_File *metadata = [GTLRDrive_File object];
     metadata.name = name;
     NSData *data = [content dataUsingEncoding:NSUTF8StringEncoding];
-    GTLUploadParameters *uploadParameters = [GTLUploadParameters uploadParametersWithData:data
+    GTLRUploadParameters *uploadParameters = [GTLRUploadParameters uploadParametersWithData:data
                                                                                  MIMEType:mimeType];
-    GTLQueryDrive *query = [GTLQueryDrive queryForFilesUpdateWithObject:metadata
+    GTLRDriveQuery *query = [GTLRDriveQuery_FilesUpdate queryWithObject:metadata
                                                                  fileId:self.SketchID
                                                        uploadParameters:uploadParameters];
-    [self.service executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
-                                                         GTLDriveFile *updatedFile,
+    
+    [self.service executeQuery:query completionHandler:^(GTLRServiceTicket *ticket,
+                                                         GTLRDrive_File *updatedFile,
                                                          NSError *error) {
         if (error == nil) {
             //NSLog(@"File %@", updatedFile);
@@ -56,13 +57,13 @@ static NSString *const SketchName = @"_sketch.txt";
 }
 
 - (void) QueryFile:(NSString*) name
-          callback:(void (^)(GTLDriveFileList* fileList)) completionHandler
+          callback:(void (^)(GTLRDrive_FileList* fileList)) completionHandler
     failedCallback:(void (^)(NSError *error)) failHandler{
     NSLog(@"QueryFile: %@", name);
-    GTLQueryDrive *query = [GTLQueryDrive queryForFilesList];
+    GTLRDriveQuery_FilesList *query = [GTLRDriveQuery_FilesList query];
     query.q = [NSString stringWithFormat:@"name = '%@'", name];
-    [self.service executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
-                                                         GTLDriveFileList *fileList,
+    [self.service executeQuery:query completionHandler:^(GTLRServiceTicket *ticket,
+                                                         GTLRDrive_FileList *fileList,
                                                          NSError *error) {
         if (error == nil) {
             completionHandler(fileList);
@@ -99,18 +100,18 @@ static NSString *const SketchName = @"_sketch.txt";
 - (void) CreateFile:(NSString *) name
            parentId:(NSString *) parentIdentifier
           withValue:(NSString *) content
-           callback:(void (^)(GTLDriveFile *createdFile)) completionHandler{
+           callback:(void (^)(GTLRDrive_File *createdFile)) completionHandler{
     NSLog(@"To Created file %@", name);
     NSString *mimeType = @"text/plain";
-    GTLDriveFile *metadata = [GTLDriveFile object];
+    GTLRDrive_File *metadata = [GTLRDrive_File object];
     metadata.name = name;
     NSData *data = [content dataUsingEncoding:NSUTF8StringEncoding];
-    GTLUploadParameters *uploadParameters = [GTLUploadParameters uploadParametersWithData:data MIMEType:mimeType];
+    GTLRUploadParameters *uploadParameters = [GTLRUploadParameters uploadParametersWithData:data MIMEType:mimeType];
     if(parentIdentifier!=nil) metadata.parents = @[parentIdentifier];
-    GTLQueryDrive *query = [GTLQueryDrive queryForFilesCreateWithObject:metadata
-                                                       uploadParameters:uploadParameters];
-    [self.service executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
-                                                         GTLDriveFile *file,
+    GTLRDriveQuery_FilesCreate *query = [GTLRDriveQuery_FilesCreate queryWithObject:metadata
+                                                                   uploadParameters:uploadParameters];
+    [self.service executeQuery:query completionHandler:^(GTLRServiceTicket *ticket,
+                                                         GTLRDrive_File *file,
                                                          NSError *error) {
         if (error == nil) {
             NSLog(@"Created file %@", file);
@@ -124,16 +125,16 @@ static NSString *const SketchName = @"_sketch.txt";
 
 - (void) CreateFolder:(NSString *) name
            parentId:(NSString *) parentIdentifier
-           callback:(void (^)(GTLDriveFile *createdFolder)) completionHandler{
+           callback:(void (^)(GTLRDrive_File *createdFolder)) completionHandler{
     NSLog(@"To Created Folder %@", name);
-    GTLDriveFile *folder = [GTLDriveFile object];
+    GTLRDrive_File *folder = [GTLRDrive_File object];
     folder.name = PathName;
     folder.mimeType = @"application/vnd.google-apps.folder";
-    GTLQueryDrive *query = [GTLQueryDrive queryForFilesCreateWithObject:folder
+    GTLRDriveQuery_FilesCreate *query = [GTLRDriveQuery_FilesCreate queryWithObject:folder
                                                        uploadParameters:nil];
     if(parentIdentifier!=nil) folder.parents = @[parentIdentifier];
-    [self.service executeQuery:query completionHandler:^(GTLServiceTicket *ticket,
-                                                         GTLDriveFile *folder,
+    [self.service executeQuery:query completionHandler:^(GTLRServiceTicket *ticket,
+                                                         GTLRDrive_File *folder,
                                                          NSError *error) {
         if (error == nil) {
             NSLog(@"Created Folder %@", name);
@@ -149,15 +150,15 @@ static NSString *const SketchName = @"_sketch.txt";
     NSLog(@"to SetupSketch");
     UIAlertView *alert = [DriveModel showLoadingMessageWithTitle:@"Setting up sketch board on cloud..."
                                                 delegate:self];
-    [self QueryFile:PathName callback:^(GTLDriveFileList* fileList){
+    [self QueryFile:PathName callback:^(GTLRDrive_FileList* fileList){
         
         if([fileList.files count]>0){
-            GTLDriveFile *workingFolder = (fileList.files[0]);
+            GTLRDrive_File *workingFolder = (fileList.files[0]);
             self.WorkSpaceID = workingFolder.identifier;
             [self QueryFile:SketchName
-            callback:^(GTLDriveFileList* sketchList){
+            callback:^(GTLRDrive_FileList* sketchList){
                 
-                GTLDriveFile *updatedFile = (sketchList.files[0]);
+                GTLRDrive_File *updatedFile = (sketchList.files[0]);
                 self.SketchID = updatedFile.identifier;
                 [self Readfile:self.SketchID
                 Callback:^(NSString* newStr){
@@ -170,13 +171,13 @@ static NSString *const SketchName = @"_sketch.txt";
         //create the folder:
         [self CreateFolder:PathName
                   parentId:nil
-        callback:^(GTLDriveFile *createdFolder){
+        callback:^(GTLRDrive_File *createdFolder){
             
             self.WorkSpaceID = createdFolder.identifier;
             [self CreateFile:SketchName
                     parentId:createdFolder.identifier
                    withValue:@"Start typing your code here..."
-            callback:^(GTLDriveFile *createdFile){
+            callback:^(GTLRDrive_File *createdFile){
                 
                 self.SketchID = createdFile.identifier;
                 [self Readfile:self.SketchID
@@ -200,9 +201,9 @@ static NSString *const SketchName = @"_sketch.txt";
     UIAlertView *alert = [DriveModel showLoadingMessageWithTitle:@"Reading completion from cloud..."
                                                 delegate:self];
     [self QueryFile:fullFilename
-    callback:^(GTLDriveFileList* fileList){
-        GTLDriveFile *file = (fileList.files[0]);
-        if(file){
+    callback:^(GTLRDrive_FileList* fileList){
+        if([fileList.files count] > 0){
+            GTLRDrive_File *file = (fileList.files[0]);
             NSLog(@"successfully loaded schema from cloud");
             [self Readfile:file.identifier Callback:^(NSString* data){
                 [alert dismissWithClickedButtonIndex:0 animated:YES];
@@ -221,7 +222,7 @@ static NSString *const SketchName = @"_sketch.txt";
                                                    encoding:NSUTF8StringEncoding];
             NSLog(@"\n\nthe string %@",data);
             [self.delegate populateCompletion:language withCompletion:data];
-            [self CreateFile:fullFilename parentId:nil withValue:data callback:^(GTLDriveFile *created){
+            [self CreateFile:fullFilename parentId:nil withValue:data callback:^(GTLRDrive_File *created){
                 NSLog(@"remote schema created");
                 [alert dismissWithClickedButtonIndex:0 animated:YES];
             }];

@@ -269,6 +269,7 @@
 		410CB2361DB122B900F586B5 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				410CB2381DB122D000F586B5 /* delegations */,
 				410CB2371DB122C500F586B5 /* UI */,
 				413C399A1DC918BC004660C8 /* DriveNetworking */,
 				413C39911DC914CD004660C8 /* CursorControl */,
@@ -283,7 +284,6 @@
 		410CB2371DB122C500F586B5 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				410CB2381DB122D000F586B5 /* delegations */,
 				410CB2281DB1229400F586B5 /* Main.storyboard */,
 				410CB22B1DB1229400F586B5 /* Assets.xcassets */,
 				410CB22D1DB1229400F586B5 /* LaunchScreen.storyboard */,
@@ -1091,6 +1091,7 @@
 			baseConfigurationReference = DC7E0AEDCE75F85DCDB0EB57 /* Pods-Programming_Keyboard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YQ3WE59VN6;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -1111,6 +1112,7 @@
 			baseConfigurationReference = 2652A6D41125548FBCA38BF7 /* Pods-Programming_Keyboard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YQ3WE59VN6;
 				INFOPLIST_FILE = Programming_Keyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fingerwizards.Programming-Keyboard";

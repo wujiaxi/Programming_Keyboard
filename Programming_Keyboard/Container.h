@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <MaterialControls/MDButton.h>
 
+#import "AppDelegate.h"
+#import "GTMAppAuth.h"
+#import "GTMSessionFetcher.h"
+#import "GTMSessionFetcherService.h"
+
 #import "GTMOAuth2ViewControllerTouch.h"
-#import "GTLDrive.h"
+#import "GTLRDrive.h"
 
 // pop up view
 
@@ -37,7 +42,9 @@
 @property(nonatomic, strong) NSMutableDictionary* ButtonToSelector;
 @property (nonatomic, weak) IBOutlet UITextView *codes;
 @property (nonatomic, weak) IBOutlet UIView *controls;
-@property (nonatomic, strong) GTLServiceDrive *service;
+
+@property (nonatomic, strong) GTMAppAuthFetcherAuthorization *authorization;
+@property (nonatomic, strong) GTLRDriveService *service;
 @property (nonatomic, strong) DriveModel *driveModel;
 
 @property (nonatomic, strong) NSMutableDictionary* FirstFunctionalKey;

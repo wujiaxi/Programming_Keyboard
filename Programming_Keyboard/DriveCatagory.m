@@ -7,11 +7,15 @@
 //
 
 #import "Catagories.h"
+#import <AppAuth/AppAuth.h>
+#import <GTMAppAuth/GTMAppAuth.h>
+#import <QuartzCore/QuartzCore.h>
 
 
 
 @implementation Container(DriveCatagory)
 
+/*
     // Creates the auth controller for authorizing access to Drive API.
 - (GTMOAuth2ViewControllerTouch *)createAuthController {
     GTMOAuth2ViewControllerTouch *authController;
@@ -46,7 +50,71 @@
             //[self.driveModel SetupSketch];
     }
 }
+*/
+- (void)setGtmAuthorization:(GTMAppAuthFetcherAuthorization*)authorization {
+    if ([self.authorization isEqual:authorization]) {
+        return;
+    }
+    self.authorization = authorization;
+    self.service.authorizer = authorization;
+}
 
+- (void)authWithAutoCodeExchange {
+    NSURL *issuer = [NSURL URLWithString:kIssuer];
+    NSURL *redirectURI = [NSURL URLWithString:kRedirectURI];
+    [OIDAuthorizationService discoverServiceConfigurationForIssuer:issuer
+                                                        completion:^(OIDServiceConfiguration *_Nullable configuration, NSError *_Nullable error)
+     {
+         
+         if (!configuration) {
+             //[self logMessage:@"Error retrieving discovery document: %@", [error localizedDescription]];
+             [self setGtmAuthorization:nil];
+             return;
+         }
+         
+         //[self logMessage:@"Got configuration: %@", configuration];
+         
+         // builds authentication request
+         NSArray *scopes = [NSArray arrayWithObjects:kGTLRAuthScopeDriveMetadata, kGTLRAuthScopeDrive, kGTLRAuthScopeDriveFile, nil];
+
+         OIDAuthorizationRequest *request =
+         [[OIDAuthorizationRequest alloc] initWithConfiguration:configuration
+                                                       clientId:kClientID
+                                                         scopes:scopes
+                                                    redirectURL:redirectURI
+                                                   responseType:OIDResponseTypeCode
+                                           additionalParameters:nil];
+         // performs authentication request
+         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+         NSLog(@"Initiating authorization request with scope: %@", request.scope);
+
+         //[self logMessage:@"Initiating authorization request with scope: %@", request.scope];
+         
+         appDelegate.currentAuthorizationFlow =
+         [OIDAuthState authStateByPresentingAuthorizationRequest:request
+                                        presentingViewController:self
+                                                        callback:^(OIDAuthState *_Nullable authState,
+                                                                   NSError *_Nullable error)
+          {
+              self.DriveLoading = NO;
+              if (authState) {
+                  GTMAppAuthFetcherAuthorization *authorization =
+                  [[GTMAppAuthFetcherAuthorization alloc] initWithAuthState:authState];
+                  
+                  [self setGtmAuthorization:authorization];
+                  [self.driveModel SetupSketch];
+                  [self SetupKeyboard];
+
+                  //[self logMessage:@"Got authorization tokens. Access token: %@",
+                  // authState.lastTokenResponse.accessToken];
+              } else {
+                  [self setGtmAuthorization:nil];
+                  NSLog(@"Authorization error: %@", [error localizedDescription]);
+                  //[self logMessage:@"Authorization error: %@", [error localizedDescription]];
+              }
+          }];
+     }];
+}
     // Helper for showing an alert
 - (void)showAlert:(NSString *)title message:(NSString *)message {
     UIAlertController *alert =
@@ -75,10 +143,13 @@
 
 - (IBAction)signoutButtonClicked:(id)sender {
         // Sign out
-    [GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:kKeychainItemName];
+    //[GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:kKeychainItemName];
     [[self service] setAuthorizer:nil];
     self.DriveLoading = YES;
-    [self presentViewController:[self createAuthController] animated:YES completion:nil];
+    [self viewDidLayoutSubviews];
+    [self authWithAutoCodeExchange];
+    self.DriveLoading = YES;
+    //[self presentViewController:[self createAuthController] animated:YES completion:nil];
 }
 
 
